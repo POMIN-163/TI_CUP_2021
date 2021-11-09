@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.ndk" version="" producerId="undefined">
+    <units>
+    </units>
+    <sources>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="package/rel/ti_ndk.tar.dep" src="package/rel/ti_ndk.xdc.inc"/>
+    </makefiles>
+    <targets>
+    </targets>
+    <libraries>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_ndk"
+        pname="ti_ndk.tar"
+        label="default"
+    >
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package.bld"/>
+        <file name="package.xdc"/>
+        <file name="inc"/>
+        <file name=".meta/Config.c.xdt"/>
+        <file name=".meta/DHCP.Config.c.xdt"/>
+        <file name=".meta/DHCP.syscfg.js"/>
+        <file name=".meta/DNS.Config.c.xdt"/>
+        <file name=".meta/DNS.syscfg.js"/>
+        <file name=".meta/General.Config.c.xdt"/>
+        <file name=".meta/General.syscfg.js"/>
+        <file name=".meta/NIMU.Config.c.xdt"/>
+        <file name=".meta/NIMU.syscfg.js"/>
+        <file name=".meta/NAT.Config.c.xdt"/>
+        <file name=".meta/NAT.syscfg.js"/>
+        <file name=".meta/Telnet.Config.c.xdt"/>
+        <file name=".meta/Telnet.syscfg.js"/>
+        <file name=".meta/OSAL.Config.c.xdt"/>
+        <file name=".meta/ndk.component.js"/>
+        <file name=".meta/util.js"/>
+        <file name="ndk.rov.js"/>
+        <file name="rov_ndk.js"/>
+        <file name="package/package.cfg.xdc.inc"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

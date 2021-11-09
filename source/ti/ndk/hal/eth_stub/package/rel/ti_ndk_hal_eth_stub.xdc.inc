@@ -1,0 +1,10 @@
+package/package.bld.xml
+package/build.cfg
+package/package.xdc.inc
+package.bld
+package/package.cfg.xdc.inc
+lib/hal_eth_stub.aem4f
+package/package_ti.ndk.hal.eth_stub.c
+llpktstb.c
+lib/hal_eth_stub.am4fg
+lib/hal_eth_stub.arm4f

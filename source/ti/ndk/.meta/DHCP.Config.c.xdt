@@ -1,0 +1,84 @@
+%%{
+/*
+ * Copyright (c) 2018-2020 Texas Instruments Incorporated - http://www.ti.com
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * *  Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *
+ * *  Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * *  Neither the name of Texas Instruments Incorporated nor the names of
+ *    its contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ *  ======== DHCP.Config.c.xdt ========
+ */
+%%}
+%%{
+    let DHCP = args[0];
+    let General = system.modules["/ti/ndk/General"];
+    let util = system.getScript("/ti/ndk/util.js");
+%%}
+/*
+ *  ======== ti.ndk/DHCP ========
+ */
+% if (General.$static.enableCodeGeneration) {
+% if (DHCP.$instances.length) {
+
+/*
+ *  ======== ti_ndk_config_dhcps_init ========
+ *  Add a DHCP server to the NDK stack
+ */
+static void ti_ndk_config_dhcps_init(void *hCfg)
+{
+    CI_SERVICE_DHCPS dhcps;
+% for (let i = 0; i < DHCP.$instances.length; i++) {
+%     let inst = DHCP.$instances[i];
+
+    /* DHCP service for DHCP instance: `inst.$name` */
+%     let instServReportFxn = "NULL";
+%     if (inst.servReportFxn != "") {
+%         instServReportFxn = inst.servReportFxn;
+    /* NOTE!  The application must provide the service report function
+     * matching this prototype!
+     */
+    extern void `instServReportFxn`(uint32_t item, uint32_t status,
+            uint32_t report, void *h);
+% }
+
+    memset(&dhcps, 0, sizeof(dhcps));
+    /* DHCPS is required to be called in CIS_FLG_IFIDXVALID mode */
+    dhcps.cisargs.Mode = CIS_FLG_IFIDXVALID;
+    dhcps.cisargs.pCbSrv = `instServReportFxn`;
+    dhcps.cisargs.IfIdx = `util.findNimuIndex(inst)`;
+    dhcps.param.Flags = `DHCP.tfxn.cisargs_mode(inst)`;
+    dhcps.param.PoolBase     = inet_addr("`inst.ipAddrPoolBase`");
+    dhcps.param.PoolCount    = `inst.ipAddrPoolCount`;
+
+    CfgAddEntry(hCfg, CFGTAG_SERVICE, CFGITEM_SERVICE_DHCPSERVER, 0,
+            sizeof(dhcps), (unsigned char *)&dhcps, 0);
+% }
+}
+% }
+% } /* enableCodeGeneration */

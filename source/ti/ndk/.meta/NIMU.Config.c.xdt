@@ -1,0 +1,180 @@
+%%{
+/*
+ * Copyright (c) 2019-2020 Texas Instruments Incorporated - http://www.ti.com
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * *  Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *
+ * *  Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * *  Neither the name of Texas Instruments Incorporated nor the names of
+ *    its contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ *  ======== NIMU.Config.c.xdt ========
+ */
+%%}
+%%{
+    let NIMU = args[0];
+    let General = system.getScript("/ti/ndk/General");
+
+%%}
+/*
+ *  ======== ti.ndk/NIMU ========
+ */
+% if (NIMU.$instances.length) {
+%
+% let customFxns = [];
+% for (var i = 0; i < NIMU.$instances.length; i++) {
+%   let inst = NIMU.$instances[i];
+%   if (inst.device == "Custom") {
+%       customFxns.push(inst.custom);
+%   }
+% } /* end of: for (var i = 0; i < NIMU.$instances.length; i++) { */
+% let uniqueCustomFxns = Array.from(new Set(customFxns));
+% for (var i = 0; i < uniqueCustomFxns.length; i++) {
+extern int `uniqueCustomFxns[i]`();
+% } /* end of: for (var i = 0; i < uniqueCustomFxns; i++) { */
+NIMU_DEVICE_TABLE_ENTRY NIMUDeviceTable[`NIMU.$instances.length + 1`] = {
+% for (var i = 0; i < NIMU.$instances.length; i++) {
+%   let inst = NIMU.$instances[i];
+    {
+%   if (inst.device == "Custom") {
+        .init = `inst.custom`
+%   } /* end of: if (inst.device == "Custom") { */
+%   else if (inst.device == "EMAC") {
+%       if (system.deviceData.deviceId.match(/MSP432E.*/)) {
+        .init = EMACMSP432E4_NIMUInit
+%       } /* end of: if (system.deviceData.deviceId.match(/MSP432E.)) { */
+%       else {
+%           throw new Error("not implemented");
+%       } /* end of: else { */
+%   } /* end of: else if (inst.device == "EMAC") { */
+    },
+% } /* end of: for (var i = 0; i < NIMU.$instances.length; i++) { */
+    {NULL}
+};
+
+/*
+ *  ======== ti_ndk_config_ip_init ========
+ *  Configure the IP settings
+ */
+static void ti_ndk_config_ip_init(void *hCfg)
+{
+% if ((NIMU.$instances).find(inst => inst.localIPAddrConfig == "Use DHCP to Obtain IP Address")) {
+    CI_SERVICE_DHCPC dhcpc;
+    static unsigned char DHCP_OPTIONS[] = { DHCPOPT_SUBNET_MASK };
+
+% }
+%
+% for (var i = 0; i < NIMU.$instances.length; i++) {
+%   let inst = NIMU.$instances[i];
+%
+    /* ----------------- Configuring IP for `inst.$name` ----------------- */
+%
+%   if (inst.localIPAddrConfig == "Use DHCP to Obtain IP Address") {
+%       let dhcpOptLen = 1;
+%       let dhcpcServReportFxn = "NULL";
+%       if (inst.dhcpcServReportFxn != "") {
+%           dhcpcServReportFxn = inst.dhcpcServReportFxn;
+    /* NOTE!  The application must provide the service report function
+     * matching this prototype!
+     */
+    extern void `dhcpcServReportFxn`(uint32_t item, uint32_t status,
+            uint32_t report, void *h);
+
+%       } /* end of: if (inst.dhcpcServReportFxn != "") { */
+
+    /* use DHCP to obtain IP address on interface `inst.ifIdx` */
+    memset(&dhcpc, 0, sizeof(dhcpc));
+    /*
+     * CIS_FLG_IFIDXVALID makes this DHCP Client bind to the ip address of this
+     * NIMU interface, `i + 1`. This is the only appropriate mode for the DHCP
+     * Client.
+     */
+    dhcpc.cisargs.Mode = CIS_FLG_IFIDXVALID;
+    dhcpc.cisargs.IfIdx = `i + 1`;
+    dhcpc.cisargs.pCbSrv = `dhcpcServReportFxn`;
+    dhcpc.param.pOptions = DHCP_OPTIONS;
+    dhcpc.param.len = `dhcpOptLen`;
+    CfgAddEntry(hCfg, CFGTAG_SERVICE, CFGITEM_SERVICE_DHCPCLIENT, 0,
+            sizeof(dhcpc), (unsigned char *)&dhcpc, NULL);
+%
+%   } /* end of: if (inst.localIPAddrConfig == "Use DHCP to Obtain IP Address") { */
+%   else if (inst.localIPAddrConfig == "Enable Static IP Address") {
+    CI_IPNET NA;
+    CI_ROUTE RT;
+%       /* Use global variables LocalIPAddr, LocalIPMask and DomainName which are
+%        * generated by Global.xdt instead of config values 'Ip.staticIPAddr',
+%        * 'Ip.ipMask' and 'Ip.domainName'. This provides better user flexibility
+%        * (i.e. ability to override default config values) here. Fix for
+%        * SDOCM00096773.
+%        */
+
+    /* configure IP address manually on interface `inst.ifIdx` */
+
+    /* setup manual IP address */
+    memset(&NA, 0, sizeof(NA));
+    NA.IPAddr = inet_addr("`inst.staticIPAddr`");
+    NA.IPMask = inet_addr("`inst.ipMask`");
+    strcpy(NA.Domain, "`inst.domainName`");
+    NA.NetType = `inst.netType`;
+
+%       /*
+%        *  ifIdx is the interface ID ie the interfaces index in the NIMU device
+%        *  table.
+%        */
+%       let ifIdx = i + 1;
+    CfgAddEntry(hCfg, CFGTAG_IPNET, `ifIdx`, 0,
+            sizeof(CI_IPNET), (unsigned char *)&NA, 0);
+
+    /*  Add the default gateway. Since it is the default, the
+     *  destination address and mask are both zero (we go ahead
+     *  and show the assignment for clarity).
+     */
+    memset(&RT, 0, sizeof(RT));
+    RT.IPDestAddr = 0;
+    RT.IPDestMask = 0;
+%       /* Use global variables GatewayIP which is generated by Global.xdt, instead
+%        * of config value 'Ip.gatewayIpAddr'. This provides better user flexibility
+%        * (i.e. ability to override default config values) here. Fix for
+%        * SDOCM00096773.
+%        */
+    RT.IPGateAddr = inet_addr("`inst.gatewayIpAddr`");
+
+    CfgAddEntry(hCfg, CFGTAG_ROUTE, 0, 0,
+            sizeof(CI_ROUTE), (unsigned char *)&RT, 0);
+%
+%   } /* end of: else if (inst.localIPAddrConfig == "Enable Static IP Address") { */
+%   else if (inst.localIPAddrConfig == "Do Not Configure an IP Address") {
+    /* do not configure an IP address */
+%
+%   } /* end of: else if (inst.localIPAddrConfig == "Do Not Configure an IP Address") { */
+%   else {
+%     throw new Error("not implemented");
+%   } /* end of: else { */
+
+% } /* end of: for (var i = 0; i < NIMU.$instances.length; i++) { */
+}
+% } /* end of: if (NIMU.$instances.length) { */

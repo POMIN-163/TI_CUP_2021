@@ -1,0 +1,15 @@
+package/package.bld.xml
+package/build.cfg
+package/package.xdc.inc
+package.bld
+slnetifndk.h
+slnetifndk_internal.h
+package/package.cfg.xdc.inc
+lib/slnetifndk.aem4f
+package/package_ti.ndk.slnetif.c
+slnetifndk.c
+lib/slnetifndk_msp432e4.aem4f
+lib/slnetifndk.am4fg
+lib/slnetifndk_msp432e4.am4fg
+lib/slnetifndk.arm4f
+lib/slnetifndk_msp432e4.arm4f

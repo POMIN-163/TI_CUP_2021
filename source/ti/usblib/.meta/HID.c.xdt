@@ -1,0 +1,108 @@
+%%{
+/*
+ * Copyright (c) 2018-2019 Texas Instruments Incorporated - http://www.ti.com
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * *  Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *
+ * *  Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * *  Neither the name of Texas Instruments Incorporated nor the names of
+ *    its contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ */
+    let Settings = system.modules["/ti/usblib/Settings"];
+    let instances = Settings.$instances[0];
+    let configs = system.modules["/ti/usblib/Configurations"].$instances[0];
+    let Common = system.getScript("/ti/usblib/Common.js");
+    let HID = system.modules["/ti/usblib/HID"];
+%%}
+
+% if (HID != null) {
+/*
+ *  ======== HID Device =======
+ */
+    % for (var hidInstance of HID.$instances) {
+        % if (hidInstance.hidType === "Generic") {
+extern const uint8_t `hidInstance.reportDescriptor`[];  /* Due to complexity and flexibility, a report descriptor must be user-defined */
+extern tHIDReportIdle `hidInstance.reportIdleDescriptor`[]; /* Due to complexity and flexibility, a report idle descriptor must be user-defined */
+static const uint8_t* const g_pClassDescriptors[] =
+{
+    `hidInstance.reportDescriptor`
+};
+static const tHIDDescriptor g_sHIDDescriptor_`hidInstance.$name` =
+{
+    9,  /* bLength */
+    USB_HID_DTYPE_HID,  /* bDescriptorType */
+    0x111,  /* bcdHID (version 1.11 compliant) */
+    0,  /* bCountryCode (not localized) */
+    1,  /* bNumDescriptors */
+    USB_HID_DTYPE_REPORT,   /* Report Descriptor */
+    `hidInstance.reportDescriptorSize`  /* Size of Report Descriptor */
+};
+tUSBDHIDDevice `hidInstance.$name` = {
+    `instances.vendorID`,   /* const uint16_t */ /* Vendor ID */
+    `instances.productID`,  /* const uint16_t */ /* Product ID */
+    `configs.maxPower`,   /* const uint16_t */ /* Max Power Consumption of Device in mA */
+    `Common.formatPowerAttributes(configs)`,  /* const uint16_t */ /* Power Attributes */
+    `hidInstance.subclass`, /* uint8_t */ /* Subclass */
+    `hidInstance.protocol`, /* uint8_t */ /* Protocol */
+    1,  /* uint8_t */ /* Number of Input Reports for this Device */
+    `hidInstance.reportIdleDescriptor`, /* tHidReportIdle */ /* Pointer to Structures */
+    `hidInstance.rxHandler`,    /* tUSBCallback */ /* USB Callback for Receive Channel */
+    (void *)&`hidInstance.rxHandlerData`,   /* void* */ /* USB Callback Parameter for Receive Channel */
+    `hidInstance.txHandler`,    /* tUSBCallback */ /* USB Callback for Transmit Channel */
+    (void *)&`hidInstance.txHandlerData`,   /* void* */ /* USB Callback Parameter for Transmit Channel */
+    false,  /* bool */ /* Use dedicated OUT endpoint to receive reports? */
+    &g_sHIDDescriptor_`hidInstance.$name`,  /* const tHIDDescriptor */ /* HID Descriptor used to publish */
+    g_pClassDescriptors,    /* const uint8_t* const* */ /* HID Class Descriptors Array */
+    stringDescriptors_`instances.stringDescriptor.$name`,    /* const uint8_t* const* */ /* String Descriptors Array */
+    StringDescriptorsCount_`instances.stringDescriptor.$name`,  /* uint32_t */ /* Number of Descriptors in String Descriptors Array */
+    /* const tConfigHeader* */ /* Configuration Descriptor for this HID Device */
+};
+        % } else {
+            % if (hidInstance.hidType === "Keyboard") {
+tUSBDHIDKeyboardDevice `hidInstance.$name` = {
+            % } if (hidInstance.hidType === "Mouse") {
+tUSBDHIDMouseDevice `hidInstance.$name` = {
+            % } if (hidInstance.hidType === "Sensor") {
+tUSBDHIDSensorDevice `hidInstance.$name` = {
+            % } if (hidInstance.hidType === "Gamepad") {
+tUSBDHIDGamepadDevice `hidInstance.$name` = {
+            % } // hidInstance.hidType
+    `instances.vendorID`,   /* const uint16_t */ /* Vendor ID */
+    `instances.productID`,  /* const uint16_t */ /* Product ID */
+    `configs.maxPower`,   /* const uint16_t */ /* Max Power Consumption of Device in mA */
+    `Common.formatPowerAttributes(configs)`,  /* const uint16_t */ /* Power Attributes */
+    `hidInstance.usbHandler`,   /* const tUSBCallback */ /* USB Callback */
+    (void *)&`hidInstance.usbHandlerData`,   /* void* */ /* USB Callback Parameter */
+    stringDescriptors_`instances.stringDescriptor.$name`,    /* const uint8_t* const* */ /* String Descriptors Array */
+    StringDescriptorsCount_`instances.stringDescriptor.$name`,  /* uint32_t */ /* Number of Descriptors in String Descriptors Array */
+            % if (hidInstance.hidType === "Gamepad") {
+    `hidInstance.reportDescriptor`, /* const uint8_t* */ /* Optional Custom Report Descriptor */
+    `hidInstance.reportDescriptorSize`, /* const uint32_t */ /* Size of Optional Custom Report Descriptor */
+            % } // Gamepad specific
+};
+        % } // if-else (not generic HID type)
+    % } // for of HID.$instances
+% } // HID != null

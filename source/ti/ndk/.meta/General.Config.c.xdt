@@ -1,0 +1,606 @@
+%%{
+/*
+ * Copyright (c) 2018-2020 Texas Instruments Incorporated - http://www.ti.com
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * *  Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *
+ * *  Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * *  Neither the name of Texas Instruments Incorporated nor the names of
+ *    its contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ *  ======== General.Config.c.xdt ========
+ */
+%%}
+%%{
+    let General = args[0];
+
+    let cfg = {};
+
+    if (General.$static.tcpTxBufSize != General.defval.tcpTxBufSize) {
+        cfg["tcpTxBufSize"] = General.$static.tcpTxBufSize;
+    }
+    if (General.$static.tcpRxBufSize != General.defval.tcpRxBufSize) {
+        cfg["tcpRxBufSize"] = General.$static.tcpRxBufSize;
+    }
+    if (General.$static.tcpRxBufLimit != General.defval.tcpRxBufLimit) {
+        cfg["tcpRxBufLimit"] = General.$static.tcpRxBufLimit;
+    }
+
+    let NIMU = system.modules["/ti/ndk/NIMU"];
+    let DNS = system.modules["/ti/ndk/DNS"];
+    let DHCP = system.modules["/ti/ndk/DHCP"];
+    let NAT = system.modules["/ti/ndk/NAT"];
+    let Telnet = system.modules["/ti/ndk/Telnet"];
+    let RTOS = system.modules["/ti/drivers/RTOS"];
+
+    function needs_u32cval()
+    {
+        let retval = false;
+
+        if ((General.$static.lowPriTaskDefStkSize != General.defval.lowPriTaskDefStkSize) ||
+            (General.$static.normPriTaskDefStkSize != General.defval.normPriTaskDefStkSize) ||
+            (General.$static.highPriTaskDefStkSize != General.defval.highPriTaskDefStkSize)) {
+            retval = true;
+        }
+
+        return (retval);
+    }
+
+%%}
+/*
+ *  ======== ti.ndk/General ========
+ */
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdlib.h>
+
+#include <signal.h>
+#include <time.h>
+
+%
+% if (General.$static.ipv6) {
+
+% /* must come before ndk headers */
+#ifndef _INCLUDE_IPv6_CODE
+#define _INCLUDE_IPv6_CODE
+#endif
+% }
+
+% if (system.deviceData.deviceId.match(/MSP432E.*/)) {
+#include <ti/drivers/emac/EMACMSP432E4.h>
+%}
+#include <ti/ndk/inc/netmain.h>
+#include <ti/ndk/inc/stkmain.h>
+#include <ti/ndk/inc/os/oskern.h>
+% if (RTOS.$static.name == "FreeRTOS") {
+#include <ti/ndk/os/NDK_SemaphoreP.h>
+% }
+%
+% switch (RTOS.$static.name) {
+%     case "TI-RTOS":
+
+#include <ti/sysbios/BIOS.h>
+#include <ti/sysbios/knl/Task.h>
+%     break;
+%     case "FreeRTOS":
+
+#include <FreeRTOS.h>
+#include <task.h>
+#include <semphr.h>
+#include <queue.h>
+%     break;
+% }
+%
+% if (General.$static.enableCodeGeneration) {
+
+/* forward declarations from other modules */
+% if (DNS != null && DNS.$instances.length) {
+void ti_ndk_config_dns_init(void *hCfg);
+% }
+% if (General.$static.enableExtDNS) {
+void ti_ndk_config_external_dns_init(void *hCfg);
+% }
+static void configTcp(void *hCfg);
+static void configUdp(void *hCfg);
+% if (NIMU != null) {
+static void ti_ndk_config_ip_init(void *hCfg);
+% }
+% if (Telnet != null) {
+static void ti_ndk_config_telnet_init(void *hCfg);
+% }
+% if (DHCP != null) {
+static void ti_ndk_config_dhcps_init(void *hCfg);
+% }
+% if (NAT != null) {
+static void ti_ndk_config_nat_init(void *hCfg);
+% }
+% }
+
+/* socket file descriptor table */
+#define MAXSOCKETS `General.$static.maxNumSocks`
+uint32_t ti_ndk_socket_max_fd = MAXSOCKETS;
+void *ti_ndk_socket_fdtable[MAXSOCKETS];
+
+
+%
+% if (General.$static.enableCodeGeneration) {
+
+/* NDK memory manager page size and number of pages [used by mmAlloc()] */
+#define RAW_PAGE_SIZE `General.$static.pageSize`
+#define RAW_PAGE_COUNT `General.$static.numPages`
+
+const int ti_ndk_config_Global_rawPageSize  = RAW_PAGE_SIZE;
+const int ti_ndk_config_Global_rawPageCount = RAW_PAGE_COUNT;
+
+% let memdsec = General.$static.bufDataSection;
+/* P.I.T. (page information table) */
+#if defined(__ti__)
+#pragma DATA_SECTION(ti_ndk_config_Global_pit, "`memdsec`");
+#pragma DATA_SECTION(ti_ndk_config_Global_pitBuffer, "`memdsec`");
+PITENTRY ti_ndk_config_Global_pit[RAW_PAGE_COUNT];
+unsigned char ti_ndk_config_Global_pitBuffer[RAW_PAGE_SIZE * RAW_PAGE_COUNT];
+#elif defined (__IAR_SYSTEMS_ICC__)
+PITENTRY ti_ndk_config_Global_pit[RAW_PAGE_COUNT];
+unsigned char ti_ndk_config_Global_pitBuffer[RAW_PAGE_SIZE * RAW_PAGE_COUNT];
+#elif defined (__GNUC__)
+PITENTRY ti_ndk_config_Global_pit[RAW_PAGE_COUNT] __attribute__ ((section("`memdsec`")));
+unsigned char ti_ndk_config_Global_pitBuffer[RAW_PAGE_SIZE * RAW_PAGE_COUNT] __attribute__ ((section("`memdsec`")));
+#else
+PITENTRY ti_ndk_config_Global_pit[RAW_PAGE_COUNT];
+unsigned char ti_ndk_config_Global_pitBuffer[RAW_PAGE_SIZE * RAW_PAGE_COUNT];
+#endif
+
+/* Memory bucket sizes */
+#define SMALLEST 48
+#define LARGEST (RAW_PAGE_SIZE)
+
+const int ti_ndk_config_Global_smallest = SMALLEST;
+const int ti_ndk_config_Global_largest  = LARGEST;
+
+/* Memory Slot Tracking */
+uint32_t ti_ndk_config_Global_Id2Size[] =
+        {SMALLEST, 96, 128, 256, 512, 1536, LARGEST};
+
+/*
+ *  Local Packet Buffer Pool Definitions
+ *
+ *  The below variables/defines are used to override the defaults that are set
+ *  in the Packet Buffer Manager (PBM) file src/stack/pbm/pbm_data.c
+ */
+
+/*
+ *  Number of buffers in PBM packet buffer free pool
+ *
+ *  The number of buffers in the free pool can have a significant effect
+ *  on performance, especially in UDP packet loss. Increasing this number
+ *  will increase the size of the static packet pool use for both sending
+ *  and receiving packets.
+ */
+#define PKT_NUM_FRAMEBUF `General.$static.numPBMFrames`
+
+/* Size of Ethernet frame buffer */
+#define PKT_SIZE_FRAMEBUF `General.$static.pbmFrameBufSize`
+
+const int ti_ndk_config_Global_numFrameBuf = PKT_NUM_FRAMEBUF;
+const int ti_ndk_config_Global_sizeFrameBuf = PKT_SIZE_FRAMEBUF;
+
+%
+% /*
+%  *  These packet buffers below will need to be data aligned for processor
+%  *  devices. NDK-286 will handle this once resolved.
+%  */
+% let pbmdsec = General.$static.pbmDataSection;
+% var attributeDesc;
+% if (pbmdsec != "") {
+%     attributeDesc = "(aligned(4), section(\"" + pbmdsec + "\"))";
+% } else {
+%     attributeDesc = "(aligned(4))";
+% }
+/* Data space for packet buffers */
+unsigned char ti_ndk_config_Global_pBufMem[PKT_NUM_FRAMEBUF * PKT_SIZE_FRAMEBUF] __attribute__ (`attributeDesc`);
+unsigned char ti_ndk_config_Global_pHdrMem[PKT_NUM_FRAMEBUF * sizeof(PBM_Pkt)] __attribute__ (`attributeDesc`);
+
+static char *hostname = "`General.$static.hostname`";
+% } /* enableCodeGeneration */
+%
+% if (General.$static.stackThreadUser == "") {
+
+extern void llTimerTick();
+
+% if (General.$static.enableCodeGeneration) {
+%     let d = General.defval;
+/*
+ *  ======== configTcp ========
+ *  Configure the TCP settings
+ *
+ *  TCP configuration default values
+ *
+ *  Value   Configuration Property
+ *  ----------------------------------------
+ *  `"        TCP transmit buffer size".pn(d.tcpTxBufSize)`
+ *  `"        TCP receive buffer size (copy mode)".pn(d.tcpRxBufSize)`
+ *  `"        TCP receive size maximum (non-copy mode)".pn(d.tcpRxBufLimit)`
+ *
+ *  [1] Configuration entries are not added when the
+ *      property is configured to its default value.
+ *  [2] Default values are device specific.
+ */
+static void configTcp(void *hCfg)
+{
+% if ("tcpTxBufSize" in cfg) {
+    uint32_t tcpTxBufSize = `cfg.tcpTxBufSize`;
+% }
+% if ("tcpRxBufSize" in cfg) {
+    uint32_t tcpRxBufSize = `cfg.tcpRxBufSize`;
+% }
+% if ("tcpRxBufLimit" in cfg) {
+    uint32_t tcpRxBufLimit = `cfg.tcpRxBufLimit`;
+% }
+
+% if ("tcpTxBufSize" in cfg) {
+    CfgAddEntry(hCfg, CFGTAG_IP, CFGITEM_IP_SOCKTCPTXBUF, CFG_ADDMODE_UNIQUE,
+            sizeof(uint32_t), (unsigned char *)&tcpTxBufSize, NULL);
+% } else {
+    /* tcpTxBufSize using default value */
+% }
+% if ("tcpRxBufSize" in cfg) {
+    CfgAddEntry(hCfg, CFGTAG_IP, CFGITEM_IP_SOCKTCPRXBUF, CFG_ADDMODE_UNIQUE,
+            sizeof(uint32_t), (unsigned char *)&tcpRxBufSize, NULL);
+% } else {
+    /* tcpRxBufSize using default value */
+% }
+% if ("tcpRxBufLimit" in cfg) {
+    CfgAddEntry(hCfg, CFGTAG_IP, CFGITEM_IP_SOCKTCPRXLIMIT, CFG_ADDMODE_UNIQUE,
+            sizeof(uint32_t), (unsigned char *)&tcpRxBufLimit, NULL);
+% } else {
+    /* tcpRxBufLimit using default value */
+% }
+}
+
+/*
+ *  ======== configUdp ========
+ *  Configure the UDP settings
+ */
+static void configUdp(void *hCfg)
+{
+% if (General.$static.udpRxBufSize != General.defval.udpRxBufSize) {
+    uint32_t tcpRxBufSize = `General.$static.udpRxBufSize`;
+
+    CfgAddEntry(hCfg, CFGTAG_IP, CFGITEM_IP_SOCKUDPRXLIMIT, CFG_ADDMODE_UNIQUE,
+            sizeof(uint32_t), (unsigned char *)&tcpRxBufSize, NULL);
+% }
+}
+% if (General.$static.enableExtDNS) {
+
+/*
+ *  ======== ti_ndk_config_external_dns_init ========
+ *  Specify an external DNS server
+ */
+void ti_ndk_config_external_dns_init(void *hCfg)
+{
+    uint32_t IPAddr = inet_addr("`General.$static.externDNSServIPAddr`");
+
+    if (IPAddr) {
+        CfgAddEntry(hCfg, CFGTAG_SYSINFO, CFGITEM_DHCP_DOMAINNAMESERVER,
+            0, sizeof(IPAddr), (unsigned char *)&IPAddr, 0);
+    }
+}
+% }
+% } /* enableCodeGeneration */
+
+/*
+ *  ======== ndkStackThread ========
+ *  NDK main thread function
+ */
+% if (RTOS.$static.name == "TI-RTOS") {
+static void ndkStackThread(uintptr_t arg0, uintptr_t arg1)
+% } else if (RTOS.$static.name == "FreeRTOS") {
+static void ndkStackThread(void *argUnused)
+% } else {
+    /* TODO - raise error */
+% }
+{
+% if (General.$static.enableCodeGeneration) {
+% if (General.$static.beginHook != "") {
+    extern void `General.$static.beginHook`();
+% }
+% if (General.$static.initHook != "") {
+    extern void `General.$static.initHook`(void *hCfg);
+% }
+% if (General.$static.rebootHook != "") {
+    extern void `General.$static.rebootHook`();
+% }
+% if (General.$static.deleteHook != "") {
+    extern void `General.$static.deleteHook`();
+% }
+% var usrNetworkOpenHook = "NULL";
+% if (General.$static.networkOpenHook != "") {
+%     usrNetworkOpenHook = General.$static.networkOpenHook;
+    extern void `General.$static.networkOpenHook`();
+% }
+% var usrNetworkCloseHook = "NULL";
+% if (General.$static.networkCloseHook != "") {
+%     usrNetworkCloseHook = General.$static.networkCloseHook;
+    extern void `General.$static.networkCloseHook`();
+% }
+% var usrNetworkIPAddrHook = "NULL";
+% if (General.$static.networkIPAddrHook != "") {
+%     usrNetworkIPAddrHook = General.$static.networkIPAddrHook;
+    extern void `General.$static.networkIPAddrHook`();
+% }
+    void *hCfg;
+% if (needs_u32cval()) {
+    uint32_t u32cval;
+% }
+% }
+    int rc;
+    timer_t ndkHeartBeat;
+    struct sigevent sev;
+    struct itimerspec its;
+    struct itimerspec oldIts;
+    int ndkHeartBeatCount = 0;
+
+    /* create the NDK timer tick */
+    sev.sigev_notify = SIGEV_SIGNAL;
+    sev.sigev_value.sival_ptr = &ndkHeartBeatCount;
+    sev.sigev_notify_attributes = NULL;
+    sev.sigev_notify_function = &llTimerTick;
+
+    rc = timer_create(CLOCK_MONOTONIC, &sev, &ndkHeartBeat);
+    if (rc != 0) {
+        /* ndkStackThread: failed to create timer */
+    }
+
+% let tickPeriodNsec = General.$static.ndkTickPeriod * 1000000;
+% let period_ms = General.$static.ndkTickPeriod;
+%
+    /* start the NDK `period_ms`ms timer */
+    its.it_interval.tv_sec = 0;
+    its.it_interval.tv_nsec = `tickPeriodNsec`;
+    its.it_value.tv_sec = 0;
+    its.it_value.tv_nsec = `tickPeriodNsec`;
+
+    rc = timer_settime(ndkHeartBeat, 0, &its, NULL);
+    if (rc != 0) {
+        /* ndkStackThread: failed to set time */
+    }
+%
+% if (General.$static.enableCodeGeneration) {
+%
+% if (General.$static.beginHook != "") {
+
+    /* call user defined stack begin hook */
+    `General.$static.beginHook`();
+% } else {
+
+    /* user begin hook == null */
+% }
+%
+% let pri = General.$static.netTaskSchedulerTaskPri;
+% let mode = General.$static.netSchedulerOpMode;
+
+    rc = NC_SystemOpen(`pri`, `mode`);
+    if (rc) {
+        /* ndkStackThread: NC_SystemOpen Failed */
+        goto nc_fail;
+    }
+
+    /* create and build the system configuration from scratch */
+    hCfg = CfgNew();
+    if (!hCfg) {
+        /* ndkStackThread: Unable to create configuration */
+        goto main_exit;
+    }
+%
+% if (General.$static.initHook != "") {
+
+    /* call user defined stack begin hook */
+    `General.$static.initHook`(hCfg);
+% } else {
+
+    /* user init hook == null */
+% }
+
+    /* Add hostname */
+    CfgAddEntry(hCfg, CFGTAG_SYSINFO, CFGITEM_DHCP_HOSTNAME, 0,
+                strlen(hostname), (unsigned char *)hostname, NULL);
+
+    /* TCP and UDP config */
+    configTcp(hCfg);
+    configUdp(hCfg);
+% if (NIMU != null) {
+
+    /* IP configuration */
+    ti_ndk_config_ip_init(hCfg);
+% }
+% if (DHCP != null) {
+
+    /* DHCP Server initialization */
+    ti_ndk_config_dhcps_init(hCfg);
+% }
+% if (NAT != null) {
+
+    /* NAT initialization  */
+    ti_ndk_config_nat_init(hCfg);
+% }
+% if (Telnet != null) {
+
+    /* Telnet initialization  */
+    ti_ndk_config_telnet_init(hCfg);
+% }
+% /*  Configure an external DNS Server. */
+% if (General.$static.enableExtDNS) {
+
+    /* add the external DNS server to the configuration */
+    ti_ndk_config_external_dns_init(hCfg);
+% }
+% if (DNS != null && DNS.$instances.length) {
+
+    /* Initialize local hosted DNS server */
+    ti_ndk_config_dns_init(hCfg);
+% }
+% if (General.$static.lowPriTaskPriLevel != General.defval.lowPriTaskPriLevel) {
+
+    /* config low priority task level */
+    u32cval = `General.$static.lowTaskPriLevel`;
+    CfgAddEntry(hCfg, CFGTAG_OS, CFGITEM_OS_TASKPRILOW, CFG_ADDMODE_UNIQUE,
+            sizeof(uint32_t), (unsigned char *)&u32cval, 0);
+% }
+% if (General.$static.normPriTaskPriLevel != General.defval.normPriTaskPriLevel) {
+
+    /* config normal priority task level */
+    u32cval = `General.$static.normPriTaskPriLevel`;
+    CfgAddEntry(hCfg, CFGTAG_OS, CFGITEM_OS_TASKPRINORM, CFG_ADDMODE_UNIQUE,
+            sizeof(uint32_t), (unsigned char *)&u32cval, 0);
+% }
+% if (General.$static.highPriTaskPriLevel != General.defval.highPriTaskPriLevel) {
+
+    /* config high priority task level */
+    u32cval = `General.$static.highPriTaskPriLevel`;
+    CfgAddEntry(hCfg, CFGTAG_OS, CFGITEM_OS_TASKPRIHIGH, CFG_ADDMODE_UNIQUE,
+            sizeof(uint32_t), (unsigned char *)&u32cval, 0);
+% }
+% if (General.$static.kernPriLevel != General.defval.kernPriLevel) {
+
+    /* config kernel priority task level */
+    u32cval = `General.$static.kernPriLevel`;
+    CfgAddEntry(hCfg, CFGTAG_OS, CFGITEM_OS_TASKPRIKERN, CFG_ADDMODE_UNIQUE,
+            sizeof(uint32_t), (unsigned char *)&u32cval, 0);
+% }
+% if (General.$static.lowPriTaskDefStkSize != General.defval.lowPriTaskDefStkSize) {
+
+    /* config low priority task stack size */
+    u32cval = `General.$static.lowPriTaskDefStkSize`;
+    CfgAddEntry(hCfg, CFGTAG_OS, CFGITEM_OS_TASKSTKLOW, CFG_ADDMODE_UNIQUE,
+            sizeof(uint32_t), (unsigned char *)&u32cval, NULL);
+% }
+% if (General.$static.normPriTaskDefStkSize != General.defval.normPriTaskDefStkSize) {
+
+    /* config normal priority task stack size */
+    u32cval = `General.$static.normPriTaskDefStkSize`;
+    CfgAddEntry(hCfg, CFGTAG_OS, CFGITEM_OS_TASKSTKNORM, CFG_ADDMODE_UNIQUE,
+            sizeof(uint32_t), (unsigned char *)&u32cval, NULL);
+% }
+% if (General.$static.highPriTaskDefStkSize != General.defval.highPriTaskDefStkSize) {
+
+    /* config high priority task stack size */
+    u32cval = `General.$static.highPriTaskDefStkSize`;
+    CfgAddEntry(hCfg, CFGTAG_OS, CFGITEM_OS_TASKSTKHIGH, CFG_ADDMODE_UNIQUE,
+            sizeof(uint32_t), (unsigned char *)&u32cval, NULL);
+% }
+
+    /*  Boot the system using this configuration
+     *
+     *  Loop until the function returns 0. This facilitates a reboot command.
+     */
+    do
+    {
+        rc = NC_NetStart(hCfg, `usrNetworkOpenHook`, `usrNetworkCloseHook`, `usrNetworkIPAddrHook`);
+% if (General.$static.rebootHook != "") {
+
+        /* call user defined stack reboot hook */
+        `General.$static.rebootHook`(hCfg, rc);
+% } else {
+
+        /* user reboot hook == null */
+% }
+
+    } while (rc > 0);
+%
+% if (General.$static.deleteHook != "") {
+
+    /* call user defined stack delete hook */
+    `General.$static.deleteHook`(hCfg, rc);
+% } else {
+
+    /* user delete hook == null */
+% }
+
+    /* shut down the stack */
+    CfgFree(hCfg);
+
+main_exit:
+    NC_SystemClose();
+
+nc_fail:
+    /* stop and delete the NDK heartbeat */
+    its.it_value.tv_sec = 0;
+    its.it_value.tv_nsec = 0;
+    rc = timer_settime(ndkHeartBeat, 0, &its, &oldIts);
+    rc = timer_delete(ndkHeartBeat);
+
+    /* ndkStackThread: exiting ... */
+% } /* enableCodeGeneration */
+}
+% } /* stackThreadUser */
+
+/*
+ * ======== ti_ndk_config_Global_startupFxn ========
+ * Called to start up the NDK. In BIOS, this can be called as a BIOS startup
+ * function, or from main(). In FreeRTOS, this should be called from main().
+ */
+void ti_ndk_config_Global_startupFxn()
+{
+% let ndkThreadFxn;
+% if (General.$static.stackThreadUser == "") {
+%     ndkThreadFxn = "ndkStackThread";
+% } else {
+    extern void `General.$static.stackThreadUser`();
+%     ndkThreadFxn = General.$static.stackThreadUser;
+% }
+% if (RTOS.$static.name == "TI-RTOS") {
+    Task_Params params;
+    Task_Handle ndkThread;
+
+    Task_Params_init(&params);
+    params.instance->name = "`ndkThreadFxn`";
+    params.priority = `General.$static.stackThreadPriLevel`;
+    params.stackSize = `General.$static.ndkThreadStkSize`;
+
+    ndkThread = Task_create((Task_FuncPtr)`ndkThreadFxn`, &params, NULL);
+
+    if (!ndkThread) {
+        /* Error: could not create NDK stack thread */
+        while(1);
+    }
+% } else if (RTOS.$static.name == "FreeRTOS") {
+    BaseType_t status;
+    TaskHandle_t ndkThread = NULL;
+
+% let pri = General.$static.stackThreadPriLevel;
+% let stkSz = General.$static.ndkThreadStkSize;
+    status = xTaskCreate((TaskFunction_t)`ndkThreadFxn`, "ndkStackThread",
+            `stkSz` / sizeof(portSTACK_TYPE), NULL, `pri`, &ndkThread);
+
+    if (status != pdPASS) {
+        /* Error: could not create NDK stack thread */
+        while(1);
+    }
+% } else {
+%     /* TODO - raise error */
+% }
+}

@@ -1,0 +1,439 @@
+%%{
+/*
+ * Copyright (c) 2018-2019 Texas Instruments Incorporated - http://www.ti.com
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * *  Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *
+ * *  Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * *  Neither the name of Texas Instruments Incorporated nor the names of
+ *    its contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ *  ======== OSAL.Config.c.xdt ========
+ */
+%%}
+%%{
+    /* special case, this template expanded from Config.c.xdt */
+    let General = args[0];
+    let RTOS = system.modules["/ti/drivers/RTOS"];
+
+%%}
+/*
+ *  ======== ti.ndk/OSAL ========
+ */
+% if (RTOS.$static.name == "FreeRTOS") {
+
+/* Compute number of microseconds per tick based on user's kernel settings */
+#define NDK_FREERTOS_USEC_PER_TICK ((1000000) / (configTICK_RATE_HZ))
+
+static bool hookOK = false;
+
+/*
+ * ======== _TaskInit ========
+ * Called from NETCTRL init
+ */
+void _TaskInit()
+{
+    hookOK = true;
+}
+
+/*
+ * ======== _TaskShutdown ========
+ * Called from NETCTRL shutdown
+ */
+void _TaskShutdown()
+{
+    hookOK = false;
+}
+
+/*
+ * ======== TaskBlock ========
+ * Block a task
+ */
+void TaskBlock(void *h)
+{
+    vTaskSuspend(NULL);
+}
+
+/*
+ * ======== ti_ndk_os_threadStub ========
+ * Wrapper function used by TaskCreate(). This function conforms to the
+ * FreeRTOS Task function signature:
+ *
+ *     void vFunction(void *pvParameters)
+ *
+ * It is needed in order to pass the Task arguments that were passed in the
+ * TaskCreate() call into the user's actual Task function. It also ensures the
+ * Task exits properly, as required by FreeRTOS.
+ */
+static void ti_ndk_os_threadStub(void *threadArgs)
+{
+    ti_ndk_os_TaskArgs *args = (ti_ndk_os_TaskArgs *)threadArgs;
+
+    /*
+     * Copy args out of TaskArgs object into our Task's stack. This way we can
+     * free args before the user thread function is called.
+     */
+    void (*taskFunction)() = args->arg0;
+    uintptr_t argument1 = args->arg1;
+    uintptr_t argument2 = args->arg2;
+
+    free(args);
+
+    /* open the file descriptor session for the user here */
+    fdOpenSession(TaskSelf());
+
+    /* call user thread function */
+    taskFunction(argument1, argument2);
+
+    /* close the file descriptor session for the user here */
+    fdCloseSession(TaskSelf());
+
+    /* Exit task. FreeRTOS Tasks cannot simply fall out of their functions: */
+    TaskExit();
+}
+
+/*
+ * ======== TaskCreate ========
+ * Create a task
+ */
+void *TaskCreate(void (*pFun)(), char *Name, int Priority, uint32_t StackSize,
+        uintptr_t Arg1, uintptr_t Arg2, uintptr_t argReserved)
+{
+    BaseType_t status;
+    TaskHandle_t task = NULL;
+    ti_ndk_os_TaskArgs *taskArgs;
+
+    taskArgs = malloc(sizeof(ti_ndk_os_TaskArgs));
+    if (!taskArgs) {
+        /* Error: couldn't alloc task function args */
+        return (NULL);
+    }
+    taskArgs->arg0 = pFun;
+    taskArgs->arg1 = Arg1;
+    taskArgs->arg2 = Arg2;
+
+    /* xTaskCreate requires Name to not be NULL */
+    if (Name == NULL) {
+        Name = "ndkThread";
+    }
+
+    status = xTaskCreate((TaskFunction_t)ti_ndk_os_threadStub, Name,
+            StackSize / sizeof(portSTACK_TYPE), (void *)taskArgs,
+            (UBaseType_t)Priority, &task);
+
+    if (status != pdPASS) {
+        free(taskArgs);
+        return (NULL);
+    }
+
+    return ((void *)task);
+}
+
+/*
+ * ======== TaskDestroy ========
+ * Destroy a task
+ */
+void TaskDestroy(void *h)
+{
+    if (h == TaskSelf()) {
+        vTaskDelete(NULL);
+    }
+    else {
+        vTaskDelete((TaskHandle_t)h);
+    }
+}
+
+/*
+ * ======== TaskSetEnv ========
+ * Sets the task's Environment pointer
+ */
+void TaskSetEnv(void *h, int Slot, void *hEnv)
+{
+    if (Slot) {
+        return;
+    }
+
+    if (!hookOK) {
+        /*
+         * DbgPrintf() will not output this message for FreeRTOS currently.
+         * However, it will still shut down the stack if the stack has been
+         * configured to do so for the DBG_ERROR level
+         */
+        DbgPrintf(DBG_ERROR,"TaskSetEnv: FATAL: NDK not initialized");
+        return;
+    }
+
+    vTaskSetThreadLocalStoragePointer((TaskHandle_t)h, NDK_TLS_INDEX, hEnv);
+}
+
+/*
+ * ======== TaskGetEnv ========
+ * Gets the task's Environment pointer
+ */
+void *TaskGetEnv(void *h, int Slot)
+{
+    if (Slot) {
+        return (0);
+    }
+
+    if (!hookOK) {
+        /*
+         * DbgPrintf() will not output this message for FreeRTOS currently.
+         * However, it will still shut down the stack if the stack has been
+         * configured to do so for the DBG_ERROR level
+         */
+        DbgPrintf(DBG_ERROR,"TaskGetEnv: FATAL: NDK not initialized");
+        return (0);
+    }
+
+    return ((void *)pvTaskGetThreadLocalStoragePointer((TaskHandle_t)h,
+            NDK_TLS_INDEX));
+}
+
+/*
+ * ======== TaskExit ========
+ * Exits and destroys a task
+ */
+void TaskExit()
+{
+    /*
+     * FreeRTOS tasks must "self delete." They cannot fall out of the
+     * Task function without this code, otherwise a run time error will occur.
+     */
+    vTaskDelete(NULL);
+}
+
+/*
+ * ======== TaskGetPri ========
+ * Get a task's priority
+ */
+int TaskGetPri(void *h)
+{
+    return ((int)uxTaskPriorityGet((TaskHandle_t)h));
+}
+
+/*
+ * ======== TaskSetPri ========
+ * Set a task's priority
+ */
+int TaskSetPri(void *h, int priority)
+{
+    int oldPri = TaskGetPri(h);
+    vTaskPrioritySet((TaskHandle_t)h, (UBaseType_t)priority);
+    return (oldPri);
+}
+
+/*
+ * ======== TaskSelf ========
+ * Return handle of task itself
+ */
+void *TaskSelf()
+{
+    return ((void *)xTaskGetCurrentTaskHandle());
+}
+
+/*
+ * ======== TaskSleep ========
+ * Put a task into sleep
+ */
+void TaskSleep(uint32_t delay)
+{
+    uint32_t secs;
+    uint32_t remMs;
+    uint32_t remUs;
+    uint32_t ticks;
+    uint32_t remTicks;
+
+    secs = delay / 1000; /* Whole number of seconds in delay */
+    remMs = delay - (secs * 1000); /* Remainder of milliseconds in delay */
+    remUs = remMs * 1000;
+
+    ticks = secs * configTICK_RATE_HZ;
+    remTicks =
+        (remUs + NDK_FREERTOS_USEC_PER_TICK - 1) / NDK_FREERTOS_USEC_PER_TICK;
+
+    ticks += remTicks;
+
+    vTaskDelay((TickType_t)ticks);
+}
+
+/*
+ * ======== TaskYield ========
+ * Yield task
+ */
+void TaskYield()
+{
+     taskYIELD();
+}
+
+/*
+ *  Maximum count for a semaphore.
+ */
+#define MAXCOUNT 0xffff
+
+#define portVECTACTIVE_MASK  (0xFFUL)
+
+static bool inISR(void)
+{
+    bool stat;
+
+    if ((portNVIC_INT_CTRL_REG & portVECTACTIVE_MASK) == 0) {
+        /* Not currently in an ISR */
+        stat = false;
+    }
+    else {
+        stat = true;
+    }
+
+    return (stat);
+}
+
+uintptr_t NDK_HwiP_disable(void)
+{
+    uintptr_t key;
+
+    /*
+     *  If we're not in ISR context, use the FreeRTOS macro, since
+     *  it handles nesting.
+     */
+    if ((portNVIC_INT_CTRL_REG & portVECTACTIVE_MASK) == 0) {
+        /* Cannot be called from an ISR! */
+        portENTER_CRITICAL();
+        key = 0;
+    }
+    else {
+#ifdef __TI_COMPILER_VERSION__
+        key = _set_interrupt_priority(configMAX_SYSCALL_INTERRUPT_PRIORITY);
+#else
+#if defined(__IAR_SYSTEMS_ICC__)
+        asm volatile (
+#else /* !__IAR_SYSTEMS_ICC__ */
+            __asm__ __volatile__ (
+#endif
+                "mrs %0, basepri\n\t"
+                "msr basepri, %1"
+                : "=&r" (key)
+                : "r" (configMAX_SYSCALL_INTERRUPT_PRIORITY)
+                );
+#endif
+    }
+
+    return (key);
+}
+
+void NDK_HwiP_restore(uintptr_t key)
+{
+    if ((portNVIC_INT_CTRL_REG & portVECTACTIVE_MASK) == 0) {
+        /* Cannot be called from an ISR! */
+        portEXIT_CRITICAL();
+    }
+    else {
+#ifdef __TI_COMPILER_VERSION__
+        _set_interrupt_priority(key);
+#else
+#if defined(__IAR_SYSTEMS_ICC__)
+        asm volatile (
+#else /* !__IAR_SYSTEMS_ICC__ */
+            __asm__ __volatile__ (
+#endif
+                "msr basepri, %0"
+                :: "r" (key)
+                );
+#endif
+    }
+}
+
+#if (configUSE_COUNTING_SEMAPHORES == 0)
+#error The NDK requires configUSE_COUNTING_SEMAPHORES be 1 in FreeRTOSConfig.h
+#endif
+
+NDK_SemaphoreP_Handle NDK_SemaphoreP_create(unsigned int count)
+{
+    SemaphoreHandle_t sem = NULL;
+
+    /*
+     *  The size of the semaphore queue is not dependent on MAXCOUNT.
+     *
+     *  FreeRTOS xSemaphoreCreateCounting() appears from the
+     *  code in xQueueCreateCountingSemaphore() to create
+     *  a queue of length maxCount, where maxCount is the
+     *  maximum count that the semaphore should ever reach.
+     *  However, the queue item size (queueSEMAPHORE_QUEUE_ITEM_LENGTH),
+     *  is 0, so no actual memory is allocated for the queue items.
+     *  Therefore we can pass any non-zero number as the maximum
+     *  semaphore count.
+     */
+    sem = xSemaphoreCreateCounting((UBaseType_t)MAXCOUNT,
+            (UBaseType_t)count);
+
+    return ((NDK_SemaphoreP_Handle)sem);
+}
+
+NDK_SemaphoreP_Handle NDK_SemaphoreP_createBinary(unsigned int count)
+{
+    SemaphoreHandle_t sem = NULL;
+
+    sem = xSemaphoreCreateBinary();
+    if ((sem != NULL) && (count != 0)) {
+        xSemaphoreGive(sem);
+    }
+
+    return ((NDK_SemaphoreP_Handle)sem);
+}
+
+void NDK_SemaphoreP_delete(NDK_SemaphoreP_Handle handle)
+{
+    vSemaphoreDelete((SemaphoreHandle_t)handle);
+}
+
+NDK_SemaphoreP_Status NDK_SemaphoreP_pend(NDK_SemaphoreP_Handle handle,
+        uint32_t timeout)
+{
+    BaseType_t status;
+
+    status = xSemaphoreTake((SemaphoreHandle_t)handle, timeout);
+
+    if (status == pdTRUE) {
+        return (NDK_SemaphoreP_OK);
+    }
+
+    return (NDK_SemaphoreP_TIMEOUT);
+}
+
+void NDK_SemaphoreP_post(NDK_SemaphoreP_Handle handle)
+{
+    BaseType_t xHigherPriorityTaskWoken;
+
+    if (!inISR()) {
+        xSemaphoreGive((SemaphoreHandle_t)handle);
+    }
+    else {
+        xSemaphoreGiveFromISR((SemaphoreHandle_t)handle,
+                &xHigherPriorityTaskWoken);
+    }
+}
+% } /* name == FreeRTOS */

@@ -1,0 +1,87 @@
+%%{
+/*
+ * Copyright (c) 2018-2019 Texas Instruments Incorporated - http://www.ti.com
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * *  Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *
+ * *  Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * *  Neither the name of Texas Instruments Incorporated nor the names of
+ *    its contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ */
+    let Settings = system.modules["/ti/usblib/Settings"];
+    let instances = Settings.$instances[0];
+    let configs = system.modules["/ti/usblib/Configurations"].$instances[0];
+    let Common = system.getScript("/ti/usblib/Common.js");
+    let Bulk = system.modules["/ti/usblib/Bulk"];
+%%}
+
+% if (Bulk != null) {
+    % for (var bulkInstance of Bulk.$instances) {
+/*
+ *  ===== Bulk Receive Buffer =====
+ */
+uint8_t g_pui8USBRxBuffer_`bulkInstance.$name`[256];
+tUSBBuffer g_sRxBuffer_`bulkInstance.$name` = {
+    false,  /* bool */ /* Is this a transmit buffer? */
+    `bulkInstance.rxBufferHandler`, /* tUSBCallback */ /* USB Callback on this Buffer */
+    (void *)&`bulkInstance.$name`,  /* void* */ /* USB Callback Data */
+    USBDBulkPacketRead, /* tUSBPacketTransfer */ /* Function used to move data */
+    USBDBulkRxPacketAvailable,  /* tUSBPacketAvailable */ /* Function used to know availability to move data */
+    (void *)&`bulkInstance.$name`,  /* void* */ /* USB Callback Data for Packet Transfer and Available */
+    g_pui8USBRxBuffer_`bulkInstance.$name`,  /* uint8_t* */ /* Pointer to Ring Buffer Memory for this Instance */
+    256 /* uint32_t */ /* Byte Size of Ring Buffer Memory for this Instance */
+};
+/*
+ *  ===== Bulk Transmit buffer =====
+ */
+uint8_t g_pui8USBTxBuffer_`bulkInstance.$name`[256];
+tUSBBuffer g_sTxBuffer_`bulkInstance.$name` = {
+    true,   /* bool */ /* Is this a transmit buffer? */
+    `bulkInstance.txBufferHandler`, /* tUSBCallback */ /* USB Callback on this Buffer */
+    (void *)&`bulkInstance.$name`,  /* void* */ /* USB Callback Data */
+    USBDBulkPacketWrite, /* tUSBPacketTransfer */ /* Function used to move data */
+    USBDBulkTxPacketAvailable,  /* tUSBPacketAvailable */ /* Function used to know availability to move data */
+    (void *)&`bulkInstance.$name`,  /* void* */ /* USB Callback Data for Packet Transfer and Available */
+    g_pui8USBTxBuffer_`bulkInstance.$name`,  /* uint8_t* */ /* Pointer to Ring Buffer Memory for this Instance */
+    256 /* uint32_t */ /* Byte Size of Ring Buffer Memory for this Instance */
+};
+/*
+ *  ======= Bulk Device =======
+ */
+tUSBDBulkDevice `bulkInstance.$name` = {
+    `instances.vendorID`,   /* const uint16_t */ /* Vendor ID */
+    `instances.productID`,  /* const uint16_t */ /* Product ID */
+    `configs.maxPower`,   /* const uint16_t */ /* Max Power Consumption of Device in mA */
+    `Common.formatPowerAttributes(configs)`,  /* const uint16_t */ /* Power Attributes */
+    USBBufferEventCallback, /* const tUSBCallback */ /* USB Receive Channel Callback */
+    (void *)&g_sRxBuffer_`bulkInstance.$name`,   /* void* */ /* USB Receive Channel Callback Parameter */
+    USBBufferEventCallback, /* const tUSBCallback */ /* USB Transmit Channel Callback */
+    (void *)&g_sTxBuffer_`bulkInstance.$name`,   /* void* */ /* USB Transmit Channel Callback Parameter */
+    stringDescriptors_`instances.stringDescriptor.$name`,  /* const uint8_t* const* */ /* Pointer to String Descriptor Array */
+    StringDescriptorsCount_`instances.stringDescriptor.$name`    /* uint32_t */ /* Number of descriptors in String Descriptor Array */
+};
+    % } // for of Bulk.$instances
+% } // Bulk != null

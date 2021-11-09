@@ -1,0 +1,1175 @@
+/*
+ * Copyright (c) 2018-2019 Texas Instruments Incorporated - http://www.ti.com
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * *  Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *
+ * *  Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * *  Neither the name of Texas Instruments Incorporated nor the names of
+ *    its contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ */
+
+/*
+ *  ======== MSP_EXP432E401Y.syscfg.json ========
+ *  schematics: http://www.ti.com/lit/zip/slar147
+ *  user guide: http://www.ti.com/lit/pdf/slau748
+ */
+{
+    "name": "MSP-EXP432E401Y",
+    "displayName": "MSP-EXP432E401Y LaunchPad",
+    "device": "MSP432E",
+    "part": "MSP432E401YTPDT",
+    "package": "128 Pin QFP|32x32",
+    "headers": [
+        {
+            /* http://www.ti.com/tools-software/launchpads/boosterpacks/build.html */
+            "type": "BoosterPack 40 pin",
+            "default": true,
+            "name": "boosterpack",
+            "displayName": "BoosterPack Standard Header #1",
+            "dimensions": {
+                "columns": [
+                    { "top":  1, "bottom": 10 },
+                    { "top": 21, "bottom": 30 },
+
+                    { "blank": true },
+
+                    { "top": 40, "bottom": 31 },
+                    { "top": 20, "bottom": 11 }
+                ]
+            },
+            "pins": [
+                {
+                    "number": 1,     /* 3.3 V */
+                    "name": "3V3"
+                },
+                {
+                    "number": 2,
+                    "name": "PE4",
+                    "ball": "123"
+                },
+                {
+                    "number": 3,     /* UART RX */
+                    "name": "PC4",
+                    "ball": "25"
+                },
+                {
+                    "number": 4,     /* UART TX */
+                    "name": "PC5",
+                    "ball": "24"
+                },
+                {
+                    "number": 5,     /* GPIO */
+                    "name": "PC6",
+                    "ball": "23"
+                },
+                {
+                    "number": 6,     /* */
+                    "name": "PE5",
+                    "ball": "124"
+                },
+                {
+                    "number": 7,
+                    "name": "PD3",
+                    "ball": "4",
+                    "preferredType": ["SPI_SCLK"]
+                },
+                {
+                    "number": 8,
+                    "name": "PC7",
+                    "ball": "22"
+                },
+                {
+                    "number": 9,     /* I2C SCL */
+                    "name": "PB2",
+                    "ball": "91",
+                    "preferredType": ["I2C_SCL"]
+                },
+                {
+                    "number": 10,    /* I2C SDA */
+                    "name": "PB3",
+                    "ball": "92",
+                    "preferredType": ["I2C_SDA"]
+                },
+
+                {
+                    "number": 21,    /* 5 V */
+                    "name": "5V"
+                },
+                {
+                    "number": 22,    /* Ground */
+                    "name": "GND"
+                },
+                {
+                    "number": 23,    /* */
+                    "name": "PE0",
+                    "ball": "15"
+                },
+                {
+                    "number": 24,    /* */
+                    "name": "PE1",
+                    "ball": "14"
+                },
+                {
+                    "number": 25,    /* */
+                    "name": "PE2",
+                    "ball": "13",
+                    "preferredType" : ["AIN"]
+                },
+                {
+                    "number": 26,    /* */
+                    "name": "PE3",
+                    "ball": "12",
+                    "preferredType" : ["AIN"]
+                },
+                {
+                    "number": 27,    /* */
+                    "name": "PD7",
+                    "ball": "128"
+                },
+                {
+                    "number": 28,    /* */
+                    "name": "PD6",
+                    "ball": "127"
+                },
+                {
+                    "number": 29,    /* */
+                    "name": "PM4",
+                    "ball": "74"
+                },
+                {
+                    "number": 30,    /* */
+                    "name": "PM5",
+                    "ball": "73"
+                },
+
+                {
+                    "number": 40,    /* GPIO */
+                    "name": "PF1",
+                    "ball": "43"
+                },
+                {
+                    "number": 39,    /* GPIO */
+                    "name": "PF2",
+                    "ball": "44"
+                },
+                {
+                    "number": 38,    /* GPIO */
+                    "name": "PF3",
+                    "ball": "45"
+                },
+                {
+                    "number": 37,    /* GPIO */
+                    "name": "PG0",
+                    "ball": "49"
+                },
+                {
+                    "number": 36,    /* GPIO */
+                    "name": "PL4",
+                    "ball": "85"
+                },
+                {
+                    "number": 35,    /* GPIO */
+                    "name": "PL5",
+                    "ball": "86"
+                },
+                {
+                    "number": 34,    /* GPIO */
+                    "name": "PL0",
+                    "ball": "81"
+                },
+                {
+                    "number": 33,    /* GPIO */
+                    "name": "PL1",
+                    "ball": "82"
+                },
+                {
+                    "number": 32,    /* GPIO */
+                    "name": "PL2",
+                    "ball": "83"
+                },
+                {
+                    "number": 31,    /* GPIO */
+                    "name": "PL3",
+                    "ball": "84"
+                },
+
+                {
+                    "number": 20,    /* Ground */
+                    "name": "GND"
+                },
+                {
+                    "number": 19,    /*  */
+                    "name": "PM3",
+                    "ball": "75"
+                },
+                {
+                    "number": 18,    /* SPI CS (Wireless) | GPIO (with interrupt) */
+                    "name": "PH2",
+                    "ball": "31"
+                },
+                {
+                    "number": 17,    /* */
+                    "name": "PH3",
+                    "ball": "32"
+                },
+                {
+                    "number": 16,    /* Reset */
+                    "name": "RST"
+                },
+                {
+                    "number": 15,    /* SPI MOSI */
+                    "name": "PD1",
+                    "ball": "2",
+                    "preferredType" : ["SPI_MOSI"]
+                },
+                {
+                    "number": 14,    /* SPI MISO */
+                    "name": "PD0",
+                    "ball": "1",
+                    "preferredType" : ["SPI_MISO"]
+                },
+                {
+                    "number": 13,    /* SPI CS (Display) | GPIO (with interrupt) */
+                    "name": "PN2",
+                    "ball": "109"
+                },
+                {
+                    "number": 12,    /* SPI CS (other) | GPIO (with interrupt) */
+                    "name": "PN3",
+                    "ball": "110"
+                },
+                {
+                    "number": 11,    /* GPIO */
+                    "name": "PP2",
+                    "ball": "103"
+                }
+            ]
+        },
+        {
+            /* http://www.ti.com/tools-software/launchpads/boosterpacks/build.html */
+            "type": "BoosterPack 40 pin",
+            "default": true,
+            "name": "boosterpack2",
+            "boardNumberOffset": 40,
+            "displayName": "BoosterPack Standard Header #2",
+            "dimensions": {
+                "columns": [
+                    { "top":  1, "bottom": 10 },
+                    { "top": 21, "bottom": 30 },
+
+                    { "blank": true },
+
+                    { "top": 40, "bottom": 31 },
+                    { "top": 20, "bottom": 11 }
+                ]
+            },
+            "pins": [
+                {
+                    "number": 1,     /* 3.3 V */
+                    "name": "3V3"
+                },
+                {
+                    "number": 2,     /* GPIO */
+                    "name": "PD2",
+                    "ball": "3"
+                },
+                {
+                    "number": 3,     /* GPIO */
+                    "name": "PP0",
+                    "ball": "118"
+                },
+                {
+                    "number": 4,     /* GPIO */
+                    "name": "PP1",
+                    "ball": "119"
+                },
+                {
+                    "number": 5,     /* RX */
+                    "name": "*RX"
+                },
+                {
+                    "number": 6,     /* TX */
+                    "name": "*TX"
+                },
+                {
+                    "number": 7,     /* GPIO */
+                    "name": "PQ0",
+                    "ball": "5"
+                },
+                {
+                    "number": 8,     /* GPIO */
+                    "name": "PP4",
+                    "ball": "105"
+                },
+                {
+                    "number": 9,     /* I2C SCL */
+                    "name": "PN5",
+                    "ball": "112"
+                },
+                {
+                    "number": 10,     /* I2C SDA */
+                    "name": "PN4",
+                    "ball": "111"
+                },
+
+                {
+                    "number": 21,    /* 5 V */
+                    "name": "5V"
+                },
+                {
+                    "number": 22,    /* Ground */
+                    "name": "GND"
+                },
+                {
+                    "number": 23,    /* */
+                    "name": "PB4",
+                    "ball": "121"
+                },
+                {
+                    "number": 24,    /* */
+                    "name": "PB5",
+                    "ball": "120"
+                },
+                {
+                    "number": 25,    /* */
+                    "name": "PK0",
+                    "ball": "18"
+                },
+                {
+                    "number": 26,    /* */
+                    "name": "PK1",
+                    "ball": "19"
+                },
+                {
+                    "number": 27,    /* */
+                    "name": "PK2",
+                    "ball": "20"
+                },
+                {
+                    "number": 28,    /* */
+                    "name": "PK3",
+                    "ball": "21"
+                },
+                {
+                    "number": 29,    /* */
+                    "name": "PA4",
+                    "ball": "37"
+                },
+                {
+                    "number": 30,    /* */
+                    "name": "PA5",
+                    "ball": "38"
+                },
+
+                {
+                    "number": 40,    /* GPIO */
+                    "name": "PG1",
+                    "ball": "50"
+                },
+                {
+                    "number": 39,    /* GPIO */
+                    "name": "PK4",
+                    "ball": "63"
+                },
+                {
+                    "number": 38,    /* GPIO */
+                    "name": "PK5",
+                    "ball": "62"
+                },
+                {
+                    "number": 37,    /* GPIO */
+                    "name": "PM0",
+                    "ball": "78"
+                },
+                {
+                    "number": 36,    /* GPIO */
+                    "name": "PM1",
+                    "ball": "77"
+                },
+                {
+                    "number": 35,    /* GPIO */
+                    "name": "PM2",
+                    "ball": "76"
+                },
+                {
+                    "number": 34,    /* GPIO */
+                    "name": "PH0",
+                    "ball": "29"
+                },
+                {
+                    "number": 33,    /* GPIO */
+                    "name": "PH1",
+                    "ball": "30"
+                },
+                {
+                    "number": 32,    /* GPIO */
+                    "name": "PK6",
+                    "ball": "61"
+                },
+                {
+                    "number": 31,    /* GPIO */
+                    "name": "PK7",
+                    "ball": "60"
+                },
+
+                {
+                    "number": 20,    /* Ground */
+                    "name": "GND"
+                },
+                {
+                    "number": 19,    /*  */
+                    "name": "PM7",
+                    "ball": "71"
+                },
+                {
+                    "number": 18,    /* */
+                    "name": "PP5",
+                    "ball": "106"
+                },
+                {
+                    "number": 17,    /* */
+                    "name": "PA7",
+                    "ball": "41"
+                },
+                {
+                    "number": 16,    /* Reset */
+                    "name": "RST"
+                },
+                {
+                    "number": 15,    /* SPI MOSI */
+                    "name": "PQ2",
+                    "ball": "11"
+                },
+                {
+                    "number": 14,    /* SPI MISO */
+                    "name": "PQ3",
+                    "ball": "27"
+                },
+                {
+                    "number": 13,    /* SPI CS (Display) | GPIO (with interrupt) */
+                    "name": "PP3",
+                    "ball": "104"
+                },
+                {
+                    "number": 12,    /* SPI CS (other) | GPIO (with interrupt) */
+                    "name": "PQ1",
+                    "ball": "6"
+                },
+                {
+                    "number": 11,    /* GPIO */
+                    "name": "PM6",
+                    "ball": "72"
+                }
+            ]
+        },
+        {
+            /* http://www.ti.com/tools-software/launchpads/boosterpacks/build.html */
+            "type": "MSP-EXP432E401Y J10 Edge Connector",
+            "default": true,
+            "name": "expansion",
+            "displayName": "Edge Connector for Unused Pin Access",
+            "dimensions": {
+                "rows": [
+                    { "left": 1, "right": 2 },
+                    { "left": 3, "right": 4 },
+                    { "left": 5, "right": 6 },
+                    { "left": 7, "right": 8 },
+                    { "left": 9, "right": 10 },
+                    { "left": 11, "right": 12 },
+                    { "left": 13, "right": 14 },
+                    { "left": 15, "right": 16 },
+                    { "left": 17, "right": 18 },
+                    { "left": 19, "right": 20 },
+                    { "left": 21, "right": 22 },
+                    { "left": 23, "right": 24 },
+                    { "left": 25, "right": 26 },
+                    { "left": 27, "right": 28 },
+                    { "left": 29, "right": 30 },
+                    { "left": 31, "right": 32 },
+                    { "left": 33, "right": 34 },
+                    { "left": 35, "right": 36 },
+                    { "left": 37, "right": 38 },
+                    { "left": 39, "right": 40 },
+                    { "left": 41, "right": 42 },
+                    { "left": 43, "right": 44 },
+                    { "left": 45, "right": 46 },
+                    { "left": 47, "right": 48 },
+                    { "left": 49, "right": 50 },
+                    { "left": 51, "right": 52 },
+                    { "left": 53, "right": 54 },
+                    { "left": 55, "right": 56 },
+                    { "left": 57, "right": 58 },
+                    { "left": 59, "right": 60 },
+                    { "left": 61, "right": 62 },
+                    { "left": 63, "right": 64 },
+                    { "left": 65, "right": 66 },
+                    { "left": 67, "right": 68 },
+                    { "left": 69, "right": 70 },
+                    { "left": 71, "right": 72 },
+                    { "left": 73, "right": 74 },
+                    { "left": 75, "right": 76 },
+                    { "left": 77, "right": 78 },
+                    { "left": 79, "right": 80 },
+                    { "left": 81, "right": 82 },
+                    { "left": 83, "right": 84 },
+                    { "left": 85, "right": 86 },
+                    { "left": 87, "right": 88 },
+                    { "left": 89, "right": 90 },
+                    { "left": 91, "right": 92 },
+                    { "left": 93, "right": 94 },
+                    { "left": 95, "right": 96 },
+                    { "left": 97, "right": 98 }
+                ]
+            },
+            "pins": [
+                {
+                    "number": 1,     /* 3.3 V */
+                    "name": "3V3"
+                },
+                {
+                    "number": 2,     /* 5 V */
+                    "name": "5V"
+                },
+                {
+                    "number": 3,
+                    "name": "GND"
+                },
+                {
+                    "number": 4,
+                    "name": "GND"
+                },
+                {
+                    "number": 5,
+                    "name": "PB4",
+                    "ball": "121"
+                },
+                {
+                    "number": 6,
+                    "name": "PA2",
+                    "ball": "35"
+                },
+                {
+                    "number": 7,
+                    "name": "PB5",
+                    "ball": "120"
+                },
+                {
+                    "number": 8,
+                    "name": "PA3",
+                    "ball": "36"
+                },
+                {
+                    "number": 9,
+                    "name": "PH0",
+                    "ball": "29"
+                },
+                {
+                    "number": 10,
+                    "name": "PA4",
+                    "ball": "37"
+                },
+                {
+                    "number": 11,
+                    "name": "PH1",
+                    "ball": "30"
+                },
+                {
+                    "number": 12,
+                    "name": "PA5",
+                    "ball": "38"
+                },
+                {
+                    "number": 13,
+                    "name": "PH2",
+                    "ball": "31"
+                },
+                {
+                    "number": 14,
+                    "name": "PE0",
+                    "ball": "15"
+                },
+                {
+                    "number": 15,
+                    "name": "PH3",
+                    "ball": "32"
+                },
+                {
+                    "number": 16,
+                    "name": "PE1",
+                    "ball": "14"
+                },
+                {
+                    "number": 17,
+                    "name": "PC7",
+                    "ball": "22"
+                },
+                {
+                    "number": 18,
+                    "name": "PE2",
+                    "ball": "13",
+                    "preferredType" : ["AIN"]
+                },
+                {
+                    "number": 19,
+                    "name": "PC6",
+                    "ball": "19"
+                },
+                {
+                    "number": 20,
+                    "name": "PE3",
+                    "ball": "12",
+                    "preferredType" : ["AIN"]
+                },
+                {
+                    "number": 21,
+                    "name": "PC5",
+                    "ball": "24"
+                },
+                {
+                    "number": 22,
+                    "name": "PE4",
+                    "ball": "123"
+                },
+                {
+                    "number": 23,
+                    "name": "PC4",
+                    "ball": "25"
+                },
+                {
+                    "number": 24,
+                    "name": "PE5",
+                    "ball": "124"
+                },
+                {
+                    "number": 25,
+                    "name": "PA6",
+                    "ball": "40"
+                },
+                {
+                    "number": 26,
+                    "name": "PK0",
+                    "ball": "18"
+                },
+                {
+                    "number": 27,
+                    "name": "PA7",
+                    "ball": "41"
+                },
+                {
+                    "number": 28,
+                    "name": "PK1",
+                    "ball": "19"
+                },
+                {
+                    "number": 29,
+                    "name": "PG1",
+                    "ball": "50"
+                },
+                {
+                    "number": 30,
+                    "name": "PK2",
+                    "ball": "20"
+                },
+                {
+                    "number": 31,
+                    "name": "PG0",
+                    "ball": "49"
+                },
+                {
+                    "number": 32,
+                    "name": "PK3",
+                    "ball": "21"
+                },
+                {
+                    "number": 33,
+                    "name": "PM3",
+                    "ball": "75"
+                },
+                {
+                    "number": 34,
+                    "name": "VREF+"
+                    //"ball": "9"
+                },
+                {
+                    "number": 35,
+                    "name": "GND"
+                },
+                {
+                    "number": 36,
+                    "name": "GND"
+                },
+                {
+                    "number": 37,
+                    "name": "PM2",
+                    "ball": "76"
+                },
+                {
+                    "number": 38,
+                    "name": "PD5",
+                    "ball": "126"
+                },
+                {
+                    "number": 39,
+                    "name": "PM1",
+                    "ball": "77"
+                },
+                {
+                    "number": 40,
+                    "name": "PD4",
+                    "ball": "125"
+                },
+                {
+                    "number": 41,
+                    "name": "PM0",
+                    "ball": "78"
+                },
+                {
+                    "number": 42,
+                    "name": "PD7",
+                    "ball": "128"
+                },
+                {
+                    "number": 43,
+                    "name": "PL0",
+                    "ball": "81"
+                },
+                {
+                    "number": 44,
+                    "name": "PD6",
+                    "ball": "127"
+                },
+                {
+                    "number": 45,
+                    "name": "PL1",
+                    "ball": "82"
+                },
+                {
+                    "number": 46,
+                    "name": "PD3",
+                    "ball": "4",
+                    "preferredType": ["SPI_SCLK"]
+                },
+                {
+                    "number": 47,
+                    "name": "PL2",
+                    "ball": "83"
+                },
+                {
+                    "number": 48,
+                    "name": "PD1",
+                    "ball": "2",
+                    "preferredType" : ["SPI_MOSI"]
+                },
+                {
+                    "number": 49,
+                    "name": "PL3",
+                    "ball": "84"
+                },
+                {
+                    "number": 50,
+                    "name": "PD0",
+                    "ball": "1",
+                    "preferredType" : ["SPI_MISO"]
+                },
+                {
+                    "number": 51,
+                    "name": "PQ0",
+                    "ball": "5"
+                },
+                {
+                    "number": 52,
+                    "name": "PD2",
+                    "ball": "3"
+                },
+                {
+                    "number": 53,
+                    "name": "PQ1",
+                    "ball": "6"
+                },
+                {
+                    "number": 54,
+                    "name": "PP0",
+                    "ball": "118"
+                },
+                {
+                    "number": 55,
+                    "name": "PQ2",
+                    "ball": "11"
+                },
+                {
+                    "number": 56,
+                    "name": "PP1",
+                    "ball": "119"
+                },
+                {
+                    "number": 57,
+                    "name": "PQ3",
+                    "ball": "27"
+                },
+                {
+                    "number": 58,
+                    "name": "PB0",
+                    "ball": "95"
+                },
+                {
+                    "number": 59,
+                    "name": "PK7",
+                    "ball": "60"
+                },
+                {
+                    "number": 60,
+                    "name": "TARGET_VBUS",
+                    "ball": "96"
+                },
+                {
+                    "number": 61,
+                    "name": "GND"
+                },
+                {
+                    "number": 62,
+                    "name": "GND"
+                },
+                {
+                    "number": 63,
+                    "name": "PK6",
+                    "ball": "61"
+                },
+                {
+                    "number": 64,
+                    "name": "PF4",
+                    "ball": "46"
+                },
+                {
+                    "number": 65,
+                    "name": "PL4",
+                    "ball": "85"
+                },
+                {
+                    "number": 66,
+                    "name": "PF0",
+                    "ball": "42"
+                },
+                {
+                    "number": 67,
+                    "name": "PB2",
+                    "ball": "91",
+                    "preferredType": ["I2C_SCL"]
+                },
+                {
+                    "number": 68,
+                    "name": "PF1",
+                    "ball": "43"
+                },
+                {
+                    "number": 69,
+                    "name": "PB3",
+                    "ball": "92",
+                    "preferredType": ["I2C_SDA"]
+                },
+                {
+                    "number": 70,
+                    "name": "PF2",
+                    "ball": "44"
+                },
+                {
+                    "number": 71,
+                    "name": "PP2",
+                    "ball": "103"
+                },
+                {
+                    "number": 72,
+                    "name": "PF3",
+                    "ball": "45"
+                },
+                {
+                    "number": 73,
+                    "name": "PP3",
+                    "ball": "104"
+                },
+                {
+                    "number": 74,
+                    "name": "PA0",
+                    "ball": "33"
+                },
+                {
+                    "number": 75,
+                    "name": "PK5",
+                    "ball": "62"
+                },
+                {
+                    "number": 76,
+                    "name": "PA1",
+                    "ball": "34"
+                },
+                {
+                    "number": 77,
+                    "name": "PK4",
+                    "ball": "63"
+                },
+                {
+                    "number": 78,
+                    "name": "PP4",
+                    "ball": "105"
+                },
+                {
+                    "number": 79,
+                    "name": "PL5",
+                    "ball": "86"
+                },
+                {
+                    "number": 80,
+                    "name": "PP5",
+                    "ball": "106"
+                },
+                {
+                    "number": 81,
+                    "name": "PN4",
+                    "ball": "111"
+                },
+                {
+                    "number": 82,
+                    "name": "PJ0",
+                    "ball": "116"
+                },
+                {
+                    "number": 83,
+                    "name": "PN5",
+                    "ball": "112"
+                },
+                {
+                    "number": 84,
+                    "name": "PJ1",
+                    "ball": "117"
+                },
+                {
+                    "number": 85,
+                    "name": "PN0",
+                    "ball": "107"
+                },
+                {
+                    "number": 86,
+                    "name": "PM7",
+                    "ball": "71"
+                },
+                {
+                    "number": 87,
+                    "name": "PN1",
+                    "ball": "108"
+                },
+                {
+                    "number": 88,
+                    "name": "PM6",
+                    "ball": "72"
+                },
+                {
+                    "number": 89,
+                    "name": "PN2",
+                    "ball": "109"
+                },
+                {
+                    "number": 90,
+                    "name": "PM5",
+                    "ball": "73"
+                },
+                {
+                    "number": 91,
+                    "name": "PN3",
+                    "ball": "110"
+                },
+                {
+                    "number": 92,
+                    "name": "PM4",
+                    "ball": "74"
+                },
+                {
+                    "number": 93,
+                    "name": "PQ4",
+                    "ball": "102"
+                },
+                {
+                    "number": 94,
+                    "name": "TARGET_RESET"
+                    //"ball": "70"
+                },
+                {
+                    "number": 95,
+                    "name": "Wake"
+                    //"ball": "64"
+                },
+                {
+                    "number": 96,
+                    "name": "GND"
+                },
+                {
+                    "number": 97,
+                    "name": "5V"
+                },
+                {
+                    "number": 98,
+                    "name": "3V3"
+                }
+            ]
+        }
+    ],
+
+    "components": {
+        "D1": {
+            "displayName": "LaunchPad LED D1",
+            "definition": "/ti/boards/components/led.json",
+            "connections": {
+                "OUTPUT": "108"
+            }
+        },
+        "D2": {
+            "displayName": "LaunchPad LED D2",
+            "definition": "/ti/boards/components/led.json",
+            "connections": {
+                "OUTPUT": "107"
+            }
+        },
+        "D3": {
+            "displayName": "LaunchPad LED D3",
+            "definition": "/ti/boards/components/led.json",
+            "connections": {
+                "OUTPUT": "46"
+            }
+        },
+        "D4": {
+            "displayName": "LaunchPad LED D4",
+            "definition": "/ti/boards/components/led_dimmable.json",
+            "connections": {
+                "OUTPUT": "42"
+            }
+        },
+
+        /* symbolic links/aliases for LED portability between LaunchPads */
+        "LED": {
+            "link" : "D1"
+        },
+        "LED_DIMMABLE": {
+            "link" : "D4"
+        },
+        "LED0": {
+            "link": "D1"
+        },
+        "LED1": {
+            "link": "D2"
+        },
+        "LED2": {
+            "link": "D3"
+        },
+        "LED3": {
+            "link": "D4"
+        },
+        "LED0_PWM" : {
+            "link" : "LED3"
+        },
+
+        "USR_SW1": {
+            "displayName" : "LaunchPad Button USR_SW1 (Left)",
+            "definition"  : "/ti/boards/components/button.json",
+            "longDescription" : "SW1 (Left) LaunchPad button with no external pull.",
+            /* See schematic linked at top of file */
+            "settings": {
+                "DIN": {
+                    "pull": "Pull Up",
+                    "interruptTrigger": "Falling Edge"
+                }
+            },
+            "connections" : {
+                "INPUT": "116"  /* PJ0 */
+            }
+        },
+        "USR_SW2": {
+            "displayName" : "LaunchPad Button USR_SW2 (Right)",
+            "definition"  : "/ti/boards/components/button.json",
+            "longDescription" : "SW2 (Right) LaunchPad button with no external pull.",
+            /* See schematic linked at top of file */
+            "settings": {
+                "DIN": {
+                    "pull": "Pull Up",
+                    "interruptTrigger": "Falling Edge"
+                }
+            },
+            "connections" : {
+                "INPUT": "117"   /* PJ1 */
+            }
+        },
+
+        /* symbolic links/aliases for BUTTON portability between LaunchPads */
+        "BUTTON0": {
+            "link": "USR_SW1"
+        },
+        "BUTTON1": {
+            "link": "USR_SW2"
+        },
+
+        "ETHERNET_LEDS": {
+            "displayName": "Ethernet LEDs",
+            "description": "Ethernet LEDs",
+            "longDescription": "Ethernet LEDs indicating transmit and receive activity",
+            "type": "EthernetLED",
+            "signals": {
+                "LED0"  : {"type": "EN0LED0",  "connection" : 42},
+                "LED1"  : {"type": "EN0LED1",  "connection" : 46}
+            }
+        },
+
+        "XDS110UART": {
+            "definition": "/ti/boards/components/xds110Uart.json",
+            "connections": {
+                "RXD": "33",     /* PA0 */
+                "TXD": "34"      /* PA1 */
+            }
+        },
+
+        "MICROUSB": {
+            "displayName": "USB Micro Connector",
+            "description": "USB Micro-A / -B Connector",
+            "definition": "/ti/boards/components/usb.json",
+            "connections": {
+                "DM": "93",     /* PL7 */
+                "DP": "94",     /* PL6 */
+                "ID": "95",     /* PB0 */
+                "VBUS": "96",   /* PB1 */
+                "EPEN": "127",  /* PD6 */
+                "PFLT": "128",  /* PD7 */
+                "CLK": "92",    /* PB3 */
+                "D0": "81",     /* PL0 */
+                "D1": "82",     /* PL1 */
+                "D2": "83",     /* PL2 */
+                "D3": "84",     /* PL3 */
+                "D4": "85",     /* PL4 */
+                "D5": "86",     /* PL5 */
+                "D6": "106",    /* PP5 */
+                "D7": "105",    /* PP4 */
+                "DIR": "104",   /* PP3 */
+                "NXT": "103",   /* PP2 */
+                "STP": "91"     /* PB2 */
+            }
+        }
+    }
+}

@@ -1,0 +1,1259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.ndk.stack" version="" producerId="undefined">
+    <units>
+    </units>
+    <sources>
+        <srcFile name="package/package_ti.ndk.stack.c"/>
+        <srcFile name="bind/bind.c"/>
+        <srcFile name="fdt/file.c"/>
+        <srcFile name="fdt/fileuser.c"/>
+        <srcFile name="fdt/socket.c"/>
+        <srcFile name="fdt/socket_data.c"/>
+        <srcFile name="icmp/icmp.c"/>
+        <srcFile name="icmp/icmpin.c"/>
+        <srcFile name="igmp/igmp.c"/>
+        <srcFile name="ip/ip.c"/>
+        <srcFile name="ip/ipin.c"/>
+        <srcFile name="ip/ipout.c"/>
+        <srcFile name="ip/ipfrag.c"/>
+        <srcFile name="lli/lli.c"/>
+        <srcFile name="lli/lliin.c"/>
+        <srcFile name="lli/lliout.c"/>
+        <srcFile name="node/node.c"/>
+        <srcFile name="pipe/pipe.c"/>
+        <srcFile name="raw/raw.c"/>
+        <srcFile name="res/exec.c"/>
+        <srcFile name="res/sb.c"/>
+        <srcFile name="res/timer.c"/>
+        <srcFile name="route/route.c"/>
+        <srcFile name="route/rtable.c"/>
+        <srcFile name="rtc/rtc.c"/>
+        <srcFile name="sock/sock.c"/>
+        <srcFile name="sock/sockint.c"/>
+        <srcFile name="sock/sockpcb.c"/>
+        <srcFile name="sock/sockprot.c"/>
+        <srcFile name="tcp/tcp.c"/>
+        <srcFile name="tcp/tcpin.c"/>
+        <srcFile name="tcp/tcpout.c"/>
+        <srcFile name="tcp/tcpprot.c"/>
+        <srcFile name="tcp/tcptime.c"/>
+        <srcFile name="udp/udp.c"/>
+        <srcFile name="nat/nat.c"/>
+        <srcFile name="nat/natpkt.c"/>
+        <srcFile name="nat/proxy.c"/>
+        <srcFile name="ppp/auth.c"/>
+        <srcFile name="ppp/ipcp.c"/>
+        <srcFile name="ppp/lcp.c"/>
+        <srcFile name="ppp/md5.c"/>
+        <srcFile name="ppp/nimuppp.c"/>
+        <srcFile name="utils/listlib.c"/>
+        <srcFile name="pppoe/nimupppoe.c"/>
+        <srcFile name="nimu/nimu.c"/>
+        <srcFile name="vlan/vlan.c"/>
+        <srcFile name="bind6/bind6.c"/>
+        <srcFile name="icmpv6/icmpv6.c"/>
+        <srcFile name="icmpv6/icmpv6_ndisc.c"/>
+        <srcFile name="icmpv6/icmpv6in.c"/>
+        <srcFile name="icmpv6/icmpv6out.c"/>
+        <srcFile name="ipv6/ipv6.c"/>
+        <srcFile name="ipv6/ipv6_exthdrs.c"/>
+        <srcFile name="ipv6/ipv6_frag.c"/>
+        <srcFile name="ipv6/ipv6in.c"/>
+        <srcFile name="ipv6/ipv6out.c"/>
+        <srcFile name="lli6/lli6.c"/>
+        <srcFile name="mld/mld.c"/>
+        <srcFile name="raw6/raw6.c"/>
+        <srcFile name="res6/sb6.c"/>
+        <srcFile name="route6/route6.c"/>
+        <srcFile name="sock6/sock6.c"/>
+        <srcFile name="sock6/sock6int.c"/>
+        <srcFile name="sock6/sock6pcb.c"/>
+        <srcFile name="sock6/sock6prot.c"/>
+        <srcFile name="tcp6/tcp6.c"/>
+        <srcFile name="tcp6/tcp6in.c"/>
+        <srcFile name="tcp6/tcp6out.c"/>
+        <srcFile name="tcp6/tcp6prot.c"/>
+        <srcFile name="tcp6/tcp6time.c"/>
+        <srcFile name="udp6/udp6.c"/>
+        <srcFile name="raweth/raweth.c"/>
+        <srcFile name="rawethsock/rawethsock.c"/>
+        <srcFile name="rawethsock/rawethsock_prot.c"/>
+        <srcFile name="rawethsock/rawethsock_pcb.c"/>
+        <srcFile name="pbm/pbm.c"/>
+        <srcFile name="pbm/pbm_data.c"/>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="lib/stk.aem4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/stk/package/package_ti.ndk.stack.oem4f.dep" src="package/package_ti.ndk.stack.c"/>
+        <srcFile name="package/lib/lib/stk/bind/bind.oem4f.dep" src="bind/bind.c"/>
+        <srcFile name="package/lib/lib/stk/fdt/file.oem4f.dep" src="fdt/file.c"/>
+        <srcFile name="package/lib/lib/stk/fdt/fileuser.oem4f.dep" src="fdt/fileuser.c"/>
+        <srcFile name="package/lib/lib/stk/fdt/socket.oem4f.dep" src="fdt/socket.c"/>
+        <srcFile name="package/lib/lib/stk/fdt/socket_data.oem4f.dep" src="fdt/socket_data.c"/>
+        <srcFile name="package/lib/lib/stk/icmp/icmp.oem4f.dep" src="icmp/icmp.c"/>
+        <srcFile name="package/lib/lib/stk/icmp/icmpin.oem4f.dep" src="icmp/icmpin.c"/>
+        <srcFile name="package/lib/lib/stk/igmp/igmp.oem4f.dep" src="igmp/igmp.c"/>
+        <srcFile name="package/lib/lib/stk/ip/ip.oem4f.dep" src="ip/ip.c"/>
+        <srcFile name="package/lib/lib/stk/ip/ipin.oem4f.dep" src="ip/ipin.c"/>
+        <srcFile name="package/lib/lib/stk/ip/ipout.oem4f.dep" src="ip/ipout.c"/>
+        <srcFile name="package/lib/lib/stk/ip/ipfrag.oem4f.dep" src="ip/ipfrag.c"/>
+        <srcFile name="package/lib/lib/stk/lli/lli.oem4f.dep" src="lli/lli.c"/>
+        <srcFile name="package/lib/lib/stk/lli/lliin.oem4f.dep" src="lli/lliin.c"/>
+        <srcFile name="package/lib/lib/stk/lli/lliout.oem4f.dep" src="lli/lliout.c"/>
+        <srcFile name="package/lib/lib/stk/node/node.oem4f.dep" src="node/node.c"/>
+        <srcFile name="package/lib/lib/stk/pipe/pipe.oem4f.dep" src="pipe/pipe.c"/>
+        <srcFile name="package/lib/lib/stk/raw/raw.oem4f.dep" src="raw/raw.c"/>
+        <srcFile name="package/lib/lib/stk/res/exec.oem4f.dep" src="res/exec.c"/>
+        <srcFile name="package/lib/lib/stk/res/sb.oem4f.dep" src="res/sb.c"/>
+        <srcFile name="package/lib/lib/stk/res/timer.oem4f.dep" src="res/timer.c"/>
+        <srcFile name="package/lib/lib/stk/route/route.oem4f.dep" src="route/route.c"/>
+        <srcFile name="package/lib/lib/stk/route/rtable.oem4f.dep" src="route/rtable.c"/>
+        <srcFile name="package/lib/lib/stk/rtc/rtc.oem4f.dep" src="rtc/rtc.c"/>
+        <srcFile name="package/lib/lib/stk/sock/sock.oem4f.dep" src="sock/sock.c"/>
+        <srcFile name="package/lib/lib/stk/sock/sockint.oem4f.dep" src="sock/sockint.c"/>
+        <srcFile name="package/lib/lib/stk/sock/sockpcb.oem4f.dep" src="sock/sockpcb.c"/>
+        <srcFile name="package/lib/lib/stk/sock/sockprot.oem4f.dep" src="sock/sockprot.c"/>
+        <srcFile name="package/lib/lib/stk/tcp/tcp.oem4f.dep" src="tcp/tcp.c"/>
+        <srcFile name="package/lib/lib/stk/tcp/tcpin.oem4f.dep" src="tcp/tcpin.c"/>
+        <srcFile name="package/lib/lib/stk/tcp/tcpout.oem4f.dep" src="tcp/tcpout.c"/>
+        <srcFile name="package/lib/lib/stk/tcp/tcpprot.oem4f.dep" src="tcp/tcpprot.c"/>
+        <srcFile name="package/lib/lib/stk/tcp/tcptime.oem4f.dep" src="tcp/tcptime.c"/>
+        <srcFile name="package/lib/lib/stk/udp/udp.oem4f.dep" src="udp/udp.c"/>
+        <srcFile name="package/lib/lib/stk/nat/nat.oem4f.dep" src="nat/nat.c"/>
+        <srcFile name="package/lib/lib/stk/nat/natpkt.oem4f.dep" src="nat/natpkt.c"/>
+        <srcFile name="package/lib/lib/stk/nat/proxy.oem4f.dep" src="nat/proxy.c"/>
+        <srcFile name="package/lib/lib/stk/ppp/auth.oem4f.dep" src="ppp/auth.c"/>
+        <srcFile name="package/lib/lib/stk/ppp/ipcp.oem4f.dep" src="ppp/ipcp.c"/>
+        <srcFile name="package/lib/lib/stk/ppp/lcp.oem4f.dep" src="ppp/lcp.c"/>
+        <srcFile name="package/lib/lib/stk/ppp/md5.oem4f.dep" src="ppp/md5.c"/>
+        <srcFile name="package/lib/lib/stk/ppp/nimuppp.oem4f.dep" src="ppp/nimuppp.c"/>
+        <srcFile name="package/lib/lib/stk/utils/listlib.oem4f.dep" src="utils/listlib.c"/>
+        <srcFile name="package/lib/lib/stk/pppoe/nimupppoe.oem4f.dep" src="pppoe/nimupppoe.c"/>
+        <srcFile name="package/lib/lib/stk/nimu/nimu.oem4f.dep" src="nimu/nimu.c"/>
+        <srcFile name="package/lib/lib/stk/vlan/vlan.oem4f.dep" src="vlan/vlan.c"/>
+        <srcFile name="package/lib/lib/stk/bind6/bind6.oem4f.dep" src="bind6/bind6.c"/>
+        <srcFile name="package/lib/lib/stk/icmpv6/icmpv6.oem4f.dep" src="icmpv6/icmpv6.c"/>
+        <srcFile name="package/lib/lib/stk/icmpv6/icmpv6_ndisc.oem4f.dep" src="icmpv6/icmpv6_ndisc.c"/>
+        <srcFile name="package/lib/lib/stk/icmpv6/icmpv6in.oem4f.dep" src="icmpv6/icmpv6in.c"/>
+        <srcFile name="package/lib/lib/stk/icmpv6/icmpv6out.oem4f.dep" src="icmpv6/icmpv6out.c"/>
+        <srcFile name="package/lib/lib/stk/ipv6/ipv6.oem4f.dep" src="ipv6/ipv6.c"/>
+        <srcFile name="package/lib/lib/stk/ipv6/ipv6_exthdrs.oem4f.dep" src="ipv6/ipv6_exthdrs.c"/>
+        <srcFile name="package/lib/lib/stk/ipv6/ipv6_frag.oem4f.dep" src="ipv6/ipv6_frag.c"/>
+        <srcFile name="package/lib/lib/stk/ipv6/ipv6in.oem4f.dep" src="ipv6/ipv6in.c"/>
+        <srcFile name="package/lib/lib/stk/ipv6/ipv6out.oem4f.dep" src="ipv6/ipv6out.c"/>
+        <srcFile name="package/lib/lib/stk/lli6/lli6.oem4f.dep" src="lli6/lli6.c"/>
+        <srcFile name="package/lib/lib/stk/mld/mld.oem4f.dep" src="mld/mld.c"/>
+        <srcFile name="package/lib/lib/stk/raw6/raw6.oem4f.dep" src="raw6/raw6.c"/>
+        <srcFile name="package/lib/lib/stk/res6/sb6.oem4f.dep" src="res6/sb6.c"/>
+        <srcFile name="package/lib/lib/stk/route6/route6.oem4f.dep" src="route6/route6.c"/>
+        <srcFile name="package/lib/lib/stk/sock6/sock6.oem4f.dep" src="sock6/sock6.c"/>
+        <srcFile name="package/lib/lib/stk/sock6/sock6int.oem4f.dep" src="sock6/sock6int.c"/>
+        <srcFile name="package/lib/lib/stk/sock6/sock6pcb.oem4f.dep" src="sock6/sock6pcb.c"/>
+        <srcFile name="package/lib/lib/stk/sock6/sock6prot.oem4f.dep" src="sock6/sock6prot.c"/>
+        <srcFile name="package/lib/lib/stk/tcp6/tcp6.oem4f.dep" src="tcp6/tcp6.c"/>
+        <srcFile name="package/lib/lib/stk/tcp6/tcp6in.oem4f.dep" src="tcp6/tcp6in.c"/>
+        <srcFile name="package/lib/lib/stk/tcp6/tcp6out.oem4f.dep" src="tcp6/tcp6out.c"/>
+        <srcFile name="package/lib/lib/stk/tcp6/tcp6prot.oem4f.dep" src="tcp6/tcp6prot.c"/>
+        <srcFile name="package/lib/lib/stk/tcp6/tcp6time.oem4f.dep" src="tcp6/tcp6time.c"/>
+        <srcFile name="package/lib/lib/stk/udp6/udp6.oem4f.dep" src="udp6/udp6.c"/>
+        <srcFile name="package/lib/lib/stk/raweth/raweth.oem4f.dep" src="raweth/raweth.c"/>
+        <srcFile name="package/lib/lib/stk/rawethsock/rawethsock.oem4f.dep" src="rawethsock/rawethsock.c"/>
+        <srcFile name="package/lib/lib/stk/rawethsock/rawethsock_prot.oem4f.dep" src="rawethsock/rawethsock_prot.c"/>
+        <srcFile name="package/lib/lib/stk/rawethsock/rawethsock_pcb.oem4f.dep" src="rawethsock/rawethsock_pcb.c"/>
+        <srcFile name="package/lib/lib/stk/pbm/pbm.oem4f.dep" src="pbm/pbm.c"/>
+        <srcFile name="package/lib/lib/stk/pbm/pbm_data.oem4f.dep" src="pbm/pbm_data.c"/>
+        <srcFile name="lib/stk6.aem4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/stk6/package/package_ti.ndk.stack.oem4f.dep" src="package/package_ti.ndk.stack.c"/>
+        <srcFile name="package/lib/lib/stk6/bind/bind.oem4f.dep" src="bind/bind.c"/>
+        <srcFile name="package/lib/lib/stk6/fdt/file.oem4f.dep" src="fdt/file.c"/>
+        <srcFile name="package/lib/lib/stk6/fdt/fileuser.oem4f.dep" src="fdt/fileuser.c"/>
+        <srcFile name="package/lib/lib/stk6/fdt/socket.oem4f.dep" src="fdt/socket.c"/>
+        <srcFile name="package/lib/lib/stk6/fdt/socket_data.oem4f.dep" src="fdt/socket_data.c"/>
+        <srcFile name="package/lib/lib/stk6/icmp/icmp.oem4f.dep" src="icmp/icmp.c"/>
+        <srcFile name="package/lib/lib/stk6/icmp/icmpin.oem4f.dep" src="icmp/icmpin.c"/>
+        <srcFile name="package/lib/lib/stk6/igmp/igmp.oem4f.dep" src="igmp/igmp.c"/>
+        <srcFile name="package/lib/lib/stk6/ip/ip.oem4f.dep" src="ip/ip.c"/>
+        <srcFile name="package/lib/lib/stk6/ip/ipin.oem4f.dep" src="ip/ipin.c"/>
+        <srcFile name="package/lib/lib/stk6/ip/ipout.oem4f.dep" src="ip/ipout.c"/>
+        <srcFile name="package/lib/lib/stk6/ip/ipfrag.oem4f.dep" src="ip/ipfrag.c"/>
+        <srcFile name="package/lib/lib/stk6/lli/lli.oem4f.dep" src="lli/lli.c"/>
+        <srcFile name="package/lib/lib/stk6/lli/lliin.oem4f.dep" src="lli/lliin.c"/>
+        <srcFile name="package/lib/lib/stk6/lli/lliout.oem4f.dep" src="lli/lliout.c"/>
+        <srcFile name="package/lib/lib/stk6/node/node.oem4f.dep" src="node/node.c"/>
+        <srcFile name="package/lib/lib/stk6/pipe/pipe.oem4f.dep" src="pipe/pipe.c"/>
+        <srcFile name="package/lib/lib/stk6/raw/raw.oem4f.dep" src="raw/raw.c"/>
+        <srcFile name="package/lib/lib/stk6/res/exec.oem4f.dep" src="res/exec.c"/>
+        <srcFile name="package/lib/lib/stk6/res/sb.oem4f.dep" src="res/sb.c"/>
+        <srcFile name="package/lib/lib/stk6/res/timer.oem4f.dep" src="res/timer.c"/>
+        <srcFile name="package/lib/lib/stk6/route/route.oem4f.dep" src="route/route.c"/>
+        <srcFile name="package/lib/lib/stk6/route/rtable.oem4f.dep" src="route/rtable.c"/>
+        <srcFile name="package/lib/lib/stk6/rtc/rtc.oem4f.dep" src="rtc/rtc.c"/>
+        <srcFile name="package/lib/lib/stk6/sock/sock.oem4f.dep" src="sock/sock.c"/>
+        <srcFile name="package/lib/lib/stk6/sock/sockint.oem4f.dep" src="sock/sockint.c"/>
+        <srcFile name="package/lib/lib/stk6/sock/sockpcb.oem4f.dep" src="sock/sockpcb.c"/>
+        <srcFile name="package/lib/lib/stk6/sock/sockprot.oem4f.dep" src="sock/sockprot.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp/tcp.oem4f.dep" src="tcp/tcp.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp/tcpin.oem4f.dep" src="tcp/tcpin.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp/tcpout.oem4f.dep" src="tcp/tcpout.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp/tcpprot.oem4f.dep" src="tcp/tcpprot.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp/tcptime.oem4f.dep" src="tcp/tcptime.c"/>
+        <srcFile name="package/lib/lib/stk6/udp/udp.oem4f.dep" src="udp/udp.c"/>
+        <srcFile name="package/lib/lib/stk6/nat/nat.oem4f.dep" src="nat/nat.c"/>
+        <srcFile name="package/lib/lib/stk6/nat/natpkt.oem4f.dep" src="nat/natpkt.c"/>
+        <srcFile name="package/lib/lib/stk6/nat/proxy.oem4f.dep" src="nat/proxy.c"/>
+        <srcFile name="package/lib/lib/stk6/ppp/auth.oem4f.dep" src="ppp/auth.c"/>
+        <srcFile name="package/lib/lib/stk6/ppp/ipcp.oem4f.dep" src="ppp/ipcp.c"/>
+        <srcFile name="package/lib/lib/stk6/ppp/lcp.oem4f.dep" src="ppp/lcp.c"/>
+        <srcFile name="package/lib/lib/stk6/ppp/md5.oem4f.dep" src="ppp/md5.c"/>
+        <srcFile name="package/lib/lib/stk6/ppp/nimuppp.oem4f.dep" src="ppp/nimuppp.c"/>
+        <srcFile name="package/lib/lib/stk6/utils/listlib.oem4f.dep" src="utils/listlib.c"/>
+        <srcFile name="package/lib/lib/stk6/pppoe/nimupppoe.oem4f.dep" src="pppoe/nimupppoe.c"/>
+        <srcFile name="package/lib/lib/stk6/nimu/nimu.oem4f.dep" src="nimu/nimu.c"/>
+        <srcFile name="package/lib/lib/stk6/vlan/vlan.oem4f.dep" src="vlan/vlan.c"/>
+        <srcFile name="package/lib/lib/stk6/bind6/bind6.oem4f.dep" src="bind6/bind6.c"/>
+        <srcFile name="package/lib/lib/stk6/icmpv6/icmpv6.oem4f.dep" src="icmpv6/icmpv6.c"/>
+        <srcFile name="package/lib/lib/stk6/icmpv6/icmpv6_ndisc.oem4f.dep" src="icmpv6/icmpv6_ndisc.c"/>
+        <srcFile name="package/lib/lib/stk6/icmpv6/icmpv6in.oem4f.dep" src="icmpv6/icmpv6in.c"/>
+        <srcFile name="package/lib/lib/stk6/icmpv6/icmpv6out.oem4f.dep" src="icmpv6/icmpv6out.c"/>
+        <srcFile name="package/lib/lib/stk6/ipv6/ipv6.oem4f.dep" src="ipv6/ipv6.c"/>
+        <srcFile name="package/lib/lib/stk6/ipv6/ipv6_exthdrs.oem4f.dep" src="ipv6/ipv6_exthdrs.c"/>
+        <srcFile name="package/lib/lib/stk6/ipv6/ipv6_frag.oem4f.dep" src="ipv6/ipv6_frag.c"/>
+        <srcFile name="package/lib/lib/stk6/ipv6/ipv6in.oem4f.dep" src="ipv6/ipv6in.c"/>
+        <srcFile name="package/lib/lib/stk6/ipv6/ipv6out.oem4f.dep" src="ipv6/ipv6out.c"/>
+        <srcFile name="package/lib/lib/stk6/lli6/lli6.oem4f.dep" src="lli6/lli6.c"/>
+        <srcFile name="package/lib/lib/stk6/mld/mld.oem4f.dep" src="mld/mld.c"/>
+        <srcFile name="package/lib/lib/stk6/raw6/raw6.oem4f.dep" src="raw6/raw6.c"/>
+        <srcFile name="package/lib/lib/stk6/res6/sb6.oem4f.dep" src="res6/sb6.c"/>
+        <srcFile name="package/lib/lib/stk6/route6/route6.oem4f.dep" src="route6/route6.c"/>
+        <srcFile name="package/lib/lib/stk6/sock6/sock6.oem4f.dep" src="sock6/sock6.c"/>
+        <srcFile name="package/lib/lib/stk6/sock6/sock6int.oem4f.dep" src="sock6/sock6int.c"/>
+        <srcFile name="package/lib/lib/stk6/sock6/sock6pcb.oem4f.dep" src="sock6/sock6pcb.c"/>
+        <srcFile name="package/lib/lib/stk6/sock6/sock6prot.oem4f.dep" src="sock6/sock6prot.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp6/tcp6.oem4f.dep" src="tcp6/tcp6.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp6/tcp6in.oem4f.dep" src="tcp6/tcp6in.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp6/tcp6out.oem4f.dep" src="tcp6/tcp6out.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp6/tcp6prot.oem4f.dep" src="tcp6/tcp6prot.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp6/tcp6time.oem4f.dep" src="tcp6/tcp6time.c"/>
+        <srcFile name="package/lib/lib/stk6/udp6/udp6.oem4f.dep" src="udp6/udp6.c"/>
+        <srcFile name="package/lib/lib/stk6/raweth/raweth.oem4f.dep" src="raweth/raweth.c"/>
+        <srcFile name="package/lib/lib/stk6/rawethsock/rawethsock.oem4f.dep" src="rawethsock/rawethsock.c"/>
+        <srcFile name="package/lib/lib/stk6/rawethsock/rawethsock_prot.oem4f.dep" src="rawethsock/rawethsock_prot.c"/>
+        <srcFile name="package/lib/lib/stk6/rawethsock/rawethsock_pcb.oem4f.dep" src="rawethsock/rawethsock_pcb.c"/>
+        <srcFile name="package/lib/lib/stk6/pbm/pbm.oem4f.dep" src="pbm/pbm.c"/>
+        <srcFile name="package/lib/lib/stk6/pbm/pbm_data.oem4f.dep" src="pbm/pbm_data.c"/>
+        <srcFile name="lib/stk_ppp_pppoe.aem4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/package/package_ti.ndk.stack.oem4f.dep" src="package/package_ti.ndk.stack.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/bind/bind.oem4f.dep" src="bind/bind.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/fdt/file.oem4f.dep" src="fdt/file.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/fdt/fileuser.oem4f.dep" src="fdt/fileuser.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/fdt/socket.oem4f.dep" src="fdt/socket.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/fdt/socket_data.oem4f.dep" src="fdt/socket_data.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/icmp/icmp.oem4f.dep" src="icmp/icmp.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/icmp/icmpin.oem4f.dep" src="icmp/icmpin.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/igmp/igmp.oem4f.dep" src="igmp/igmp.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ip/ip.oem4f.dep" src="ip/ip.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ip/ipin.oem4f.dep" src="ip/ipin.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ip/ipout.oem4f.dep" src="ip/ipout.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ip/ipfrag.oem4f.dep" src="ip/ipfrag.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/lli/lli.oem4f.dep" src="lli/lli.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/lli/lliin.oem4f.dep" src="lli/lliin.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/lli/lliout.oem4f.dep" src="lli/lliout.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/node/node.oem4f.dep" src="node/node.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/pipe/pipe.oem4f.dep" src="pipe/pipe.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/raw/raw.oem4f.dep" src="raw/raw.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/res/exec.oem4f.dep" src="res/exec.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/res/sb.oem4f.dep" src="res/sb.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/res/timer.oem4f.dep" src="res/timer.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/route/route.oem4f.dep" src="route/route.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/route/rtable.oem4f.dep" src="route/rtable.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/rtc/rtc.oem4f.dep" src="rtc/rtc.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/sock/sock.oem4f.dep" src="sock/sock.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/sock/sockint.oem4f.dep" src="sock/sockint.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/sock/sockpcb.oem4f.dep" src="sock/sockpcb.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/sock/sockprot.oem4f.dep" src="sock/sockprot.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp/tcp.oem4f.dep" src="tcp/tcp.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp/tcpin.oem4f.dep" src="tcp/tcpin.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp/tcpout.oem4f.dep" src="tcp/tcpout.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp/tcpprot.oem4f.dep" src="tcp/tcpprot.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp/tcptime.oem4f.dep" src="tcp/tcptime.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/udp/udp.oem4f.dep" src="udp/udp.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/nat/nat.oem4f.dep" src="nat/nat.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/nat/natpkt.oem4f.dep" src="nat/natpkt.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/nat/proxy.oem4f.dep" src="nat/proxy.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ppp/auth.oem4f.dep" src="ppp/auth.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ppp/ipcp.oem4f.dep" src="ppp/ipcp.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ppp/lcp.oem4f.dep" src="ppp/lcp.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ppp/md5.oem4f.dep" src="ppp/md5.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ppp/nimuppp.oem4f.dep" src="ppp/nimuppp.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/utils/listlib.oem4f.dep" src="utils/listlib.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/pppoe/nimupppoe.oem4f.dep" src="pppoe/nimupppoe.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/nimu/nimu.oem4f.dep" src="nimu/nimu.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/vlan/vlan.oem4f.dep" src="vlan/vlan.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/bind6/bind6.oem4f.dep" src="bind6/bind6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/icmpv6/icmpv6.oem4f.dep" src="icmpv6/icmpv6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/icmpv6/icmpv6_ndisc.oem4f.dep" src="icmpv6/icmpv6_ndisc.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/icmpv6/icmpv6in.oem4f.dep" src="icmpv6/icmpv6in.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/icmpv6/icmpv6out.oem4f.dep" src="icmpv6/icmpv6out.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ipv6/ipv6.oem4f.dep" src="ipv6/ipv6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ipv6/ipv6_exthdrs.oem4f.dep" src="ipv6/ipv6_exthdrs.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ipv6/ipv6_frag.oem4f.dep" src="ipv6/ipv6_frag.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ipv6/ipv6in.oem4f.dep" src="ipv6/ipv6in.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ipv6/ipv6out.oem4f.dep" src="ipv6/ipv6out.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/lli6/lli6.oem4f.dep" src="lli6/lli6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/mld/mld.oem4f.dep" src="mld/mld.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/raw6/raw6.oem4f.dep" src="raw6/raw6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/res6/sb6.oem4f.dep" src="res6/sb6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/route6/route6.oem4f.dep" src="route6/route6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/sock6/sock6.oem4f.dep" src="sock6/sock6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/sock6/sock6int.oem4f.dep" src="sock6/sock6int.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/sock6/sock6pcb.oem4f.dep" src="sock6/sock6pcb.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/sock6/sock6prot.oem4f.dep" src="sock6/sock6prot.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp6/tcp6.oem4f.dep" src="tcp6/tcp6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp6/tcp6in.oem4f.dep" src="tcp6/tcp6in.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp6/tcp6out.oem4f.dep" src="tcp6/tcp6out.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp6/tcp6prot.oem4f.dep" src="tcp6/tcp6prot.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp6/tcp6time.oem4f.dep" src="tcp6/tcp6time.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/udp6/udp6.oem4f.dep" src="udp6/udp6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/raweth/raweth.oem4f.dep" src="raweth/raweth.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/rawethsock/rawethsock.oem4f.dep" src="rawethsock/rawethsock.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/rawethsock/rawethsock_prot.oem4f.dep" src="rawethsock/rawethsock_prot.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/rawethsock/rawethsock_pcb.oem4f.dep" src="rawethsock/rawethsock_pcb.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/pbm/pbm.oem4f.dep" src="pbm/pbm.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/pbm/pbm_data.oem4f.dep" src="pbm/pbm_data.c"/>
+        <srcFile name="lib/stk6_ppp_pppoe.aem4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/package/package_ti.ndk.stack.oem4f.dep" src="package/package_ti.ndk.stack.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/bind/bind.oem4f.dep" src="bind/bind.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/fdt/file.oem4f.dep" src="fdt/file.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/fdt/fileuser.oem4f.dep" src="fdt/fileuser.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/fdt/socket.oem4f.dep" src="fdt/socket.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/fdt/socket_data.oem4f.dep" src="fdt/socket_data.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/icmp/icmp.oem4f.dep" src="icmp/icmp.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/icmp/icmpin.oem4f.dep" src="icmp/icmpin.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/igmp/igmp.oem4f.dep" src="igmp/igmp.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ip/ip.oem4f.dep" src="ip/ip.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ip/ipin.oem4f.dep" src="ip/ipin.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ip/ipout.oem4f.dep" src="ip/ipout.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ip/ipfrag.oem4f.dep" src="ip/ipfrag.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/lli/lli.oem4f.dep" src="lli/lli.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/lli/lliin.oem4f.dep" src="lli/lliin.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/lli/lliout.oem4f.dep" src="lli/lliout.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/node/node.oem4f.dep" src="node/node.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/pipe/pipe.oem4f.dep" src="pipe/pipe.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/raw/raw.oem4f.dep" src="raw/raw.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/res/exec.oem4f.dep" src="res/exec.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/res/sb.oem4f.dep" src="res/sb.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/res/timer.oem4f.dep" src="res/timer.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/route/route.oem4f.dep" src="route/route.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/route/rtable.oem4f.dep" src="route/rtable.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/rtc/rtc.oem4f.dep" src="rtc/rtc.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/sock/sock.oem4f.dep" src="sock/sock.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/sock/sockint.oem4f.dep" src="sock/sockint.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/sock/sockpcb.oem4f.dep" src="sock/sockpcb.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/sock/sockprot.oem4f.dep" src="sock/sockprot.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp/tcp.oem4f.dep" src="tcp/tcp.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp/tcpin.oem4f.dep" src="tcp/tcpin.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp/tcpout.oem4f.dep" src="tcp/tcpout.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp/tcpprot.oem4f.dep" src="tcp/tcpprot.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp/tcptime.oem4f.dep" src="tcp/tcptime.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/udp/udp.oem4f.dep" src="udp/udp.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/nat/nat.oem4f.dep" src="nat/nat.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/nat/natpkt.oem4f.dep" src="nat/natpkt.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/nat/proxy.oem4f.dep" src="nat/proxy.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ppp/auth.oem4f.dep" src="ppp/auth.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ppp/ipcp.oem4f.dep" src="ppp/ipcp.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ppp/lcp.oem4f.dep" src="ppp/lcp.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ppp/md5.oem4f.dep" src="ppp/md5.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ppp/nimuppp.oem4f.dep" src="ppp/nimuppp.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/utils/listlib.oem4f.dep" src="utils/listlib.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/pppoe/nimupppoe.oem4f.dep" src="pppoe/nimupppoe.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/nimu/nimu.oem4f.dep" src="nimu/nimu.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/vlan/vlan.oem4f.dep" src="vlan/vlan.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/bind6/bind6.oem4f.dep" src="bind6/bind6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/icmpv6/icmpv6.oem4f.dep" src="icmpv6/icmpv6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/icmpv6/icmpv6_ndisc.oem4f.dep" src="icmpv6/icmpv6_ndisc.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/icmpv6/icmpv6in.oem4f.dep" src="icmpv6/icmpv6in.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/icmpv6/icmpv6out.oem4f.dep" src="icmpv6/icmpv6out.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ipv6/ipv6.oem4f.dep" src="ipv6/ipv6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ipv6/ipv6_exthdrs.oem4f.dep" src="ipv6/ipv6_exthdrs.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ipv6/ipv6_frag.oem4f.dep" src="ipv6/ipv6_frag.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ipv6/ipv6in.oem4f.dep" src="ipv6/ipv6in.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ipv6/ipv6out.oem4f.dep" src="ipv6/ipv6out.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/lli6/lli6.oem4f.dep" src="lli6/lli6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/mld/mld.oem4f.dep" src="mld/mld.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/raw6/raw6.oem4f.dep" src="raw6/raw6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/res6/sb6.oem4f.dep" src="res6/sb6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/route6/route6.oem4f.dep" src="route6/route6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/sock6/sock6.oem4f.dep" src="sock6/sock6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/sock6/sock6int.oem4f.dep" src="sock6/sock6int.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/sock6/sock6pcb.oem4f.dep" src="sock6/sock6pcb.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/sock6/sock6prot.oem4f.dep" src="sock6/sock6prot.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp6/tcp6.oem4f.dep" src="tcp6/tcp6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp6/tcp6in.oem4f.dep" src="tcp6/tcp6in.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp6/tcp6out.oem4f.dep" src="tcp6/tcp6out.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp6/tcp6prot.oem4f.dep" src="tcp6/tcp6prot.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp6/tcp6time.oem4f.dep" src="tcp6/tcp6time.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/udp6/udp6.oem4f.dep" src="udp6/udp6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/raweth/raweth.oem4f.dep" src="raweth/raweth.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/rawethsock/rawethsock.oem4f.dep" src="rawethsock/rawethsock.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/rawethsock/rawethsock_prot.oem4f.dep" src="rawethsock/rawethsock_prot.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/rawethsock/rawethsock_pcb.oem4f.dep" src="rawethsock/rawethsock_pcb.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/pbm/pbm.oem4f.dep" src="pbm/pbm.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/pbm/pbm_data.oem4f.dep" src="pbm/pbm_data.c"/>
+        <srcFile name="lib/stk.am4fg.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/stk/package/package_ti.ndk.stack.om4fg.dep" src="package/package_ti.ndk.stack.c"/>
+        <srcFile name="package/lib/lib/stk/bind/bind.om4fg.dep" src="bind/bind.c"/>
+        <srcFile name="package/lib/lib/stk/fdt/file.om4fg.dep" src="fdt/file.c"/>
+        <srcFile name="package/lib/lib/stk/fdt/fileuser.om4fg.dep" src="fdt/fileuser.c"/>
+        <srcFile name="package/lib/lib/stk/fdt/socket.om4fg.dep" src="fdt/socket.c"/>
+        <srcFile name="package/lib/lib/stk/fdt/socket_data.om4fg.dep" src="fdt/socket_data.c"/>
+        <srcFile name="package/lib/lib/stk/icmp/icmp.om4fg.dep" src="icmp/icmp.c"/>
+        <srcFile name="package/lib/lib/stk/icmp/icmpin.om4fg.dep" src="icmp/icmpin.c"/>
+        <srcFile name="package/lib/lib/stk/igmp/igmp.om4fg.dep" src="igmp/igmp.c"/>
+        <srcFile name="package/lib/lib/stk/ip/ip.om4fg.dep" src="ip/ip.c"/>
+        <srcFile name="package/lib/lib/stk/ip/ipin.om4fg.dep" src="ip/ipin.c"/>
+        <srcFile name="package/lib/lib/stk/ip/ipout.om4fg.dep" src="ip/ipout.c"/>
+        <srcFile name="package/lib/lib/stk/ip/ipfrag.om4fg.dep" src="ip/ipfrag.c"/>
+        <srcFile name="package/lib/lib/stk/lli/lli.om4fg.dep" src="lli/lli.c"/>
+        <srcFile name="package/lib/lib/stk/lli/lliin.om4fg.dep" src="lli/lliin.c"/>
+        <srcFile name="package/lib/lib/stk/lli/lliout.om4fg.dep" src="lli/lliout.c"/>
+        <srcFile name="package/lib/lib/stk/node/node.om4fg.dep" src="node/node.c"/>
+        <srcFile name="package/lib/lib/stk/pipe/pipe.om4fg.dep" src="pipe/pipe.c"/>
+        <srcFile name="package/lib/lib/stk/raw/raw.om4fg.dep" src="raw/raw.c"/>
+        <srcFile name="package/lib/lib/stk/res/exec.om4fg.dep" src="res/exec.c"/>
+        <srcFile name="package/lib/lib/stk/res/sb.om4fg.dep" src="res/sb.c"/>
+        <srcFile name="package/lib/lib/stk/res/timer.om4fg.dep" src="res/timer.c"/>
+        <srcFile name="package/lib/lib/stk/route/route.om4fg.dep" src="route/route.c"/>
+        <srcFile name="package/lib/lib/stk/route/rtable.om4fg.dep" src="route/rtable.c"/>
+        <srcFile name="package/lib/lib/stk/rtc/rtc.om4fg.dep" src="rtc/rtc.c"/>
+        <srcFile name="package/lib/lib/stk/sock/sock.om4fg.dep" src="sock/sock.c"/>
+        <srcFile name="package/lib/lib/stk/sock/sockint.om4fg.dep" src="sock/sockint.c"/>
+        <srcFile name="package/lib/lib/stk/sock/sockpcb.om4fg.dep" src="sock/sockpcb.c"/>
+        <srcFile name="package/lib/lib/stk/sock/sockprot.om4fg.dep" src="sock/sockprot.c"/>
+        <srcFile name="package/lib/lib/stk/tcp/tcp.om4fg.dep" src="tcp/tcp.c"/>
+        <srcFile name="package/lib/lib/stk/tcp/tcpin.om4fg.dep" src="tcp/tcpin.c"/>
+        <srcFile name="package/lib/lib/stk/tcp/tcpout.om4fg.dep" src="tcp/tcpout.c"/>
+        <srcFile name="package/lib/lib/stk/tcp/tcpprot.om4fg.dep" src="tcp/tcpprot.c"/>
+        <srcFile name="package/lib/lib/stk/tcp/tcptime.om4fg.dep" src="tcp/tcptime.c"/>
+        <srcFile name="package/lib/lib/stk/udp/udp.om4fg.dep" src="udp/udp.c"/>
+        <srcFile name="package/lib/lib/stk/nat/nat.om4fg.dep" src="nat/nat.c"/>
+        <srcFile name="package/lib/lib/stk/nat/natpkt.om4fg.dep" src="nat/natpkt.c"/>
+        <srcFile name="package/lib/lib/stk/nat/proxy.om4fg.dep" src="nat/proxy.c"/>
+        <srcFile name="package/lib/lib/stk/ppp/auth.om4fg.dep" src="ppp/auth.c"/>
+        <srcFile name="package/lib/lib/stk/ppp/ipcp.om4fg.dep" src="ppp/ipcp.c"/>
+        <srcFile name="package/lib/lib/stk/ppp/lcp.om4fg.dep" src="ppp/lcp.c"/>
+        <srcFile name="package/lib/lib/stk/ppp/md5.om4fg.dep" src="ppp/md5.c"/>
+        <srcFile name="package/lib/lib/stk/ppp/nimuppp.om4fg.dep" src="ppp/nimuppp.c"/>
+        <srcFile name="package/lib/lib/stk/utils/listlib.om4fg.dep" src="utils/listlib.c"/>
+        <srcFile name="package/lib/lib/stk/pppoe/nimupppoe.om4fg.dep" src="pppoe/nimupppoe.c"/>
+        <srcFile name="package/lib/lib/stk/nimu/nimu.om4fg.dep" src="nimu/nimu.c"/>
+        <srcFile name="package/lib/lib/stk/vlan/vlan.om4fg.dep" src="vlan/vlan.c"/>
+        <srcFile name="package/lib/lib/stk/bind6/bind6.om4fg.dep" src="bind6/bind6.c"/>
+        <srcFile name="package/lib/lib/stk/icmpv6/icmpv6.om4fg.dep" src="icmpv6/icmpv6.c"/>
+        <srcFile name="package/lib/lib/stk/icmpv6/icmpv6_ndisc.om4fg.dep" src="icmpv6/icmpv6_ndisc.c"/>
+        <srcFile name="package/lib/lib/stk/icmpv6/icmpv6in.om4fg.dep" src="icmpv6/icmpv6in.c"/>
+        <srcFile name="package/lib/lib/stk/icmpv6/icmpv6out.om4fg.dep" src="icmpv6/icmpv6out.c"/>
+        <srcFile name="package/lib/lib/stk/ipv6/ipv6.om4fg.dep" src="ipv6/ipv6.c"/>
+        <srcFile name="package/lib/lib/stk/ipv6/ipv6_exthdrs.om4fg.dep" src="ipv6/ipv6_exthdrs.c"/>
+        <srcFile name="package/lib/lib/stk/ipv6/ipv6_frag.om4fg.dep" src="ipv6/ipv6_frag.c"/>
+        <srcFile name="package/lib/lib/stk/ipv6/ipv6in.om4fg.dep" src="ipv6/ipv6in.c"/>
+        <srcFile name="package/lib/lib/stk/ipv6/ipv6out.om4fg.dep" src="ipv6/ipv6out.c"/>
+        <srcFile name="package/lib/lib/stk/lli6/lli6.om4fg.dep" src="lli6/lli6.c"/>
+        <srcFile name="package/lib/lib/stk/mld/mld.om4fg.dep" src="mld/mld.c"/>
+        <srcFile name="package/lib/lib/stk/raw6/raw6.om4fg.dep" src="raw6/raw6.c"/>
+        <srcFile name="package/lib/lib/stk/res6/sb6.om4fg.dep" src="res6/sb6.c"/>
+        <srcFile name="package/lib/lib/stk/route6/route6.om4fg.dep" src="route6/route6.c"/>
+        <srcFile name="package/lib/lib/stk/sock6/sock6.om4fg.dep" src="sock6/sock6.c"/>
+        <srcFile name="package/lib/lib/stk/sock6/sock6int.om4fg.dep" src="sock6/sock6int.c"/>
+        <srcFile name="package/lib/lib/stk/sock6/sock6pcb.om4fg.dep" src="sock6/sock6pcb.c"/>
+        <srcFile name="package/lib/lib/stk/sock6/sock6prot.om4fg.dep" src="sock6/sock6prot.c"/>
+        <srcFile name="package/lib/lib/stk/tcp6/tcp6.om4fg.dep" src="tcp6/tcp6.c"/>
+        <srcFile name="package/lib/lib/stk/tcp6/tcp6in.om4fg.dep" src="tcp6/tcp6in.c"/>
+        <srcFile name="package/lib/lib/stk/tcp6/tcp6out.om4fg.dep" src="tcp6/tcp6out.c"/>
+        <srcFile name="package/lib/lib/stk/tcp6/tcp6prot.om4fg.dep" src="tcp6/tcp6prot.c"/>
+        <srcFile name="package/lib/lib/stk/tcp6/tcp6time.om4fg.dep" src="tcp6/tcp6time.c"/>
+        <srcFile name="package/lib/lib/stk/udp6/udp6.om4fg.dep" src="udp6/udp6.c"/>
+        <srcFile name="package/lib/lib/stk/raweth/raweth.om4fg.dep" src="raweth/raweth.c"/>
+        <srcFile name="package/lib/lib/stk/rawethsock/rawethsock.om4fg.dep" src="rawethsock/rawethsock.c"/>
+        <srcFile name="package/lib/lib/stk/rawethsock/rawethsock_prot.om4fg.dep" src="rawethsock/rawethsock_prot.c"/>
+        <srcFile name="package/lib/lib/stk/rawethsock/rawethsock_pcb.om4fg.dep" src="rawethsock/rawethsock_pcb.c"/>
+        <srcFile name="package/lib/lib/stk/pbm/pbm.om4fg.dep" src="pbm/pbm.c"/>
+        <srcFile name="package/lib/lib/stk/pbm/pbm_data.om4fg.dep" src="pbm/pbm_data.c"/>
+        <srcFile name="lib/stk6.am4fg.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/stk6/package/package_ti.ndk.stack.om4fg.dep" src="package/package_ti.ndk.stack.c"/>
+        <srcFile name="package/lib/lib/stk6/bind/bind.om4fg.dep" src="bind/bind.c"/>
+        <srcFile name="package/lib/lib/stk6/fdt/file.om4fg.dep" src="fdt/file.c"/>
+        <srcFile name="package/lib/lib/stk6/fdt/fileuser.om4fg.dep" src="fdt/fileuser.c"/>
+        <srcFile name="package/lib/lib/stk6/fdt/socket.om4fg.dep" src="fdt/socket.c"/>
+        <srcFile name="package/lib/lib/stk6/fdt/socket_data.om4fg.dep" src="fdt/socket_data.c"/>
+        <srcFile name="package/lib/lib/stk6/icmp/icmp.om4fg.dep" src="icmp/icmp.c"/>
+        <srcFile name="package/lib/lib/stk6/icmp/icmpin.om4fg.dep" src="icmp/icmpin.c"/>
+        <srcFile name="package/lib/lib/stk6/igmp/igmp.om4fg.dep" src="igmp/igmp.c"/>
+        <srcFile name="package/lib/lib/stk6/ip/ip.om4fg.dep" src="ip/ip.c"/>
+        <srcFile name="package/lib/lib/stk6/ip/ipin.om4fg.dep" src="ip/ipin.c"/>
+        <srcFile name="package/lib/lib/stk6/ip/ipout.om4fg.dep" src="ip/ipout.c"/>
+        <srcFile name="package/lib/lib/stk6/ip/ipfrag.om4fg.dep" src="ip/ipfrag.c"/>
+        <srcFile name="package/lib/lib/stk6/lli/lli.om4fg.dep" src="lli/lli.c"/>
+        <srcFile name="package/lib/lib/stk6/lli/lliin.om4fg.dep" src="lli/lliin.c"/>
+        <srcFile name="package/lib/lib/stk6/lli/lliout.om4fg.dep" src="lli/lliout.c"/>
+        <srcFile name="package/lib/lib/stk6/node/node.om4fg.dep" src="node/node.c"/>
+        <srcFile name="package/lib/lib/stk6/pipe/pipe.om4fg.dep" src="pipe/pipe.c"/>
+        <srcFile name="package/lib/lib/stk6/raw/raw.om4fg.dep" src="raw/raw.c"/>
+        <srcFile name="package/lib/lib/stk6/res/exec.om4fg.dep" src="res/exec.c"/>
+        <srcFile name="package/lib/lib/stk6/res/sb.om4fg.dep" src="res/sb.c"/>
+        <srcFile name="package/lib/lib/stk6/res/timer.om4fg.dep" src="res/timer.c"/>
+        <srcFile name="package/lib/lib/stk6/route/route.om4fg.dep" src="route/route.c"/>
+        <srcFile name="package/lib/lib/stk6/route/rtable.om4fg.dep" src="route/rtable.c"/>
+        <srcFile name="package/lib/lib/stk6/rtc/rtc.om4fg.dep" src="rtc/rtc.c"/>
+        <srcFile name="package/lib/lib/stk6/sock/sock.om4fg.dep" src="sock/sock.c"/>
+        <srcFile name="package/lib/lib/stk6/sock/sockint.om4fg.dep" src="sock/sockint.c"/>
+        <srcFile name="package/lib/lib/stk6/sock/sockpcb.om4fg.dep" src="sock/sockpcb.c"/>
+        <srcFile name="package/lib/lib/stk6/sock/sockprot.om4fg.dep" src="sock/sockprot.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp/tcp.om4fg.dep" src="tcp/tcp.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp/tcpin.om4fg.dep" src="tcp/tcpin.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp/tcpout.om4fg.dep" src="tcp/tcpout.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp/tcpprot.om4fg.dep" src="tcp/tcpprot.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp/tcptime.om4fg.dep" src="tcp/tcptime.c"/>
+        <srcFile name="package/lib/lib/stk6/udp/udp.om4fg.dep" src="udp/udp.c"/>
+        <srcFile name="package/lib/lib/stk6/nat/nat.om4fg.dep" src="nat/nat.c"/>
+        <srcFile name="package/lib/lib/stk6/nat/natpkt.om4fg.dep" src="nat/natpkt.c"/>
+        <srcFile name="package/lib/lib/stk6/nat/proxy.om4fg.dep" src="nat/proxy.c"/>
+        <srcFile name="package/lib/lib/stk6/ppp/auth.om4fg.dep" src="ppp/auth.c"/>
+        <srcFile name="package/lib/lib/stk6/ppp/ipcp.om4fg.dep" src="ppp/ipcp.c"/>
+        <srcFile name="package/lib/lib/stk6/ppp/lcp.om4fg.dep" src="ppp/lcp.c"/>
+        <srcFile name="package/lib/lib/stk6/ppp/md5.om4fg.dep" src="ppp/md5.c"/>
+        <srcFile name="package/lib/lib/stk6/ppp/nimuppp.om4fg.dep" src="ppp/nimuppp.c"/>
+        <srcFile name="package/lib/lib/stk6/utils/listlib.om4fg.dep" src="utils/listlib.c"/>
+        <srcFile name="package/lib/lib/stk6/pppoe/nimupppoe.om4fg.dep" src="pppoe/nimupppoe.c"/>
+        <srcFile name="package/lib/lib/stk6/nimu/nimu.om4fg.dep" src="nimu/nimu.c"/>
+        <srcFile name="package/lib/lib/stk6/vlan/vlan.om4fg.dep" src="vlan/vlan.c"/>
+        <srcFile name="package/lib/lib/stk6/bind6/bind6.om4fg.dep" src="bind6/bind6.c"/>
+        <srcFile name="package/lib/lib/stk6/icmpv6/icmpv6.om4fg.dep" src="icmpv6/icmpv6.c"/>
+        <srcFile name="package/lib/lib/stk6/icmpv6/icmpv6_ndisc.om4fg.dep" src="icmpv6/icmpv6_ndisc.c"/>
+        <srcFile name="package/lib/lib/stk6/icmpv6/icmpv6in.om4fg.dep" src="icmpv6/icmpv6in.c"/>
+        <srcFile name="package/lib/lib/stk6/icmpv6/icmpv6out.om4fg.dep" src="icmpv6/icmpv6out.c"/>
+        <srcFile name="package/lib/lib/stk6/ipv6/ipv6.om4fg.dep" src="ipv6/ipv6.c"/>
+        <srcFile name="package/lib/lib/stk6/ipv6/ipv6_exthdrs.om4fg.dep" src="ipv6/ipv6_exthdrs.c"/>
+        <srcFile name="package/lib/lib/stk6/ipv6/ipv6_frag.om4fg.dep" src="ipv6/ipv6_frag.c"/>
+        <srcFile name="package/lib/lib/stk6/ipv6/ipv6in.om4fg.dep" src="ipv6/ipv6in.c"/>
+        <srcFile name="package/lib/lib/stk6/ipv6/ipv6out.om4fg.dep" src="ipv6/ipv6out.c"/>
+        <srcFile name="package/lib/lib/stk6/lli6/lli6.om4fg.dep" src="lli6/lli6.c"/>
+        <srcFile name="package/lib/lib/stk6/mld/mld.om4fg.dep" src="mld/mld.c"/>
+        <srcFile name="package/lib/lib/stk6/raw6/raw6.om4fg.dep" src="raw6/raw6.c"/>
+        <srcFile name="package/lib/lib/stk6/res6/sb6.om4fg.dep" src="res6/sb6.c"/>
+        <srcFile name="package/lib/lib/stk6/route6/route6.om4fg.dep" src="route6/route6.c"/>
+        <srcFile name="package/lib/lib/stk6/sock6/sock6.om4fg.dep" src="sock6/sock6.c"/>
+        <srcFile name="package/lib/lib/stk6/sock6/sock6int.om4fg.dep" src="sock6/sock6int.c"/>
+        <srcFile name="package/lib/lib/stk6/sock6/sock6pcb.om4fg.dep" src="sock6/sock6pcb.c"/>
+        <srcFile name="package/lib/lib/stk6/sock6/sock6prot.om4fg.dep" src="sock6/sock6prot.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp6/tcp6.om4fg.dep" src="tcp6/tcp6.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp6/tcp6in.om4fg.dep" src="tcp6/tcp6in.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp6/tcp6out.om4fg.dep" src="tcp6/tcp6out.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp6/tcp6prot.om4fg.dep" src="tcp6/tcp6prot.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp6/tcp6time.om4fg.dep" src="tcp6/tcp6time.c"/>
+        <srcFile name="package/lib/lib/stk6/udp6/udp6.om4fg.dep" src="udp6/udp6.c"/>
+        <srcFile name="package/lib/lib/stk6/raweth/raweth.om4fg.dep" src="raweth/raweth.c"/>
+        <srcFile name="package/lib/lib/stk6/rawethsock/rawethsock.om4fg.dep" src="rawethsock/rawethsock.c"/>
+        <srcFile name="package/lib/lib/stk6/rawethsock/rawethsock_prot.om4fg.dep" src="rawethsock/rawethsock_prot.c"/>
+        <srcFile name="package/lib/lib/stk6/rawethsock/rawethsock_pcb.om4fg.dep" src="rawethsock/rawethsock_pcb.c"/>
+        <srcFile name="package/lib/lib/stk6/pbm/pbm.om4fg.dep" src="pbm/pbm.c"/>
+        <srcFile name="package/lib/lib/stk6/pbm/pbm_data.om4fg.dep" src="pbm/pbm_data.c"/>
+        <srcFile name="lib/stk_ppp_pppoe.am4fg.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/package/package_ti.ndk.stack.om4fg.dep" src="package/package_ti.ndk.stack.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/bind/bind.om4fg.dep" src="bind/bind.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/fdt/file.om4fg.dep" src="fdt/file.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/fdt/fileuser.om4fg.dep" src="fdt/fileuser.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/fdt/socket.om4fg.dep" src="fdt/socket.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/fdt/socket_data.om4fg.dep" src="fdt/socket_data.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/icmp/icmp.om4fg.dep" src="icmp/icmp.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/icmp/icmpin.om4fg.dep" src="icmp/icmpin.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/igmp/igmp.om4fg.dep" src="igmp/igmp.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ip/ip.om4fg.dep" src="ip/ip.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ip/ipin.om4fg.dep" src="ip/ipin.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ip/ipout.om4fg.dep" src="ip/ipout.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ip/ipfrag.om4fg.dep" src="ip/ipfrag.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/lli/lli.om4fg.dep" src="lli/lli.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/lli/lliin.om4fg.dep" src="lli/lliin.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/lli/lliout.om4fg.dep" src="lli/lliout.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/node/node.om4fg.dep" src="node/node.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/pipe/pipe.om4fg.dep" src="pipe/pipe.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/raw/raw.om4fg.dep" src="raw/raw.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/res/exec.om4fg.dep" src="res/exec.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/res/sb.om4fg.dep" src="res/sb.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/res/timer.om4fg.dep" src="res/timer.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/route/route.om4fg.dep" src="route/route.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/route/rtable.om4fg.dep" src="route/rtable.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/rtc/rtc.om4fg.dep" src="rtc/rtc.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/sock/sock.om4fg.dep" src="sock/sock.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/sock/sockint.om4fg.dep" src="sock/sockint.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/sock/sockpcb.om4fg.dep" src="sock/sockpcb.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/sock/sockprot.om4fg.dep" src="sock/sockprot.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp/tcp.om4fg.dep" src="tcp/tcp.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp/tcpin.om4fg.dep" src="tcp/tcpin.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp/tcpout.om4fg.dep" src="tcp/tcpout.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp/tcpprot.om4fg.dep" src="tcp/tcpprot.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp/tcptime.om4fg.dep" src="tcp/tcptime.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/udp/udp.om4fg.dep" src="udp/udp.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/nat/nat.om4fg.dep" src="nat/nat.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/nat/natpkt.om4fg.dep" src="nat/natpkt.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/nat/proxy.om4fg.dep" src="nat/proxy.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ppp/auth.om4fg.dep" src="ppp/auth.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ppp/ipcp.om4fg.dep" src="ppp/ipcp.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ppp/lcp.om4fg.dep" src="ppp/lcp.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ppp/md5.om4fg.dep" src="ppp/md5.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ppp/nimuppp.om4fg.dep" src="ppp/nimuppp.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/utils/listlib.om4fg.dep" src="utils/listlib.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/pppoe/nimupppoe.om4fg.dep" src="pppoe/nimupppoe.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/nimu/nimu.om4fg.dep" src="nimu/nimu.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/vlan/vlan.om4fg.dep" src="vlan/vlan.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/bind6/bind6.om4fg.dep" src="bind6/bind6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/icmpv6/icmpv6.om4fg.dep" src="icmpv6/icmpv6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/icmpv6/icmpv6_ndisc.om4fg.dep" src="icmpv6/icmpv6_ndisc.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/icmpv6/icmpv6in.om4fg.dep" src="icmpv6/icmpv6in.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/icmpv6/icmpv6out.om4fg.dep" src="icmpv6/icmpv6out.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ipv6/ipv6.om4fg.dep" src="ipv6/ipv6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ipv6/ipv6_exthdrs.om4fg.dep" src="ipv6/ipv6_exthdrs.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ipv6/ipv6_frag.om4fg.dep" src="ipv6/ipv6_frag.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ipv6/ipv6in.om4fg.dep" src="ipv6/ipv6in.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ipv6/ipv6out.om4fg.dep" src="ipv6/ipv6out.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/lli6/lli6.om4fg.dep" src="lli6/lli6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/mld/mld.om4fg.dep" src="mld/mld.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/raw6/raw6.om4fg.dep" src="raw6/raw6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/res6/sb6.om4fg.dep" src="res6/sb6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/route6/route6.om4fg.dep" src="route6/route6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/sock6/sock6.om4fg.dep" src="sock6/sock6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/sock6/sock6int.om4fg.dep" src="sock6/sock6int.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/sock6/sock6pcb.om4fg.dep" src="sock6/sock6pcb.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/sock6/sock6prot.om4fg.dep" src="sock6/sock6prot.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp6/tcp6.om4fg.dep" src="tcp6/tcp6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp6/tcp6in.om4fg.dep" src="tcp6/tcp6in.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp6/tcp6out.om4fg.dep" src="tcp6/tcp6out.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp6/tcp6prot.om4fg.dep" src="tcp6/tcp6prot.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp6/tcp6time.om4fg.dep" src="tcp6/tcp6time.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/udp6/udp6.om4fg.dep" src="udp6/udp6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/raweth/raweth.om4fg.dep" src="raweth/raweth.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/rawethsock/rawethsock.om4fg.dep" src="rawethsock/rawethsock.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/rawethsock/rawethsock_prot.om4fg.dep" src="rawethsock/rawethsock_prot.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/rawethsock/rawethsock_pcb.om4fg.dep" src="rawethsock/rawethsock_pcb.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/pbm/pbm.om4fg.dep" src="pbm/pbm.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/pbm/pbm_data.om4fg.dep" src="pbm/pbm_data.c"/>
+        <srcFile name="lib/stk6_ppp_pppoe.am4fg.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/package/package_ti.ndk.stack.om4fg.dep" src="package/package_ti.ndk.stack.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/bind/bind.om4fg.dep" src="bind/bind.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/fdt/file.om4fg.dep" src="fdt/file.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/fdt/fileuser.om4fg.dep" src="fdt/fileuser.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/fdt/socket.om4fg.dep" src="fdt/socket.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/fdt/socket_data.om4fg.dep" src="fdt/socket_data.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/icmp/icmp.om4fg.dep" src="icmp/icmp.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/icmp/icmpin.om4fg.dep" src="icmp/icmpin.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/igmp/igmp.om4fg.dep" src="igmp/igmp.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ip/ip.om4fg.dep" src="ip/ip.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ip/ipin.om4fg.dep" src="ip/ipin.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ip/ipout.om4fg.dep" src="ip/ipout.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ip/ipfrag.om4fg.dep" src="ip/ipfrag.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/lli/lli.om4fg.dep" src="lli/lli.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/lli/lliin.om4fg.dep" src="lli/lliin.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/lli/lliout.om4fg.dep" src="lli/lliout.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/node/node.om4fg.dep" src="node/node.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/pipe/pipe.om4fg.dep" src="pipe/pipe.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/raw/raw.om4fg.dep" src="raw/raw.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/res/exec.om4fg.dep" src="res/exec.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/res/sb.om4fg.dep" src="res/sb.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/res/timer.om4fg.dep" src="res/timer.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/route/route.om4fg.dep" src="route/route.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/route/rtable.om4fg.dep" src="route/rtable.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/rtc/rtc.om4fg.dep" src="rtc/rtc.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/sock/sock.om4fg.dep" src="sock/sock.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/sock/sockint.om4fg.dep" src="sock/sockint.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/sock/sockpcb.om4fg.dep" src="sock/sockpcb.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/sock/sockprot.om4fg.dep" src="sock/sockprot.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp/tcp.om4fg.dep" src="tcp/tcp.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp/tcpin.om4fg.dep" src="tcp/tcpin.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp/tcpout.om4fg.dep" src="tcp/tcpout.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp/tcpprot.om4fg.dep" src="tcp/tcpprot.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp/tcptime.om4fg.dep" src="tcp/tcptime.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/udp/udp.om4fg.dep" src="udp/udp.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/nat/nat.om4fg.dep" src="nat/nat.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/nat/natpkt.om4fg.dep" src="nat/natpkt.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/nat/proxy.om4fg.dep" src="nat/proxy.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ppp/auth.om4fg.dep" src="ppp/auth.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ppp/ipcp.om4fg.dep" src="ppp/ipcp.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ppp/lcp.om4fg.dep" src="ppp/lcp.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ppp/md5.om4fg.dep" src="ppp/md5.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ppp/nimuppp.om4fg.dep" src="ppp/nimuppp.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/utils/listlib.om4fg.dep" src="utils/listlib.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/pppoe/nimupppoe.om4fg.dep" src="pppoe/nimupppoe.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/nimu/nimu.om4fg.dep" src="nimu/nimu.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/vlan/vlan.om4fg.dep" src="vlan/vlan.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/bind6/bind6.om4fg.dep" src="bind6/bind6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/icmpv6/icmpv6.om4fg.dep" src="icmpv6/icmpv6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/icmpv6/icmpv6_ndisc.om4fg.dep" src="icmpv6/icmpv6_ndisc.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/icmpv6/icmpv6in.om4fg.dep" src="icmpv6/icmpv6in.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/icmpv6/icmpv6out.om4fg.dep" src="icmpv6/icmpv6out.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ipv6/ipv6.om4fg.dep" src="ipv6/ipv6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ipv6/ipv6_exthdrs.om4fg.dep" src="ipv6/ipv6_exthdrs.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ipv6/ipv6_frag.om4fg.dep" src="ipv6/ipv6_frag.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ipv6/ipv6in.om4fg.dep" src="ipv6/ipv6in.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ipv6/ipv6out.om4fg.dep" src="ipv6/ipv6out.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/lli6/lli6.om4fg.dep" src="lli6/lli6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/mld/mld.om4fg.dep" src="mld/mld.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/raw6/raw6.om4fg.dep" src="raw6/raw6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/res6/sb6.om4fg.dep" src="res6/sb6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/route6/route6.om4fg.dep" src="route6/route6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/sock6/sock6.om4fg.dep" src="sock6/sock6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/sock6/sock6int.om4fg.dep" src="sock6/sock6int.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/sock6/sock6pcb.om4fg.dep" src="sock6/sock6pcb.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/sock6/sock6prot.om4fg.dep" src="sock6/sock6prot.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp6/tcp6.om4fg.dep" src="tcp6/tcp6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp6/tcp6in.om4fg.dep" src="tcp6/tcp6in.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp6/tcp6out.om4fg.dep" src="tcp6/tcp6out.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp6/tcp6prot.om4fg.dep" src="tcp6/tcp6prot.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp6/tcp6time.om4fg.dep" src="tcp6/tcp6time.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/udp6/udp6.om4fg.dep" src="udp6/udp6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/raweth/raweth.om4fg.dep" src="raweth/raweth.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/rawethsock/rawethsock.om4fg.dep" src="rawethsock/rawethsock.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/rawethsock/rawethsock_prot.om4fg.dep" src="rawethsock/rawethsock_prot.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/rawethsock/rawethsock_pcb.om4fg.dep" src="rawethsock/rawethsock_pcb.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/pbm/pbm.om4fg.dep" src="pbm/pbm.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/pbm/pbm_data.om4fg.dep" src="pbm/pbm_data.c"/>
+        <srcFile name="lib/stk.arm4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/stk/package/package_ti.ndk.stack.orm4f.dep" src="package/package_ti.ndk.stack.c"/>
+        <srcFile name="package/lib/lib/stk/bind/bind.orm4f.dep" src="bind/bind.c"/>
+        <srcFile name="package/lib/lib/stk/fdt/file.orm4f.dep" src="fdt/file.c"/>
+        <srcFile name="package/lib/lib/stk/fdt/fileuser.orm4f.dep" src="fdt/fileuser.c"/>
+        <srcFile name="package/lib/lib/stk/fdt/socket.orm4f.dep" src="fdt/socket.c"/>
+        <srcFile name="package/lib/lib/stk/fdt/socket_data.orm4f.dep" src="fdt/socket_data.c"/>
+        <srcFile name="package/lib/lib/stk/icmp/icmp.orm4f.dep" src="icmp/icmp.c"/>
+        <srcFile name="package/lib/lib/stk/icmp/icmpin.orm4f.dep" src="icmp/icmpin.c"/>
+        <srcFile name="package/lib/lib/stk/igmp/igmp.orm4f.dep" src="igmp/igmp.c"/>
+        <srcFile name="package/lib/lib/stk/ip/ip.orm4f.dep" src="ip/ip.c"/>
+        <srcFile name="package/lib/lib/stk/ip/ipin.orm4f.dep" src="ip/ipin.c"/>
+        <srcFile name="package/lib/lib/stk/ip/ipout.orm4f.dep" src="ip/ipout.c"/>
+        <srcFile name="package/lib/lib/stk/ip/ipfrag.orm4f.dep" src="ip/ipfrag.c"/>
+        <srcFile name="package/lib/lib/stk/lli/lli.orm4f.dep" src="lli/lli.c"/>
+        <srcFile name="package/lib/lib/stk/lli/lliin.orm4f.dep" src="lli/lliin.c"/>
+        <srcFile name="package/lib/lib/stk/lli/lliout.orm4f.dep" src="lli/lliout.c"/>
+        <srcFile name="package/lib/lib/stk/node/node.orm4f.dep" src="node/node.c"/>
+        <srcFile name="package/lib/lib/stk/pipe/pipe.orm4f.dep" src="pipe/pipe.c"/>
+        <srcFile name="package/lib/lib/stk/raw/raw.orm4f.dep" src="raw/raw.c"/>
+        <srcFile name="package/lib/lib/stk/res/exec.orm4f.dep" src="res/exec.c"/>
+        <srcFile name="package/lib/lib/stk/res/sb.orm4f.dep" src="res/sb.c"/>
+        <srcFile name="package/lib/lib/stk/res/timer.orm4f.dep" src="res/timer.c"/>
+        <srcFile name="package/lib/lib/stk/route/route.orm4f.dep" src="route/route.c"/>
+        <srcFile name="package/lib/lib/stk/route/rtable.orm4f.dep" src="route/rtable.c"/>
+        <srcFile name="package/lib/lib/stk/rtc/rtc.orm4f.dep" src="rtc/rtc.c"/>
+        <srcFile name="package/lib/lib/stk/sock/sock.orm4f.dep" src="sock/sock.c"/>
+        <srcFile name="package/lib/lib/stk/sock/sockint.orm4f.dep" src="sock/sockint.c"/>
+        <srcFile name="package/lib/lib/stk/sock/sockpcb.orm4f.dep" src="sock/sockpcb.c"/>
+        <srcFile name="package/lib/lib/stk/sock/sockprot.orm4f.dep" src="sock/sockprot.c"/>
+        <srcFile name="package/lib/lib/stk/tcp/tcp.orm4f.dep" src="tcp/tcp.c"/>
+        <srcFile name="package/lib/lib/stk/tcp/tcpin.orm4f.dep" src="tcp/tcpin.c"/>
+        <srcFile name="package/lib/lib/stk/tcp/tcpout.orm4f.dep" src="tcp/tcpout.c"/>
+        <srcFile name="package/lib/lib/stk/tcp/tcpprot.orm4f.dep" src="tcp/tcpprot.c"/>
+        <srcFile name="package/lib/lib/stk/tcp/tcptime.orm4f.dep" src="tcp/tcptime.c"/>
+        <srcFile name="package/lib/lib/stk/udp/udp.orm4f.dep" src="udp/udp.c"/>
+        <srcFile name="package/lib/lib/stk/nat/nat.orm4f.dep" src="nat/nat.c"/>
+        <srcFile name="package/lib/lib/stk/nat/natpkt.orm4f.dep" src="nat/natpkt.c"/>
+        <srcFile name="package/lib/lib/stk/nat/proxy.orm4f.dep" src="nat/proxy.c"/>
+        <srcFile name="package/lib/lib/stk/ppp/auth.orm4f.dep" src="ppp/auth.c"/>
+        <srcFile name="package/lib/lib/stk/ppp/ipcp.orm4f.dep" src="ppp/ipcp.c"/>
+        <srcFile name="package/lib/lib/stk/ppp/lcp.orm4f.dep" src="ppp/lcp.c"/>
+        <srcFile name="package/lib/lib/stk/ppp/md5.orm4f.dep" src="ppp/md5.c"/>
+        <srcFile name="package/lib/lib/stk/ppp/nimuppp.orm4f.dep" src="ppp/nimuppp.c"/>
+        <srcFile name="package/lib/lib/stk/utils/listlib.orm4f.dep" src="utils/listlib.c"/>
+        <srcFile name="package/lib/lib/stk/pppoe/nimupppoe.orm4f.dep" src="pppoe/nimupppoe.c"/>
+        <srcFile name="package/lib/lib/stk/nimu/nimu.orm4f.dep" src="nimu/nimu.c"/>
+        <srcFile name="package/lib/lib/stk/vlan/vlan.orm4f.dep" src="vlan/vlan.c"/>
+        <srcFile name="package/lib/lib/stk/bind6/bind6.orm4f.dep" src="bind6/bind6.c"/>
+        <srcFile name="package/lib/lib/stk/icmpv6/icmpv6.orm4f.dep" src="icmpv6/icmpv6.c"/>
+        <srcFile name="package/lib/lib/stk/icmpv6/icmpv6_ndisc.orm4f.dep" src="icmpv6/icmpv6_ndisc.c"/>
+        <srcFile name="package/lib/lib/stk/icmpv6/icmpv6in.orm4f.dep" src="icmpv6/icmpv6in.c"/>
+        <srcFile name="package/lib/lib/stk/icmpv6/icmpv6out.orm4f.dep" src="icmpv6/icmpv6out.c"/>
+        <srcFile name="package/lib/lib/stk/ipv6/ipv6.orm4f.dep" src="ipv6/ipv6.c"/>
+        <srcFile name="package/lib/lib/stk/ipv6/ipv6_exthdrs.orm4f.dep" src="ipv6/ipv6_exthdrs.c"/>
+        <srcFile name="package/lib/lib/stk/ipv6/ipv6_frag.orm4f.dep" src="ipv6/ipv6_frag.c"/>
+        <srcFile name="package/lib/lib/stk/ipv6/ipv6in.orm4f.dep" src="ipv6/ipv6in.c"/>
+        <srcFile name="package/lib/lib/stk/ipv6/ipv6out.orm4f.dep" src="ipv6/ipv6out.c"/>
+        <srcFile name="package/lib/lib/stk/lli6/lli6.orm4f.dep" src="lli6/lli6.c"/>
+        <srcFile name="package/lib/lib/stk/mld/mld.orm4f.dep" src="mld/mld.c"/>
+        <srcFile name="package/lib/lib/stk/raw6/raw6.orm4f.dep" src="raw6/raw6.c"/>
+        <srcFile name="package/lib/lib/stk/res6/sb6.orm4f.dep" src="res6/sb6.c"/>
+        <srcFile name="package/lib/lib/stk/route6/route6.orm4f.dep" src="route6/route6.c"/>
+        <srcFile name="package/lib/lib/stk/sock6/sock6.orm4f.dep" src="sock6/sock6.c"/>
+        <srcFile name="package/lib/lib/stk/sock6/sock6int.orm4f.dep" src="sock6/sock6int.c"/>
+        <srcFile name="package/lib/lib/stk/sock6/sock6pcb.orm4f.dep" src="sock6/sock6pcb.c"/>
+        <srcFile name="package/lib/lib/stk/sock6/sock6prot.orm4f.dep" src="sock6/sock6prot.c"/>
+        <srcFile name="package/lib/lib/stk/tcp6/tcp6.orm4f.dep" src="tcp6/tcp6.c"/>
+        <srcFile name="package/lib/lib/stk/tcp6/tcp6in.orm4f.dep" src="tcp6/tcp6in.c"/>
+        <srcFile name="package/lib/lib/stk/tcp6/tcp6out.orm4f.dep" src="tcp6/tcp6out.c"/>
+        <srcFile name="package/lib/lib/stk/tcp6/tcp6prot.orm4f.dep" src="tcp6/tcp6prot.c"/>
+        <srcFile name="package/lib/lib/stk/tcp6/tcp6time.orm4f.dep" src="tcp6/tcp6time.c"/>
+        <srcFile name="package/lib/lib/stk/udp6/udp6.orm4f.dep" src="udp6/udp6.c"/>
+        <srcFile name="package/lib/lib/stk/raweth/raweth.orm4f.dep" src="raweth/raweth.c"/>
+        <srcFile name="package/lib/lib/stk/rawethsock/rawethsock.orm4f.dep" src="rawethsock/rawethsock.c"/>
+        <srcFile name="package/lib/lib/stk/rawethsock/rawethsock_prot.orm4f.dep" src="rawethsock/rawethsock_prot.c"/>
+        <srcFile name="package/lib/lib/stk/rawethsock/rawethsock_pcb.orm4f.dep" src="rawethsock/rawethsock_pcb.c"/>
+        <srcFile name="package/lib/lib/stk/pbm/pbm.orm4f.dep" src="pbm/pbm.c"/>
+        <srcFile name="package/lib/lib/stk/pbm/pbm_data.orm4f.dep" src="pbm/pbm_data.c"/>
+        <srcFile name="lib/stk6.arm4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/stk6/package/package_ti.ndk.stack.orm4f.dep" src="package/package_ti.ndk.stack.c"/>
+        <srcFile name="package/lib/lib/stk6/bind/bind.orm4f.dep" src="bind/bind.c"/>
+        <srcFile name="package/lib/lib/stk6/fdt/file.orm4f.dep" src="fdt/file.c"/>
+        <srcFile name="package/lib/lib/stk6/fdt/fileuser.orm4f.dep" src="fdt/fileuser.c"/>
+        <srcFile name="package/lib/lib/stk6/fdt/socket.orm4f.dep" src="fdt/socket.c"/>
+        <srcFile name="package/lib/lib/stk6/fdt/socket_data.orm4f.dep" src="fdt/socket_data.c"/>
+        <srcFile name="package/lib/lib/stk6/icmp/icmp.orm4f.dep" src="icmp/icmp.c"/>
+        <srcFile name="package/lib/lib/stk6/icmp/icmpin.orm4f.dep" src="icmp/icmpin.c"/>
+        <srcFile name="package/lib/lib/stk6/igmp/igmp.orm4f.dep" src="igmp/igmp.c"/>
+        <srcFile name="package/lib/lib/stk6/ip/ip.orm4f.dep" src="ip/ip.c"/>
+        <srcFile name="package/lib/lib/stk6/ip/ipin.orm4f.dep" src="ip/ipin.c"/>
+        <srcFile name="package/lib/lib/stk6/ip/ipout.orm4f.dep" src="ip/ipout.c"/>
+        <srcFile name="package/lib/lib/stk6/ip/ipfrag.orm4f.dep" src="ip/ipfrag.c"/>
+        <srcFile name="package/lib/lib/stk6/lli/lli.orm4f.dep" src="lli/lli.c"/>
+        <srcFile name="package/lib/lib/stk6/lli/lliin.orm4f.dep" src="lli/lliin.c"/>
+        <srcFile name="package/lib/lib/stk6/lli/lliout.orm4f.dep" src="lli/lliout.c"/>
+        <srcFile name="package/lib/lib/stk6/node/node.orm4f.dep" src="node/node.c"/>
+        <srcFile name="package/lib/lib/stk6/pipe/pipe.orm4f.dep" src="pipe/pipe.c"/>
+        <srcFile name="package/lib/lib/stk6/raw/raw.orm4f.dep" src="raw/raw.c"/>
+        <srcFile name="package/lib/lib/stk6/res/exec.orm4f.dep" src="res/exec.c"/>
+        <srcFile name="package/lib/lib/stk6/res/sb.orm4f.dep" src="res/sb.c"/>
+        <srcFile name="package/lib/lib/stk6/res/timer.orm4f.dep" src="res/timer.c"/>
+        <srcFile name="package/lib/lib/stk6/route/route.orm4f.dep" src="route/route.c"/>
+        <srcFile name="package/lib/lib/stk6/route/rtable.orm4f.dep" src="route/rtable.c"/>
+        <srcFile name="package/lib/lib/stk6/rtc/rtc.orm4f.dep" src="rtc/rtc.c"/>
+        <srcFile name="package/lib/lib/stk6/sock/sock.orm4f.dep" src="sock/sock.c"/>
+        <srcFile name="package/lib/lib/stk6/sock/sockint.orm4f.dep" src="sock/sockint.c"/>
+        <srcFile name="package/lib/lib/stk6/sock/sockpcb.orm4f.dep" src="sock/sockpcb.c"/>
+        <srcFile name="package/lib/lib/stk6/sock/sockprot.orm4f.dep" src="sock/sockprot.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp/tcp.orm4f.dep" src="tcp/tcp.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp/tcpin.orm4f.dep" src="tcp/tcpin.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp/tcpout.orm4f.dep" src="tcp/tcpout.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp/tcpprot.orm4f.dep" src="tcp/tcpprot.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp/tcptime.orm4f.dep" src="tcp/tcptime.c"/>
+        <srcFile name="package/lib/lib/stk6/udp/udp.orm4f.dep" src="udp/udp.c"/>
+        <srcFile name="package/lib/lib/stk6/nat/nat.orm4f.dep" src="nat/nat.c"/>
+        <srcFile name="package/lib/lib/stk6/nat/natpkt.orm4f.dep" src="nat/natpkt.c"/>
+        <srcFile name="package/lib/lib/stk6/nat/proxy.orm4f.dep" src="nat/proxy.c"/>
+        <srcFile name="package/lib/lib/stk6/ppp/auth.orm4f.dep" src="ppp/auth.c"/>
+        <srcFile name="package/lib/lib/stk6/ppp/ipcp.orm4f.dep" src="ppp/ipcp.c"/>
+        <srcFile name="package/lib/lib/stk6/ppp/lcp.orm4f.dep" src="ppp/lcp.c"/>
+        <srcFile name="package/lib/lib/stk6/ppp/md5.orm4f.dep" src="ppp/md5.c"/>
+        <srcFile name="package/lib/lib/stk6/ppp/nimuppp.orm4f.dep" src="ppp/nimuppp.c"/>
+        <srcFile name="package/lib/lib/stk6/utils/listlib.orm4f.dep" src="utils/listlib.c"/>
+        <srcFile name="package/lib/lib/stk6/pppoe/nimupppoe.orm4f.dep" src="pppoe/nimupppoe.c"/>
+        <srcFile name="package/lib/lib/stk6/nimu/nimu.orm4f.dep" src="nimu/nimu.c"/>
+        <srcFile name="package/lib/lib/stk6/vlan/vlan.orm4f.dep" src="vlan/vlan.c"/>
+        <srcFile name="package/lib/lib/stk6/bind6/bind6.orm4f.dep" src="bind6/bind6.c"/>
+        <srcFile name="package/lib/lib/stk6/icmpv6/icmpv6.orm4f.dep" src="icmpv6/icmpv6.c"/>
+        <srcFile name="package/lib/lib/stk6/icmpv6/icmpv6_ndisc.orm4f.dep" src="icmpv6/icmpv6_ndisc.c"/>
+        <srcFile name="package/lib/lib/stk6/icmpv6/icmpv6in.orm4f.dep" src="icmpv6/icmpv6in.c"/>
+        <srcFile name="package/lib/lib/stk6/icmpv6/icmpv6out.orm4f.dep" src="icmpv6/icmpv6out.c"/>
+        <srcFile name="package/lib/lib/stk6/ipv6/ipv6.orm4f.dep" src="ipv6/ipv6.c"/>
+        <srcFile name="package/lib/lib/stk6/ipv6/ipv6_exthdrs.orm4f.dep" src="ipv6/ipv6_exthdrs.c"/>
+        <srcFile name="package/lib/lib/stk6/ipv6/ipv6_frag.orm4f.dep" src="ipv6/ipv6_frag.c"/>
+        <srcFile name="package/lib/lib/stk6/ipv6/ipv6in.orm4f.dep" src="ipv6/ipv6in.c"/>
+        <srcFile name="package/lib/lib/stk6/ipv6/ipv6out.orm4f.dep" src="ipv6/ipv6out.c"/>
+        <srcFile name="package/lib/lib/stk6/lli6/lli6.orm4f.dep" src="lli6/lli6.c"/>
+        <srcFile name="package/lib/lib/stk6/mld/mld.orm4f.dep" src="mld/mld.c"/>
+        <srcFile name="package/lib/lib/stk6/raw6/raw6.orm4f.dep" src="raw6/raw6.c"/>
+        <srcFile name="package/lib/lib/stk6/res6/sb6.orm4f.dep" src="res6/sb6.c"/>
+        <srcFile name="package/lib/lib/stk6/route6/route6.orm4f.dep" src="route6/route6.c"/>
+        <srcFile name="package/lib/lib/stk6/sock6/sock6.orm4f.dep" src="sock6/sock6.c"/>
+        <srcFile name="package/lib/lib/stk6/sock6/sock6int.orm4f.dep" src="sock6/sock6int.c"/>
+        <srcFile name="package/lib/lib/stk6/sock6/sock6pcb.orm4f.dep" src="sock6/sock6pcb.c"/>
+        <srcFile name="package/lib/lib/stk6/sock6/sock6prot.orm4f.dep" src="sock6/sock6prot.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp6/tcp6.orm4f.dep" src="tcp6/tcp6.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp6/tcp6in.orm4f.dep" src="tcp6/tcp6in.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp6/tcp6out.orm4f.dep" src="tcp6/tcp6out.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp6/tcp6prot.orm4f.dep" src="tcp6/tcp6prot.c"/>
+        <srcFile name="package/lib/lib/stk6/tcp6/tcp6time.orm4f.dep" src="tcp6/tcp6time.c"/>
+        <srcFile name="package/lib/lib/stk6/udp6/udp6.orm4f.dep" src="udp6/udp6.c"/>
+        <srcFile name="package/lib/lib/stk6/raweth/raweth.orm4f.dep" src="raweth/raweth.c"/>
+        <srcFile name="package/lib/lib/stk6/rawethsock/rawethsock.orm4f.dep" src="rawethsock/rawethsock.c"/>
+        <srcFile name="package/lib/lib/stk6/rawethsock/rawethsock_prot.orm4f.dep" src="rawethsock/rawethsock_prot.c"/>
+        <srcFile name="package/lib/lib/stk6/rawethsock/rawethsock_pcb.orm4f.dep" src="rawethsock/rawethsock_pcb.c"/>
+        <srcFile name="package/lib/lib/stk6/pbm/pbm.orm4f.dep" src="pbm/pbm.c"/>
+        <srcFile name="package/lib/lib/stk6/pbm/pbm_data.orm4f.dep" src="pbm/pbm_data.c"/>
+        <srcFile name="lib/stk_ppp_pppoe.arm4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/package/package_ti.ndk.stack.orm4f.dep" src="package/package_ti.ndk.stack.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/bind/bind.orm4f.dep" src="bind/bind.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/fdt/file.orm4f.dep" src="fdt/file.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/fdt/fileuser.orm4f.dep" src="fdt/fileuser.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/fdt/socket.orm4f.dep" src="fdt/socket.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/fdt/socket_data.orm4f.dep" src="fdt/socket_data.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/icmp/icmp.orm4f.dep" src="icmp/icmp.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/icmp/icmpin.orm4f.dep" src="icmp/icmpin.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/igmp/igmp.orm4f.dep" src="igmp/igmp.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ip/ip.orm4f.dep" src="ip/ip.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ip/ipin.orm4f.dep" src="ip/ipin.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ip/ipout.orm4f.dep" src="ip/ipout.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ip/ipfrag.orm4f.dep" src="ip/ipfrag.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/lli/lli.orm4f.dep" src="lli/lli.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/lli/lliin.orm4f.dep" src="lli/lliin.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/lli/lliout.orm4f.dep" src="lli/lliout.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/node/node.orm4f.dep" src="node/node.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/pipe/pipe.orm4f.dep" src="pipe/pipe.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/raw/raw.orm4f.dep" src="raw/raw.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/res/exec.orm4f.dep" src="res/exec.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/res/sb.orm4f.dep" src="res/sb.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/res/timer.orm4f.dep" src="res/timer.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/route/route.orm4f.dep" src="route/route.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/route/rtable.orm4f.dep" src="route/rtable.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/rtc/rtc.orm4f.dep" src="rtc/rtc.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/sock/sock.orm4f.dep" src="sock/sock.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/sock/sockint.orm4f.dep" src="sock/sockint.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/sock/sockpcb.orm4f.dep" src="sock/sockpcb.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/sock/sockprot.orm4f.dep" src="sock/sockprot.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp/tcp.orm4f.dep" src="tcp/tcp.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp/tcpin.orm4f.dep" src="tcp/tcpin.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp/tcpout.orm4f.dep" src="tcp/tcpout.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp/tcpprot.orm4f.dep" src="tcp/tcpprot.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp/tcptime.orm4f.dep" src="tcp/tcptime.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/udp/udp.orm4f.dep" src="udp/udp.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/nat/nat.orm4f.dep" src="nat/nat.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/nat/natpkt.orm4f.dep" src="nat/natpkt.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/nat/proxy.orm4f.dep" src="nat/proxy.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ppp/auth.orm4f.dep" src="ppp/auth.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ppp/ipcp.orm4f.dep" src="ppp/ipcp.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ppp/lcp.orm4f.dep" src="ppp/lcp.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ppp/md5.orm4f.dep" src="ppp/md5.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ppp/nimuppp.orm4f.dep" src="ppp/nimuppp.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/utils/listlib.orm4f.dep" src="utils/listlib.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/pppoe/nimupppoe.orm4f.dep" src="pppoe/nimupppoe.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/nimu/nimu.orm4f.dep" src="nimu/nimu.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/vlan/vlan.orm4f.dep" src="vlan/vlan.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/bind6/bind6.orm4f.dep" src="bind6/bind6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/icmpv6/icmpv6.orm4f.dep" src="icmpv6/icmpv6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/icmpv6/icmpv6_ndisc.orm4f.dep" src="icmpv6/icmpv6_ndisc.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/icmpv6/icmpv6in.orm4f.dep" src="icmpv6/icmpv6in.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/icmpv6/icmpv6out.orm4f.dep" src="icmpv6/icmpv6out.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ipv6/ipv6.orm4f.dep" src="ipv6/ipv6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ipv6/ipv6_exthdrs.orm4f.dep" src="ipv6/ipv6_exthdrs.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ipv6/ipv6_frag.orm4f.dep" src="ipv6/ipv6_frag.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ipv6/ipv6in.orm4f.dep" src="ipv6/ipv6in.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/ipv6/ipv6out.orm4f.dep" src="ipv6/ipv6out.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/lli6/lli6.orm4f.dep" src="lli6/lli6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/mld/mld.orm4f.dep" src="mld/mld.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/raw6/raw6.orm4f.dep" src="raw6/raw6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/res6/sb6.orm4f.dep" src="res6/sb6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/route6/route6.orm4f.dep" src="route6/route6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/sock6/sock6.orm4f.dep" src="sock6/sock6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/sock6/sock6int.orm4f.dep" src="sock6/sock6int.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/sock6/sock6pcb.orm4f.dep" src="sock6/sock6pcb.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/sock6/sock6prot.orm4f.dep" src="sock6/sock6prot.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp6/tcp6.orm4f.dep" src="tcp6/tcp6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp6/tcp6in.orm4f.dep" src="tcp6/tcp6in.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp6/tcp6out.orm4f.dep" src="tcp6/tcp6out.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp6/tcp6prot.orm4f.dep" src="tcp6/tcp6prot.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/tcp6/tcp6time.orm4f.dep" src="tcp6/tcp6time.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/udp6/udp6.orm4f.dep" src="udp6/udp6.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/raweth/raweth.orm4f.dep" src="raweth/raweth.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/rawethsock/rawethsock.orm4f.dep" src="rawethsock/rawethsock.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/rawethsock/rawethsock_prot.orm4f.dep" src="rawethsock/rawethsock_prot.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/rawethsock/rawethsock_pcb.orm4f.dep" src="rawethsock/rawethsock_pcb.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/pbm/pbm.orm4f.dep" src="pbm/pbm.c"/>
+        <srcFile name="package/lib/lib/stk_ppp_pppoe/pbm/pbm_data.orm4f.dep" src="pbm/pbm_data.c"/>
+        <srcFile name="lib/stk6_ppp_pppoe.arm4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/package/package_ti.ndk.stack.orm4f.dep" src="package/package_ti.ndk.stack.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/bind/bind.orm4f.dep" src="bind/bind.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/fdt/file.orm4f.dep" src="fdt/file.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/fdt/fileuser.orm4f.dep" src="fdt/fileuser.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/fdt/socket.orm4f.dep" src="fdt/socket.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/fdt/socket_data.orm4f.dep" src="fdt/socket_data.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/icmp/icmp.orm4f.dep" src="icmp/icmp.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/icmp/icmpin.orm4f.dep" src="icmp/icmpin.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/igmp/igmp.orm4f.dep" src="igmp/igmp.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ip/ip.orm4f.dep" src="ip/ip.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ip/ipin.orm4f.dep" src="ip/ipin.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ip/ipout.orm4f.dep" src="ip/ipout.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ip/ipfrag.orm4f.dep" src="ip/ipfrag.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/lli/lli.orm4f.dep" src="lli/lli.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/lli/lliin.orm4f.dep" src="lli/lliin.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/lli/lliout.orm4f.dep" src="lli/lliout.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/node/node.orm4f.dep" src="node/node.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/pipe/pipe.orm4f.dep" src="pipe/pipe.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/raw/raw.orm4f.dep" src="raw/raw.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/res/exec.orm4f.dep" src="res/exec.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/res/sb.orm4f.dep" src="res/sb.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/res/timer.orm4f.dep" src="res/timer.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/route/route.orm4f.dep" src="route/route.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/route/rtable.orm4f.dep" src="route/rtable.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/rtc/rtc.orm4f.dep" src="rtc/rtc.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/sock/sock.orm4f.dep" src="sock/sock.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/sock/sockint.orm4f.dep" src="sock/sockint.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/sock/sockpcb.orm4f.dep" src="sock/sockpcb.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/sock/sockprot.orm4f.dep" src="sock/sockprot.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp/tcp.orm4f.dep" src="tcp/tcp.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp/tcpin.orm4f.dep" src="tcp/tcpin.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp/tcpout.orm4f.dep" src="tcp/tcpout.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp/tcpprot.orm4f.dep" src="tcp/tcpprot.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp/tcptime.orm4f.dep" src="tcp/tcptime.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/udp/udp.orm4f.dep" src="udp/udp.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/nat/nat.orm4f.dep" src="nat/nat.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/nat/natpkt.orm4f.dep" src="nat/natpkt.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/nat/proxy.orm4f.dep" src="nat/proxy.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ppp/auth.orm4f.dep" src="ppp/auth.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ppp/ipcp.orm4f.dep" src="ppp/ipcp.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ppp/lcp.orm4f.dep" src="ppp/lcp.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ppp/md5.orm4f.dep" src="ppp/md5.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ppp/nimuppp.orm4f.dep" src="ppp/nimuppp.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/utils/listlib.orm4f.dep" src="utils/listlib.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/pppoe/nimupppoe.orm4f.dep" src="pppoe/nimupppoe.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/nimu/nimu.orm4f.dep" src="nimu/nimu.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/vlan/vlan.orm4f.dep" src="vlan/vlan.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/bind6/bind6.orm4f.dep" src="bind6/bind6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/icmpv6/icmpv6.orm4f.dep" src="icmpv6/icmpv6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/icmpv6/icmpv6_ndisc.orm4f.dep" src="icmpv6/icmpv6_ndisc.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/icmpv6/icmpv6in.orm4f.dep" src="icmpv6/icmpv6in.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/icmpv6/icmpv6out.orm4f.dep" src="icmpv6/icmpv6out.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ipv6/ipv6.orm4f.dep" src="ipv6/ipv6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ipv6/ipv6_exthdrs.orm4f.dep" src="ipv6/ipv6_exthdrs.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ipv6/ipv6_frag.orm4f.dep" src="ipv6/ipv6_frag.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ipv6/ipv6in.orm4f.dep" src="ipv6/ipv6in.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/ipv6/ipv6out.orm4f.dep" src="ipv6/ipv6out.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/lli6/lli6.orm4f.dep" src="lli6/lli6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/mld/mld.orm4f.dep" src="mld/mld.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/raw6/raw6.orm4f.dep" src="raw6/raw6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/res6/sb6.orm4f.dep" src="res6/sb6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/route6/route6.orm4f.dep" src="route6/route6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/sock6/sock6.orm4f.dep" src="sock6/sock6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/sock6/sock6int.orm4f.dep" src="sock6/sock6int.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/sock6/sock6pcb.orm4f.dep" src="sock6/sock6pcb.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/sock6/sock6prot.orm4f.dep" src="sock6/sock6prot.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp6/tcp6.orm4f.dep" src="tcp6/tcp6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp6/tcp6in.orm4f.dep" src="tcp6/tcp6in.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp6/tcp6out.orm4f.dep" src="tcp6/tcp6out.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp6/tcp6prot.orm4f.dep" src="tcp6/tcp6prot.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/tcp6/tcp6time.orm4f.dep" src="tcp6/tcp6time.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/udp6/udp6.orm4f.dep" src="udp6/udp6.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/raweth/raweth.orm4f.dep" src="raweth/raweth.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/rawethsock/rawethsock.orm4f.dep" src="rawethsock/rawethsock.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/rawethsock/rawethsock_prot.orm4f.dep" src="rawethsock/rawethsock_prot.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/rawethsock/rawethsock_pcb.orm4f.dep" src="rawethsock/rawethsock_pcb.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/pbm/pbm.orm4f.dep" src="pbm/pbm.c"/>
+        <srcFile name="package/lib/lib/stk6_ppp_pppoe/pbm/pbm_data.orm4f.dep" src="pbm/pbm_data.c"/>
+        <srcFile name="package/rel/ti_ndk_stack.tar.dep" src="package/rel/ti_ndk_stack.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.arm.elf.M4F"
+            version="ti.targets.arm.elf.M4F{1,0,20.2,1"
+            rawVersion="20.2.1"
+            platform="ti.platforms.tiva:TM4C1294NCPDT:1"
+            isa="v7M4"
+            suffix="em4f"
+            rootDir="/db/vendors/ti/arm/20.2.1.LTS/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="gnu.targets.arm.M4F"
+            version="gnu.targets.arm.M4F{1,0,9.2,1"
+            rawVersion="9.2.1"
+            platform="ti.platforms.tiva:TM4C1294NCPDT"
+            isa="v7M4"
+            suffix="m4fg"
+            rootDir="/db/vendors/arm/gcc-arm-none-eabi-9-2019-q4-major"
+            os="undefined"
+            rts="gnu.targets.arm.rtsv7M">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="iar.targets.arm.M4F"
+            version="iar.targets.arm.M4F{1,0,8.50,1"
+            rawVersion="8.50.1.245"
+            platform="ti.platforms.tiva:TM4C1294NCPDT:1"
+            isa="v7M4"
+            suffix="rm4f"
+            rootDir="/db/vendors/iar/arm/8.50.1/Linux"
+            os="undefined"
+            rts="iar.targets.arm.rts">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    <library name="lib/stk"
+        pname="lib/stk.aem4f"
+        profile="release"
+        target="ti.targets.arm.elf.M4F"/>
+    <library name="lib/stk6"
+        pname="lib/stk6.aem4f"
+        profile="release"
+        target="ti.targets.arm.elf.M4F"/>
+    <library name="lib/stk_ppp_pppoe"
+        pname="lib/stk_ppp_pppoe.aem4f"
+        profile="release"
+        target="ti.targets.arm.elf.M4F"/>
+    <library name="lib/stk6_ppp_pppoe"
+        pname="lib/stk6_ppp_pppoe.aem4f"
+        profile="release"
+        target="ti.targets.arm.elf.M4F"/>
+    <library name="lib/stk"
+        pname="lib/stk.am4fg"
+        profile="release"
+        target="gnu.targets.arm.M4F"/>
+    <library name="lib/stk6"
+        pname="lib/stk6.am4fg"
+        profile="release"
+        target="gnu.targets.arm.M4F"/>
+    <library name="lib/stk_ppp_pppoe"
+        pname="lib/stk_ppp_pppoe.am4fg"
+        profile="release"
+        target="gnu.targets.arm.M4F"/>
+    <library name="lib/stk6_ppp_pppoe"
+        pname="lib/stk6_ppp_pppoe.am4fg"
+        profile="release"
+        target="gnu.targets.arm.M4F"/>
+    <library name="lib/stk"
+        pname="lib/stk.arm4f"
+        profile="release"
+        target="iar.targets.arm.M4F"/>
+    <library name="lib/stk6"
+        pname="lib/stk6.arm4f"
+        profile="release"
+        target="iar.targets.arm.M4F"/>
+    <library name="lib/stk_ppp_pppoe"
+        pname="lib/stk_ppp_pppoe.arm4f"
+        profile="release"
+        target="iar.targets.arm.M4F"/>
+    <library name="lib/stk6_ppp_pppoe"
+        pname="lib/stk6_ppp_pppoe.arm4f"
+        profile="release"
+        target="iar.targets.arm.M4F"/>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_ndk_stack"
+        pname="ti_ndk_stack.tar"
+        label="default"
+    >
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package.bld"/>
+        <file name="fdt/fdt.h"/>
+        <file name="ip/ip.h"/>
+        <file name="ipv6/ipv6.h"/>
+        <file name="lli/lli.h"/>
+        <file name="nat/nat.h"/>
+        <file name="nat/proxy.h"/>
+        <file name="pbm/jumbo_pbm.c"/>
+        <file name="ppp/md5.h"/>
+        <file name="ppp/ppp.h"/>
+        <file name="pppoe/pppoe.h"/>
+        <file name="rawethsock/rawethsock.h"/>
+        <file name="route/route.h"/>
+        <file name="sock/sock.h"/>
+        <file name="sock6/sock6.h"/>
+        <file name="tcp/tcp.h"/>
+        <file name="tcp6/tcp6.h"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="lib/stk.aem4f"/>
+        <file name="package/package_ti.ndk.stack.c"/>
+        <file name="bind/bind.c"/>
+        <file name="fdt/file.c"/>
+        <file name="fdt/fileuser.c"/>
+        <file name="fdt/socket.c"/>
+        <file name="fdt/socket_data.c"/>
+        <file name="icmp/icmp.c"/>
+        <file name="icmp/icmpin.c"/>
+        <file name="igmp/igmp.c"/>
+        <file name="ip/ip.c"/>
+        <file name="ip/ipin.c"/>
+        <file name="ip/ipout.c"/>
+        <file name="ip/ipfrag.c"/>
+        <file name="lli/lli.c"/>
+        <file name="lli/lliin.c"/>
+        <file name="lli/lliout.c"/>
+        <file name="node/node.c"/>
+        <file name="pipe/pipe.c"/>
+        <file name="raw/raw.c"/>
+        <file name="res/exec.c"/>
+        <file name="res/sb.c"/>
+        <file name="res/timer.c"/>
+        <file name="route/route.c"/>
+        <file name="route/rtable.c"/>
+        <file name="rtc/rtc.c"/>
+        <file name="sock/sock.c"/>
+        <file name="sock/sockint.c"/>
+        <file name="sock/sockpcb.c"/>
+        <file name="sock/sockprot.c"/>
+        <file name="tcp/tcp.c"/>
+        <file name="tcp/tcpin.c"/>
+        <file name="tcp/tcpout.c"/>
+        <file name="tcp/tcpprot.c"/>
+        <file name="tcp/tcptime.c"/>
+        <file name="udp/udp.c"/>
+        <file name="nat/nat.c"/>
+        <file name="nat/natpkt.c"/>
+        <file name="nat/proxy.c"/>
+        <file name="ppp/auth.c"/>
+        <file name="ppp/ipcp.c"/>
+        <file name="ppp/lcp.c"/>
+        <file name="ppp/md5.c"/>
+        <file name="ppp/nimuppp.c"/>
+        <file name="utils/listlib.c"/>
+        <file name="pppoe/nimupppoe.c"/>
+        <file name="nimu/nimu.c"/>
+        <file name="vlan/vlan.c"/>
+        <file name="bind6/bind6.c"/>
+        <file name="icmpv6/icmpv6.c"/>
+        <file name="icmpv6/icmpv6_ndisc.c"/>
+        <file name="icmpv6/icmpv6in.c"/>
+        <file name="icmpv6/icmpv6out.c"/>
+        <file name="ipv6/ipv6.c"/>
+        <file name="ipv6/ipv6_exthdrs.c"/>
+        <file name="ipv6/ipv6_frag.c"/>
+        <file name="ipv6/ipv6in.c"/>
+        <file name="ipv6/ipv6out.c"/>
+        <file name="lli6/lli6.c"/>
+        <file name="mld/mld.c"/>
+        <file name="raw6/raw6.c"/>
+        <file name="res6/sb6.c"/>
+        <file name="route6/route6.c"/>
+        <file name="sock6/sock6.c"/>
+        <file name="sock6/sock6int.c"/>
+        <file name="sock6/sock6pcb.c"/>
+        <file name="sock6/sock6prot.c"/>
+        <file name="tcp6/tcp6.c"/>
+        <file name="tcp6/tcp6in.c"/>
+        <file name="tcp6/tcp6out.c"/>
+        <file name="tcp6/tcp6prot.c"/>
+        <file name="tcp6/tcp6time.c"/>
+        <file name="udp6/udp6.c"/>
+        <file name="raweth/raweth.c"/>
+        <file name="rawethsock/rawethsock.c"/>
+        <file name="rawethsock/rawethsock_prot.c"/>
+        <file name="rawethsock/rawethsock_pcb.c"/>
+        <file name="pbm/pbm.c"/>
+        <file name="pbm/pbm_data.c"/>
+        <file name="lib/stk6.aem4f"/>
+        <file name="lib/stk_ppp_pppoe.aem4f"/>
+        <file name="lib/stk6_ppp_pppoe.aem4f"/>
+        <file name="lib/stk.am4fg"/>
+        <file name="lib/stk6.am4fg"/>
+        <file name="lib/stk_ppp_pppoe.am4fg"/>
+        <file name="lib/stk6_ppp_pppoe.am4fg"/>
+        <file name="lib/stk.arm4f"/>
+        <file name="lib/stk6.arm4f"/>
+        <file name="lib/stk_ppp_pppoe.arm4f"/>
+        <file name="lib/stk6_ppp_pppoe.arm4f"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

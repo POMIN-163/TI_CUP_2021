@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.ndk.os" version="" producerId="undefined">
+    <units>
+    </units>
+    <sources>
+        <srcFile name="package/package_ti.ndk.os.c"/>
+        <srcFile name="mem.c"/>
+        <srcFile name="mem_data.c"/>
+        <srcFile name="oem.c"/>
+        <srcFile name="ossys.c"/>
+        <srcFile name="semaphore.c"/>
+        <srcFile name="os_ll.c"/>
+        <srcFile name="NDK_SemaphoreP_tirtos.c"/>
+        <srcFile name="task.c"/>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="lib/os.aem4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/os/package/package_ti.ndk.os.oem4f.dep" src="package/package_ti.ndk.os.c"/>
+        <srcFile name="package/lib/lib/os/mem.oem4f.dep" src="mem.c"/>
+        <srcFile name="package/lib/lib/os/mem_data.oem4f.dep" src="mem_data.c"/>
+        <srcFile name="package/lib/lib/os/oem.oem4f.dep" src="oem.c"/>
+        <srcFile name="package/lib/lib/os/ossys.oem4f.dep" src="ossys.c"/>
+        <srcFile name="package/lib/lib/os/semaphore.oem4f.dep" src="semaphore.c"/>
+        <srcFile name="package/lib/lib/os/os_ll.oem4f.dep" src="os_ll.c"/>
+        <srcFile name="package/lib/lib/os/NDK_SemaphoreP_tirtos.oem4f.dep" src="NDK_SemaphoreP_tirtos.c"/>
+        <srcFile name="package/lib/lib/os/task.oem4f.dep" src="task.c"/>
+        <srcFile name="lib/os_freertos.aem4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/os_freertos/package/package_ti.ndk.os.oem4f.dep" src="package/package_ti.ndk.os.c"/>
+        <srcFile name="package/lib/lib/os_freertos/mem.oem4f.dep" src="mem.c"/>
+        <srcFile name="package/lib/lib/os_freertos/mem_data.oem4f.dep" src="mem_data.c"/>
+        <srcFile name="package/lib/lib/os_freertos/oem.oem4f.dep" src="oem.c"/>
+        <srcFile name="package/lib/lib/os_freertos/ossys.oem4f.dep" src="ossys.c"/>
+        <srcFile name="package/lib/lib/os_freertos/semaphore.oem4f.dep" src="semaphore.c"/>
+        <srcFile name="package/lib/lib/os_freertos/os_ll.oem4f.dep" src="os_ll.c"/>
+        <srcFile name="lib/os_sem.aem4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/os_sem/package/package_ti.ndk.os.oem4f.dep" src="package/package_ti.ndk.os.c"/>
+        <srcFile name="package/lib/lib/os_sem/mem.oem4f.dep" src="mem.c"/>
+        <srcFile name="package/lib/lib/os_sem/mem_data.oem4f.dep" src="mem_data.c"/>
+        <srcFile name="package/lib/lib/os_sem/oem.oem4f.dep" src="oem.c"/>
+        <srcFile name="package/lib/lib/os_sem/ossys.oem4f.dep" src="ossys.c"/>
+        <srcFile name="package/lib/lib/os_sem/semaphore.oem4f.dep" src="semaphore.c"/>
+        <srcFile name="package/lib/lib/os_sem/os_ll.oem4f.dep" src="os_ll.c"/>
+        <srcFile name="package/lib/lib/os_sem/NDK_SemaphoreP_tirtos.oem4f.dep" src="NDK_SemaphoreP_tirtos.c"/>
+        <srcFile name="package/lib/lib/os_sem/task.oem4f.dep" src="task.c"/>
+        <srcFile name="lib/os_sem_freertos.aem4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/os_sem_freertos/package/package_ti.ndk.os.oem4f.dep" src="package/package_ti.ndk.os.c"/>
+        <srcFile name="package/lib/lib/os_sem_freertos/mem.oem4f.dep" src="mem.c"/>
+        <srcFile name="package/lib/lib/os_sem_freertos/mem_data.oem4f.dep" src="mem_data.c"/>
+        <srcFile name="package/lib/lib/os_sem_freertos/oem.oem4f.dep" src="oem.c"/>
+        <srcFile name="package/lib/lib/os_sem_freertos/ossys.oem4f.dep" src="ossys.c"/>
+        <srcFile name="package/lib/lib/os_sem_freertos/semaphore.oem4f.dep" src="semaphore.c"/>
+        <srcFile name="package/lib/lib/os_sem_freertos/os_ll.oem4f.dep" src="os_ll.c"/>
+        <srcFile name="lib/os.am4fg.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/os/package/package_ti.ndk.os.om4fg.dep" src="package/package_ti.ndk.os.c"/>
+        <srcFile name="package/lib/lib/os/mem.om4fg.dep" src="mem.c"/>
+        <srcFile name="package/lib/lib/os/mem_data.om4fg.dep" src="mem_data.c"/>
+        <srcFile name="package/lib/lib/os/oem.om4fg.dep" src="oem.c"/>
+        <srcFile name="package/lib/lib/os/ossys.om4fg.dep" src="ossys.c"/>
+        <srcFile name="package/lib/lib/os/semaphore.om4fg.dep" src="semaphore.c"/>
+        <srcFile name="package/lib/lib/os/os_ll.om4fg.dep" src="os_ll.c"/>
+        <srcFile name="package/lib/lib/os/NDK_SemaphoreP_tirtos.om4fg.dep" src="NDK_SemaphoreP_tirtos.c"/>
+        <srcFile name="package/lib/lib/os/task.om4fg.dep" src="task.c"/>
+        <srcFile name="lib/os_freertos.am4fg.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/os_freertos/package/package_ti.ndk.os.om4fg.dep" src="package/package_ti.ndk.os.c"/>
+        <srcFile name="package/lib/lib/os_freertos/mem.om4fg.dep" src="mem.c"/>
+        <srcFile name="package/lib/lib/os_freertos/mem_data.om4fg.dep" src="mem_data.c"/>
+        <srcFile name="package/lib/lib/os_freertos/oem.om4fg.dep" src="oem.c"/>
+        <srcFile name="package/lib/lib/os_freertos/ossys.om4fg.dep" src="ossys.c"/>
+        <srcFile name="package/lib/lib/os_freertos/semaphore.om4fg.dep" src="semaphore.c"/>
+        <srcFile name="package/lib/lib/os_freertos/os_ll.om4fg.dep" src="os_ll.c"/>
+        <srcFile name="lib/os_sem.am4fg.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/os_sem/package/package_ti.ndk.os.om4fg.dep" src="package/package_ti.ndk.os.c"/>
+        <srcFile name="package/lib/lib/os_sem/mem.om4fg.dep" src="mem.c"/>
+        <srcFile name="package/lib/lib/os_sem/mem_data.om4fg.dep" src="mem_data.c"/>
+        <srcFile name="package/lib/lib/os_sem/oem.om4fg.dep" src="oem.c"/>
+        <srcFile name="package/lib/lib/os_sem/ossys.om4fg.dep" src="ossys.c"/>
+        <srcFile name="package/lib/lib/os_sem/semaphore.om4fg.dep" src="semaphore.c"/>
+        <srcFile name="package/lib/lib/os_sem/os_ll.om4fg.dep" src="os_ll.c"/>
+        <srcFile name="package/lib/lib/os_sem/NDK_SemaphoreP_tirtos.om4fg.dep" src="NDK_SemaphoreP_tirtos.c"/>
+        <srcFile name="package/lib/lib/os_sem/task.om4fg.dep" src="task.c"/>
+        <srcFile name="lib/os_sem_freertos.am4fg.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/os_sem_freertos/package/package_ti.ndk.os.om4fg.dep" src="package/package_ti.ndk.os.c"/>
+        <srcFile name="package/lib/lib/os_sem_freertos/mem.om4fg.dep" src="mem.c"/>
+        <srcFile name="package/lib/lib/os_sem_freertos/mem_data.om4fg.dep" src="mem_data.c"/>
+        <srcFile name="package/lib/lib/os_sem_freertos/oem.om4fg.dep" src="oem.c"/>
+        <srcFile name="package/lib/lib/os_sem_freertos/ossys.om4fg.dep" src="ossys.c"/>
+        <srcFile name="package/lib/lib/os_sem_freertos/semaphore.om4fg.dep" src="semaphore.c"/>
+        <srcFile name="package/lib/lib/os_sem_freertos/os_ll.om4fg.dep" src="os_ll.c"/>
+        <srcFile name="lib/os.arm4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/os/package/package_ti.ndk.os.orm4f.dep" src="package/package_ti.ndk.os.c"/>
+        <srcFile name="package/lib/lib/os/mem.orm4f.dep" src="mem.c"/>
+        <srcFile name="package/lib/lib/os/mem_data.orm4f.dep" src="mem_data.c"/>
+        <srcFile name="package/lib/lib/os/oem.orm4f.dep" src="oem.c"/>
+        <srcFile name="package/lib/lib/os/ossys.orm4f.dep" src="ossys.c"/>
+        <srcFile name="package/lib/lib/os/semaphore.orm4f.dep" src="semaphore.c"/>
+        <srcFile name="package/lib/lib/os/os_ll.orm4f.dep" src="os_ll.c"/>
+        <srcFile name="package/lib/lib/os/NDK_SemaphoreP_tirtos.orm4f.dep" src="NDK_SemaphoreP_tirtos.c"/>
+        <srcFile name="package/lib/lib/os/task.orm4f.dep" src="task.c"/>
+        <srcFile name="lib/os_freertos.arm4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/os_freertos/package/package_ti.ndk.os.orm4f.dep" src="package/package_ti.ndk.os.c"/>
+        <srcFile name="package/lib/lib/os_freertos/mem.orm4f.dep" src="mem.c"/>
+        <srcFile name="package/lib/lib/os_freertos/mem_data.orm4f.dep" src="mem_data.c"/>
+        <srcFile name="package/lib/lib/os_freertos/oem.orm4f.dep" src="oem.c"/>
+        <srcFile name="package/lib/lib/os_freertos/ossys.orm4f.dep" src="ossys.c"/>
+        <srcFile name="package/lib/lib/os_freertos/semaphore.orm4f.dep" src="semaphore.c"/>
+        <srcFile name="package/lib/lib/os_freertos/os_ll.orm4f.dep" src="os_ll.c"/>
+        <srcFile name="lib/os_sem.arm4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/os_sem/package/package_ti.ndk.os.orm4f.dep" src="package/package_ti.ndk.os.c"/>
+        <srcFile name="package/lib/lib/os_sem/mem.orm4f.dep" src="mem.c"/>
+        <srcFile name="package/lib/lib/os_sem/mem_data.orm4f.dep" src="mem_data.c"/>
+        <srcFile name="package/lib/lib/os_sem/oem.orm4f.dep" src="oem.c"/>
+        <srcFile name="package/lib/lib/os_sem/ossys.orm4f.dep" src="ossys.c"/>
+        <srcFile name="package/lib/lib/os_sem/semaphore.orm4f.dep" src="semaphore.c"/>
+        <srcFile name="package/lib/lib/os_sem/os_ll.orm4f.dep" src="os_ll.c"/>
+        <srcFile name="package/lib/lib/os_sem/NDK_SemaphoreP_tirtos.orm4f.dep" src="NDK_SemaphoreP_tirtos.c"/>
+        <srcFile name="package/lib/lib/os_sem/task.orm4f.dep" src="task.c"/>
+        <srcFile name="lib/os_sem_freertos.arm4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/os_sem_freertos/package/package_ti.ndk.os.orm4f.dep" src="package/package_ti.ndk.os.c"/>
+        <srcFile name="package/lib/lib/os_sem_freertos/mem.orm4f.dep" src="mem.c"/>
+        <srcFile name="package/lib/lib/os_sem_freertos/mem_data.orm4f.dep" src="mem_data.c"/>
+        <srcFile name="package/lib/lib/os_sem_freertos/oem.orm4f.dep" src="oem.c"/>
+        <srcFile name="package/lib/lib/os_sem_freertos/ossys.orm4f.dep" src="ossys.c"/>
+        <srcFile name="package/lib/lib/os_sem_freertos/semaphore.orm4f.dep" src="semaphore.c"/>
+        <srcFile name="package/lib/lib/os_sem_freertos/os_ll.orm4f.dep" src="os_ll.c"/>
+        <srcFile name="package/rel/ti_ndk_os,core.tar.dep" src="package/rel/ti_ndk_os,core.xdc.inc"/>
+        <srcFile name="package/rel/ti_ndk_os.tar.dep" src="package/rel/ti_ndk_os.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.arm.elf.M4F"
+            version="ti.targets.arm.elf.M4F{1,0,20.2,1"
+            rawVersion="20.2.1"
+            platform="ti.platforms.tiva:TM4C1294NCPDT:1"
+            isa="v7M4"
+            suffix="em4f"
+            rootDir="/db/vendors/ti/arm/20.2.1.LTS/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="gnu.targets.arm.M4F"
+            version="gnu.targets.arm.M4F{1,0,9.2,1"
+            rawVersion="9.2.1"
+            platform="ti.platforms.tiva:TM4C1294NCPDT"
+            isa="v7M4"
+            suffix="m4fg"
+            rootDir="/db/vendors/arm/gcc-arm-none-eabi-9-2019-q4-major"
+            os="undefined"
+            rts="gnu.targets.arm.rtsv7M">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="iar.targets.arm.M4F"
+            version="iar.targets.arm.M4F{1,0,8.50,1"
+            rawVersion="8.50.1.245"
+            platform="ti.platforms.tiva:TM4C1294NCPDT:1"
+            isa="v7M4"
+            suffix="rm4f"
+            rootDir="/db/vendors/iar/arm/8.50.1/Linux"
+            os="undefined"
+            rts="iar.targets.arm.rts">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    <library name="lib/os"
+        pname="lib/os.aem4f"
+        profile="release"
+        target="ti.targets.arm.elf.M4F"/>
+    <library name="lib/os_freertos"
+        pname="lib/os_freertos.aem4f"
+        profile="release"
+        target="ti.targets.arm.elf.M4F"/>
+    <library name="lib/os_sem"
+        pname="lib/os_sem.aem4f"
+        profile="release"
+        target="ti.targets.arm.elf.M4F"/>
+    <library name="lib/os_sem_freertos"
+        pname="lib/os_sem_freertos.aem4f"
+        profile="release"
+        target="ti.targets.arm.elf.M4F"/>
+    <library name="lib/os"
+        pname="lib/os.am4fg"
+        profile="release"
+        target="gnu.targets.arm.M4F"/>
+    <library name="lib/os_freertos"
+        pname="lib/os_freertos.am4fg"
+        profile="release"
+        target="gnu.targets.arm.M4F"/>
+    <library name="lib/os_sem"
+        pname="lib/os_sem.am4fg"
+        profile="release"
+        target="gnu.targets.arm.M4F"/>
+    <library name="lib/os_sem_freertos"
+        pname="lib/os_sem_freertos.am4fg"
+        profile="release"
+        target="gnu.targets.arm.M4F"/>
+    <library name="lib/os"
+        pname="lib/os.arm4f"
+        profile="release"
+        target="iar.targets.arm.M4F"/>
+    <library name="lib/os_freertos"
+        pname="lib/os_freertos.arm4f"
+        profile="release"
+        target="iar.targets.arm.M4F"/>
+    <library name="lib/os_sem"
+        pname="lib/os_sem.arm4f"
+        profile="release"
+        target="iar.targets.arm.M4F"/>
+    <library name="lib/os_sem_freertos"
+        pname="lib/os_sem_freertos.arm4f"
+        profile="release"
+        target="iar.targets.arm.M4F"/>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_ndk_os,core"
+        pname="ti_ndk_os,core.tar"
+        label="core"
+    >
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package.bld"/>
+        <file name="NDK_SemaphoreP.h"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="lib/os.aem4f"/>
+        <file name="package/package_ti.ndk.os.c"/>
+        <file name="mem.c"/>
+        <file name="mem_data.c"/>
+        <file name="oem.c"/>
+        <file name="ossys.c"/>
+        <file name="semaphore.c"/>
+        <file name="os_ll.c"/>
+        <file name="NDK_SemaphoreP_tirtos.c"/>
+        <file name="task.c"/>
+        <file name="lib/os_freertos.aem4f"/>
+        <file name="lib/os_sem.aem4f"/>
+        <file name="lib/os_sem_freertos.aem4f"/>
+        <file name="lib/os.am4fg"/>
+        <file name="lib/os_freertos.am4fg"/>
+        <file name="lib/os_sem.am4fg"/>
+        <file name="lib/os_sem_freertos.am4fg"/>
+        <file name="lib/os.arm4f"/>
+        <file name="lib/os_freertos.arm4f"/>
+        <file name="lib/os_sem.arm4f"/>
+        <file name="lib/os_sem_freertos.arm4f"/>
+    </release>
+    <release name="ti_ndk_os"
+        pname="ti_ndk_os.tar"
+        label="default"
+    >
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package.bld"/>
+        <file name="NDK_SemaphoreP.h"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="lib/os.aem4f"/>
+        <file name="package/package_ti.ndk.os.c"/>
+        <file name="mem.c"/>
+        <file name="mem_data.c"/>
+        <file name="oem.c"/>
+        <file name="ossys.c"/>
+        <file name="semaphore.c"/>
+        <file name="os_ll.c"/>
+        <file name="NDK_SemaphoreP_tirtos.c"/>
+        <file name="task.c"/>
+        <file name="lib/os_freertos.aem4f"/>
+        <file name="lib/os_sem.aem4f"/>
+        <file name="lib/os_sem_freertos.aem4f"/>
+        <file name="lib/os.am4fg"/>
+        <file name="lib/os_freertos.am4fg"/>
+        <file name="lib/os_sem.am4fg"/>
+        <file name="lib/os_sem_freertos.am4fg"/>
+        <file name="lib/os.arm4f"/>
+        <file name="lib/os_freertos.arm4f"/>
+        <file name="lib/os_sem.arm4f"/>
+        <file name="lib/os_sem_freertos.arm4f"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

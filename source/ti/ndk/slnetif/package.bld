@@ -1,0 +1,110 @@
+/*
+ * Copyright (c) 2017-2019, Texas Instruments Incorporated
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * *  Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *
+ * *  Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * *  Neither the name of Texas Instruments Incorporated nor the names of
+ *    its contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * */
+/*
+ * ======== package.bld ========
+ */
+
+Pkg.otherFiles = [
+    "package.bld",
+    "slnetifndk.h",
+    "slnetifndk_internal.h"
+];
+
+/* List of all the NETTOOLS Files */
+var buildFiles = [
+    "slnetifndk.c",
+];
+
+/* lib/ is a generated directory that 'xdc clean' should remove */
+Pkg.generatedFiles.$add("lib/");
+
+if (mbedtlsInclude == "") {
+    print("remark: mbedtls not provided, disabling TLS in " + Pkg.name);
+}
+
+/* Build the libraries for all the targets specified. */
+for (var i = 0; i < Build.targets.length; i++) {
+    var target = Build.targets[i];
+
+    /* build slnetifndk */
+    /* Does not build for these targets for now */
+    if (target.os != "Linux") {
+        var incs = ndkPathInclude + nsInclude + posixIncs + "/" +
+                getPosixIncDirectory(target.suffix);
+        var copts = "";
+
+        /* conditionally enable mbedtls if we have that dependency */
+        if (mbedtlsInclude != "") {
+            copts = "-DSLNETIFNDK_ENABLEMBEDTLS " +
+                "-DMBEDTLS_SSL_DTLS_HELLO_VERIFY -DMBEDTLS_SSL_PROTO_DTLS " +
+                "-DMBEDTLS_CONFIG_FILE='\"config-ti.h\"'";
+            incs += " " + mbedtlsInclude;
+        }
+
+        var libOptions = {
+            copts: copts,
+            incs: incs
+        };
+
+        /* first library to build */
+        var libName = "slnetifndk";
+
+        var lib = Pkg.addLibrary("lib/" + libName, target, libOptions);
+        lib.addObjects(buildFiles);
+
+        /* Add hardware-specific accelerated mbedtls libraries.  Note
+         * that if tiDriversPath is set, we presume MSP432E4 (there
+         * are currently no other NDK-enabled devices in TI-DRIVERS).
+         */
+        if ((mbedtlsInclude != "") && (tiDriversPath != "") &&
+                (target.name == "M4F")) {
+            copts = "-DSLNETIFNDK_ENABLEMBEDTLS " +
+                "-DMBEDTLS_SSL_DTLS_HELLO_VERIFY -DMBEDTLS_SSL_PROTO_DTLS " +
+                "-DDeviceFamily_MSP432E401Y " +
+                "-DMBEDTLS_CONFIG_FILE='\"config-msp432e4.h\"'";
+            /* add TI-DRIVERS to incs */
+            incs += " -I" + tiDriversPath + "msp432e4/source";
+
+            libOptions = {
+                copts: copts,
+                incs: incs
+            };
+
+            lib = Pkg.addLibrary("lib/slnetifndk_msp432e4", target, libOptions);
+            lib.addObjects(buildFiles);
+        }
+    }
+}
+
+/* include source files in the release package */
+Pkg.attrs.exportSrc = true;
+Pkg.attrs.exportCfg = true;

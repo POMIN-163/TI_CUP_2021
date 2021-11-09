@@ -1,0 +1,221 @@
+%%{
+/*
+ * Copyright (c) 2018-2019 Texas Instruments Incorporated - http://www.ti.com
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * *  Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *
+ * *  Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * *  Neither the name of Texas Instruments Incorporated nor the names of
+ *    its contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ */
+
+/*
+ *  ======== ti_usblib_config.h.xdt ========
+ */
+
+    let Common = system.getScript("/ti/usblib/Common.js");
+    let Settings = system.modules["/ti/usblib/Settings"];
+    let StringDescriptor = system.modules["/ti/usblib/StringDescriptor"];
+    let instances = Settings.$instances[0];
+    let HID = system.modules["/ti/usblib/HID"];
+    let CDC = system.modules["/ti/usblib/CDC"];
+    let Bulk = system.modules["/ti/usblib/Bulk"];
+    let MSC = system.modules["/ti/usblib/MSC"];
+    let Composite = system.modules["/ti/usblib/Composite"];
+%%}
+
+#ifndef ti_usblib_config_h
+#define ti_usblib_config_h
+
+#include <stdbool.h>
+#include <stddef.h>
+
+/* support C++ sources */
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include <ti/usblib/msp432e4/usblib.h>
+#include <ti/usblib/msp432e4/usbhid.h>
+#include <ti/usblib/msp432e4/usbcdc.h>
+#include <ti/usblib/msp432e4/usbmsc.h>
+
+#include <ti/devices/msp432e4/inc/msp432.h>
+% if (Settings != null) {
+/*
+ *  ======== USB Device =======
+ */
+#include <ti/usblib/msp432e4/device/usbdevice.h>
+% if (Bulk != null) {
+/*
+ *  ======= Bulk Device =======
+ */
+#include <ti/usblib/msp432e4/device/usbdbulk.h>
+    % for (var bulkInstance of Bulk.$instances) {
+extern tUSBDBulkDevice `bulkInstance.$name`;
+    % } // for of Bulk.$instances
+% } // Bulk != null
+% if (CDC != null) {
+/*
+ *  ======== CDC Device =======
+ */
+#include <ti/usblib/msp432e4/device/usbdcdc.h>
+    % for (var cdcInstance of CDC.$instances) {
+extern uint8_t g_pui8USBRxBuffer_`cdcInstance.$name`[256];
+extern uint32_t `cdcInstance.rxBufferHandler`(void *pvCBData, uint32_t ui32Event, uint32_t ui32MsgParam, void *pvMsgData);
+extern tUSBBuffer g_sRxBuffer_`cdcInstance.$name`;
+extern uint8_t g_pui8USBTxBuffer_`cdcInstance.$name`[256];
+extern uint32_t `cdcInstance.txBufferHandler`(void *pvCBData, uint32_t ui32Event, uint32_t ui32MsgParam, void *pvMsgData);
+extern tUSBBuffer g_sTxBuffer_`cdcInstance.$name`;
+extern uint32_t `cdcInstance.controlHandler`(void *pvCBData, uint32_t ui32Event, uint32_t ui32MsgParam, void *pvMsgData);
+extern tUSBDCDCDevice `cdcInstance.$name`;
+    % } // for of CDC.$instances
+% } // CDC != null
+% if (HID != null) {
+/*
+ *  ======== HID Device =======
+ */
+#include <ti/usblib/msp432e4/device/usbdhid.h>
+    % for (var hidInstance of HID.$instances) {
+        % if (hidInstance.hidType === "Generic") {
+extern tUSBDHIDDevice `hidInstance.$name`;
+extern const uint8_t `hidInstance.reportDescriptor`[];
+extern tHIDReportIdle `hidInstance.reportIdleDescriptor`[];
+        % } else {
+extern uint32_t `hidInstance.usbHandler`(void *pvCBData, uint32_t ui32Event, uint32_t ui32MsgParam, void *pvMsgData);
+            % if (hidInstance.hidType === "Keyboard") {
+#include <ti/usblib/msp432e4/device/usbdhidkeyb.h>
+extern tUSBDHIDKeyboardDevice `hidInstance.$name`;
+            % } if (hidInstance.hidType === "Mouse") {
+#include <ti/usblib/msp432e4/device/usbdhidmouse.h>
+extern tUSBDHIDMouseDevice `hidInstance.$name`;
+            % } if (hidInstance.hidType === "Sensor") {
+#include <ti/usblib/msp432e4/device/usbdhidsensor.h>
+extern tUSBDHIDSensorDevice `hidInstance.$name`;
+            % } if (hidInstance.hidType === "Gamepad") {
+#include <ti/usblib/msp432e4/device/usbdhidgamepad.h>
+extern tUSBDHIDGamepadDevice `hidInstance.$name`;
+extern const uint8_t `hidInstance.reportDescriptor`[];
+            % } // hidInstance.hidType
+        % } // if-else (not generic HID type)
+    % } // for of HID.$instances
+% } // HID != null
+% if (MSC != null) {
+/*
+ *  ======== MSC Device ========
+ */
+#include <ti/usblib/msp432e4/device/usbdmsc.h>
+    % for (var mscInstance of MSC.$instances) {
+extern uint32_t `mscInstance.usbHandler`(void *pvCBData, uint32_t ui32Event, uint32_t ui32MsgParam, void *pvMsgData);
+extern void* `mscInstance.openFunction`(uint32_t ui32Drive);
+extern void `mscInstance.closeFunction`(void *pvDrive);
+extern uint32_t `mscInstance.readFunction`(void *pvDrive, uint8_t *pui8Data, uint32_t ui32Sector, uint32_t ui32NumBlocks);
+extern uint32_t `mscInstance.writeFunction`(void *pvDrive, uint8_t *pui8Data, uint32_t ui32Sector, uint32_t ui32NumBlocks);
+extern uint32_t `mscInstance.numBlocksFunction`(void *pvDrive);
+extern uint32_t `mscInstance.blockSizeFunction`(void *pvDrive);
+extern tUSBDMSCDevice `mscInstance.$name`;
+    % } // for of MSC.$instances
+% } // MSC != null
+% if (Composite != null) {
+/*
+ *  ======== Composite Device ========
+ */
+#include <ti/usblib/msp432e4/device/usbdhid.h>
+#include <ti/usblib/msp432e4/device/usbdcdc.h>
+#include <ti/usblib/msp432e4/device/usbdbulk.h>
+#include <ti/usblib/msp432e4/device/usbdcomp.h>
+    % for (var compositeInstance of Composite.$instances) {
+#define NUM_DEVICES_`compositeInstance.$name`   `compositeInstance.numHid+compositeInstance.numCdc+compositeInstance.numBulk`
+#define DESCRIPTOR_DATA_SIZE_`compositeInstance.$name`  `compositeInstance.numCdc`*COMPOSITE_DCDC_SIZE +    \
+                                                `compositeInstance.numHid`*COMPOSITE_DHID_SIZE +    \
+                                                `compositeInstance.numBulk`*COMPOSITE_DBULK_SIZE
+extern uint32_t `compositeInstance.usbHandler`(void *pvCBData, uint32_t ui32Event, uint32_t ui32MsgParam, void *pvMsgData);
+extern tUSBDCompositeDevice `compositeInstance.$name`;
+/*  TODO: The different USBD Composite Initialization functions are still needed to to populate entries.   */
+extern tCompositeEntry `compositeInstance.$name`_entries[NUM_DEVICES_`compositeInstance.$name`];
+    % } // for of Composite.$instances
+% } // Composite != null
+% } // Settings != null
+
+% if (instances.mode === "Host") {
+#include <ti/usblib/msp432e4/host/usbhost.h>
+% if (instances.hasCdcHCD === true) {
+#include <ti/usblib/msp432e4/host/usbhcdc.h>
+% }
+% if (instances.hasHubHCD === true) {
+#include <ti/usblib/msp432e4/host/usbhhub.h>
+% }
+extern tUSBHostClassDriver const * const usbHostClassDrivers[];
+extern const uint32_t numHostClassDrivers;
+% } // instances.mode is Host
+
+/*!
+ *  @def    MSP_EXP432E401Y_USBMode
+ *  @brief  Enum of USB setup function on the MSP_EXP432E401Y dev board
+ */
+typedef enum MSP_EXP432E401Y_USBMode {
+    MSP_EXP432E401Y_USBULPI,
+    MSP_EXP432E401Y_USBDEVICE,
+    MSP_EXP432E401Y_USBHOST
+} MSP_EXP432E401Y_USBMode;
+
+/*!
+ *  @def    MSP_EXP432E401Y_USBMSCHFatFsName
+ *  @brief  Enum of USBMSCHFatFs names on the MSP_EXP432E401Y dev board
+ */
+typedef enum MSP_EXP432E401Y_USBMSCHFatFsName {   //only required if MSC is selected
+    MSP_EXP432E401Y_USBMSCHFATFS0 = 0,
+
+    MSP_EXP432E401Y_USBMSCHFATFSCOUNT
+} MSP_EXP432E401Y_USBMSCHFATFSName;
+
+/*!
+ *  @brief  Initialize board specific USB settings
+ *
+ *  This function initializes the board specific USB settings and pins based on
+ *  the USB mode of operation.
+ *
+ *  @param      usbMode    USB mode of operation
+ */
+extern void MSP_EXP432E401Y_initUSB(MSP_EXP432E401Y_USBMode usbMode);
+
+/*!
+ *  @brief  Initialize board specific USBMSCHFatFs settings
+ *
+ *  This function initializes the board specific USBMSCHFatFs settings and then
+ *  calls the USBMSCHFatFs_init API to initialize the USBMSCHFatFs module.
+ *
+ *  The USBMSCHFatFs peripherals controlled by the USBMSCHFatFs module are
+ *  determined by the USBMSCHFatFs_config variable.
+ */
+extern void MSP_EXP432E401Y_initUSBMSCHFatFs(void);    //only if MSC is selected
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* include guard */
+

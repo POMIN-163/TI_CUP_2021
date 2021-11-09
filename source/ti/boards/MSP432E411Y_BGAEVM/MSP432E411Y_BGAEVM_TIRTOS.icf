@@ -1,0 +1,40 @@
+/*###ICF### Section handled by ICF editor, don't touch! ****/
+/*-Editor annotation file-*/
+/* IcfEditorFile="$TOOLKIT_DIR$\config\ide\IcfEditor\cortex_v1_0.xml" */
+/*-Specials-*/
+define symbol __ICFEDIT_intvec_start__ = 0x00000000;
+/*-Memory Regions-*/
+define symbol __ICFEDIT_region_ROM_start__   = 0x00000000;
+define symbol __ICFEDIT_region_ROM_end__     = 0x000FFFFF;
+define symbol __ICFEDIT_region_RAM_start__   = 0x20000000;
+define symbol __ICFEDIT_region_RAM_end__     = 0x2003FFFF;
+
+/**** End of ICF editor section. ###ICF###*/
+
+define memory mem with size = 4G;
+define region ROM_region   = mem:[from __ICFEDIT_region_ROM_start__   to __ICFEDIT_region_ROM_end__];
+define region RAM_region   = mem:[from __ICFEDIT_region_RAM_start__   to __ICFEDIT_region_RAM_end__];
+
+define symbol STACKSIZE = 1024;
+define block CSTACK with alignment = 8, size = STACKSIZE  { section .stack };
+do not initialize { section .stack };
+do not initialize  { section .noinit };
+
+place in RAM_region   { readwrite };
+initialize by copy { readwrite };
+
+place at address mem:__ICFEDIT_intvec_start__ { readonly section .intvec };
+place in ROM_region   { readonly };
+
+place at end of RAM_region  { block CSTACK };
+
+/* HeapMem Primary Heap configuration */
+define symbol HEAPSIZE = 0x20000;
+define block primary_heap with size = HEAPSIZE {};
+
+/* place heap just before CSTACK */
+place at end of RAM_region { block primary_heap };
+
+/* define buffer start and end symbols for HeapMem Primary Heap */
+define exported symbol __primary_heap_end__ = end(RAM_region) - STACKSIZE;
+define exported symbol __primary_heap_start__ = __primary_heap_end__ - HEAPSIZE;

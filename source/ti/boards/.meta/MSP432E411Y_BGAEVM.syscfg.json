@@ -1,0 +1,1094 @@
+/*
+ * Copyright (c) 2019 Texas Instruments Incorporated - http://www.ti.com
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * *  Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *
+ * *  Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * *  Neither the name of Texas Instruments Incorporated nor the names of
+ *    its contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ */
+
+/*
+ *  ======== MSP432E411Y_BGAEVM.syscfg.json ========
+ *  schematics: http://www.ti.com/lit/zip/slar154
+ *  user guide: http://www.ti.com/lit/pdf/slau780
+ */
+{
+    "name": "MSP432E411Y-BGAEVM",
+    "displayName": "MSP432E411Y-BGAEVM",
+    "device": "MSP432E",
+    "part": "MSP432E411YTZAD",
+    "package": "212 Pin BGA|19x19",
+    "headers": [
+        {
+            /* http://www.ti.com/tools-software/launchpads/boosterpacks/build.html */
+            "type": "BoosterPack 40 pin",
+            "default": true,
+            "name": "boosterpack",
+            "displayName": "BoosterPack Standard Header #1",
+            "dimensions": {
+                "columns": [
+                    { "top":  1, "bottom": 10 },
+                    { "top": 21, "bottom": 30 },
+
+                    { "blank": true },
+
+                    { "top": 40, "bottom": 31 },
+                    { "top": 20, "bottom": 11 }
+                ]
+            },
+            "pins": [
+                {
+                    "number": 1,     /* 3.3 V */
+                    "name": "3V3"
+                },
+                {
+                    "number": 2,
+                    "name": "PE1",
+                    "ball": "H2"
+                },
+                {
+                    "number": 3,
+                    "name": "PP0",
+                    "ball": "D6"
+                },
+                {
+                    "number": 4,
+                    "name": "PP1",
+                    "ball": "D7"
+                },
+                {
+                    "number": 5,
+                    "name": "PH4",
+                    "ball": "R3"
+                },
+                {
+                    "number": 6,
+                    "name": "PE4",
+                    "ball": "A5"
+                },
+                {
+                    "number": 7,
+                    "name": "PD3",
+                    "ball": "D1",
+                    "preferredType": ["SPI_SCLK"]
+                },
+                {
+                    "number": 8,
+                    "name": "PP4",
+                    "ball": "D8"
+                },
+                {
+                    "number": 9,
+                    "name": "PB6",
+                    "ball": "F2",
+                    "preferredType": ["I2C_SCL"]
+                },
+                {
+                    "number": 10,
+                    "name": "PB7",
+                    "ball": "F1",
+                    "preferredType": ["I2C_SDA"]
+                },
+                {
+                    "number": 21,    /* 5 V */
+                    "name": "5V"
+                },
+                {
+                    "number": 22,    /* Ground */
+                    "name": "GND"
+                },
+                {
+                    "number": 23,
+                    "name": "PE5",
+                    "ball": "B5"
+                },
+                {
+                    "number": 24,
+                    "name": "PB5",
+                    "ball": "B6"
+                },
+                {
+                    "number": 25,
+                    "name": "PK0",
+                    "ball": "J1",
+                    "preferredType" : ["AIN"]
+                },
+                {
+                    "number": 26,
+                    "name": "PK1",
+                    "ball": "J2",
+                    "preferredType" : ["AIN"]
+                },
+                {
+                    "number": 27,
+                    "name": "PK2",
+                    "ball": "K1"
+                },
+                {
+                    "number": 28,
+                    "name": "PE0",
+                    "ball": "H3"
+                },
+                {
+                    "number": 29,
+                    "name": "PH5",
+                    "ball": "T2"
+                },
+                {
+                    "number": 30,
+                    "name": "PH6",
+                    "ball": "U2"
+                },
+                {
+                    "number": 40,
+                    "name": "PA2",
+                    "ball": "T6"
+                },
+                {
+                    "number": 39,
+                    "name": "PA3",
+                    "ball": "U5"
+                },
+                {
+                    "number": 38,
+                    "name": "PA4",
+                    "ball": "V4"
+                },
+                {
+                    "number": 37,
+                    "name": "PA5",
+                    "ball": "W4"
+                },
+                {
+                    "number": 36,
+                    "name": "PD4",
+                    "ball": "A4"
+                },
+                {
+                    "number": 35,
+                    "name": "PD5",
+                    "ball": "B4"
+                },
+                {
+                    "number": 34,
+                    "name": "PJ7",
+                    "ball": "K5"
+                },
+                {
+                    "number": 33,
+                    "name": "PM4",
+                    "ball": "M18"
+                },
+                {
+                    "number": 32,
+                    "name": "PE2",
+                    "ball": "G1"
+                },
+                {
+                    "number": 31,
+                    "name": "PE3",
+                    "ball": "G2"
+                },
+                {
+                    "number": 20,    /* Ground */
+                    "name": "GND"
+                },
+                {
+                    "number": 19,
+                    "name": "PM7",
+                    "ball": "N18"
+                },
+                {
+                    "number": 18,
+                    "name": "PP5",
+                    "ball": "B12"
+                },
+                {
+                    "number": 17,
+                    "name": "PH7",
+                    "ball": "V2"
+                },
+                {
+                    "number": 16,    /* Reset */
+                    "name": "RST"
+                },
+                {
+                    "number": 15,
+                    "name": "PD1",
+                    "ball": "C1",
+                    "preferredType" : ["SPI_MOSI"]
+                },
+                {
+                    "number": 14,
+                    "name": "PD0",
+                    "ball": "C2",
+                    "preferredType" : ["SPI_MISO"]
+                },
+                {
+                    "number": 13,
+                    "name": "PP3",
+                    "ball": "C12"
+                },
+                {
+                    "number": 12,
+                    "name": "PD2",
+                    "ball": "D2"
+                },
+                {
+                    "number": 11,
+                    "name": "PM6",
+                    "ball": "N19"
+                }
+            ]
+        },
+        {
+            "type": "MSP432E411Y-BGAEVM J5 Edge Connector",
+            "default": true,
+            "name": "expansion",
+            "displayName": "Additional GPIO Pin Header",
+            "dimensions": {
+                "rows": [
+                    { "left": 40, "right": 39 },
+                    { "left": 38, "right": 37 },
+                    { "left": 36, "right": 35 },
+                    { "left": 34, "right": 33 },
+                    { "left": 32, "right": 31 },
+                    { "left": 30, "right": 29 },
+                    { "left": 28, "right": 27 },
+                    { "left": 26, "right": 25 },
+                    { "left": 24, "right": 23 },
+                    { "left": 22, "right": 21 },
+                    { "left": 20, "right": 19 },
+                    { "left": 18, "right": 17 },
+                    { "left": 16, "right": 15 },
+                    { "left": 14, "right": 13 },
+                    { "left": 12, "right": 11 },
+                    { "left": 10, "right": 9 },
+                    { "left": 8, "right": 7 },
+                    { "left": 6, "right": 5 },
+                    { "left": 4, "right": 3 },
+                    { "left": 2, "right": 1 }
+                ]
+            },
+            "pins": [
+                {
+                    "number": 40,   /* 3.3 V */
+                    "name": "3V3"
+                },
+                {
+                    "number": 39,   /* Ground */
+                    "name": "GND"
+                },
+                {
+                    "number": 38,
+                    "name": "PD6",
+                    "ball": "B3"
+                },
+                {
+                    "number": 37,
+                    "name": "PG6",
+                    "ball": "V12"
+                },
+                {
+                    "number": 36,
+                    "name": "PQ5",
+                    "ball": "W12"
+                },
+                {
+                    "number": 35,
+                    "name": "PM5",
+                    "ball": "G15"
+                },
+                {
+                    "number": 34,
+                    "name": "PG2",
+                    "ball": "V11"
+                },
+                {
+                    "number": 33,
+                    "name": "PA1",
+                    "ball": "W3"
+                },
+                {
+                    "number": 32,
+                    "name": "PA0",
+                    "ball": "V3"
+                },
+                {
+                    "number": 31,
+                    "name": "PF3",
+                    "ball": "T7"
+                },
+                {
+                    "number": 30,
+                    "name": "PF4",
+                    "ball": "V7"
+                },
+                {
+                    "number": 29,
+                    "name": "PF2",
+                    "ball": "W6"
+                },
+                {
+                    "number": 28,
+                    "name": "PF0",
+                    "ball": "U6"
+                },
+                {
+                    "number": 27,
+                    "name": "PF1",
+                    "ball": "V6"
+                },
+                {
+                    "number": 26,
+                    "name": "PC0",
+                    "ball": "B15"
+                },
+                {
+                    "number": 25,
+                    "name": "PQ7",
+                    "ball": "M3"
+                },
+                {
+                    "number": 24,
+                    "name": "PG7",
+                    "ball": "U14"
+                },
+                {
+                    "number": 23,
+                    "name": "PQ6",
+                    "ball": "U15"
+                },
+                {
+                    "number": 22,
+                    "name": "PN2",
+                    "ball": "A11"
+                },
+                {
+                    "number": 21,
+                    "name": "PN1",
+                    "ball": "B11"
+                },
+                {
+                    "number": 20,
+                    "name": "PQ4",
+                    "ball": "A13"
+                },
+                {
+                    "number": 19,
+                    "name": "PS2",
+                    "ball": "B14"
+                },
+                {
+                    "number": 18,
+                    "name": "PB1",
+                    "ball": "B16"
+                },
+                {
+                    "number": 17,
+                    "name": "PB0",
+                    "ball": "A16"
+                },
+                {
+                    "number": 16,
+                    "name": "PL6",
+                    "ball": "C18"
+                },
+                {
+                    "number": 15,
+                    "name": "PC2",
+                    "ball": "D14"
+                },
+                {
+                    "number": 14,
+                    "name": "PL7",
+                    "ball": "B18"
+                },
+                {
+                    "number": 13,
+                    "name": "PC3",
+                    "ball": "C14"
+                },
+                {
+                    "number": 12,
+                    "name": "PC1",
+                    "ball": "C15"
+                },
+                {
+                    "number": 11,
+                    "name": "PN0",
+                    "ball": "C10"
+                },
+                {
+                    "number": 10,
+                    "name": "PF5",
+                    "ball": "W7"
+                },
+                {
+                    "number": 9,
+                    "name": "PJ0",
+                    "ball": "C8"
+                },
+                {
+                    "number": 8,
+                    "name": "PJ1",
+                    "ball": "E7"
+                },
+                {
+                    "number": 7,
+                    "name": "PH3",
+                    "ball": "T1"
+                },
+                {
+                    "number": 6,
+                    "name": "PG3",
+                    "ball": "M16"
+                },
+                {
+                    "number": 5,
+                    "name": "PG4",
+                    "ball": "K17"
+                },
+                {
+                    "number": 4,
+                    "name": "PG5",
+                    "ball": "K15"
+                },
+                {
+                    "number": 3,
+                    "name": "PD7",
+                    "ball": "B2"
+                },
+                {
+                    "number": 2,
+                    "name": "WAKE"
+                },
+                {
+                    "number": 1,
+                    "name": "HIB"
+                }
+            ]
+        },
+        {
+            "type": "MSP432E411Y-BGAEVM J7 Edge Connector",
+            "default": true,
+            "name": "expansion2",
+            "displayName": "External Peripheral Interface Header",
+            "dimensions": {
+                "rows": [
+                    { "left": 1, "right": 2 },
+                    { "left": 3,"right": 4 },
+                    { "left": 5,"right": 6 },
+                    { "left": 7,"right": 8 },
+                    { "left": 9,"right": 10 },
+                    { "left": 11,"right": 12 },
+                    { "left": 13,"right": 14 },
+                    { "left": 15,"right": 16 },
+                    { "left": 17,"right": 18 },
+                    { "left": 19,"right": 20 },
+                    { "left": 21,"right": 22 },
+                    { "left": 23,"right": 24 },
+                    { "left": 25,"right": 26 },
+                    { "left": 27,"right": 28 },
+                    { "left": 29,"right": 30 },
+                    { "left": 31,"right": 32 },
+                    { "left": 33,"right": 34 },
+                    { "left": 35,"right": 36 },
+                    { "left": 37,"right": 38 },
+                    { "left": 39,"right": 40 },
+                    { "left": 41,"right": 42 },
+                    { "left": 43,"right": 44 },
+                    { "left": 45,"right": 46 },
+                    { "left": 47,"right": 48 },
+                    { "left": 49,"right": 50 },
+                    { "left": 51,"right": 52 },
+                    { "left": 53,"right": 54 },
+                    { "left": 55,"right": 56 },
+                    { "left": 57,"right": 58 },
+                    { "left": 59,"right": 60 },
+                    { "left": 61,"right": 62 },
+                    { "left": 63,"right": 64 },
+                    { "left": 65,"right": 66 },
+                    { "left": 67,"right": 68 },
+                    { "left": 69,"right": 70 },
+                    { "left": 71,"right": 72 }
+                ]
+            },
+            "pins": [
+                {
+                    "number": 1,
+                    "name": "PN5",
+                    "ball": "B9"
+                },
+                {
+                    "number": 2
+                },
+                {
+                    "number": 3,
+                    "name": "PN4",
+                    "ball": "A10"
+                },
+                {
+                    "number": 4
+                },
+                {
+                    "number": 5,
+                    "name": "PL5",
+                    "ball": "G19"
+                },
+                {
+                    "number": 6
+                },
+                {
+                    "number": 7,
+                    "name": "PK4",
+                    "ball": "U19"
+                },
+                {
+                    "number": 8
+                },
+                {
+                    "number": 9,
+                    "name": "PK5",
+                    "ball": "V17"
+                },
+                {
+                    "number": 10
+                },
+                {
+                    "number": 11,
+                    "name": "PN3",
+                    "ball": "B10"
+                },
+                {
+                    "number": 12
+                },
+                {
+                    "number": 13,
+                    "name": "PP2",
+                    "ball": "B13"
+                },
+                {
+                    "number": 14
+                },
+                {
+                    "number": 15,
+                    "name": "PB3",
+                    "ball": "B17"
+                },
+                {
+                    "number": 16
+                },
+                {
+                    "number": 17,
+                    "name": "PB2",
+                    "ball": "A17"
+                },
+                {
+                    "number": 18
+                },
+                {
+                    "number": 19,
+                    "name": "PL4",
+                    "ball": "H18"
+                },
+                {
+                    "number": 20
+                },
+                {
+                    "number": 21,
+                    "name": "PK6",
+                    "ball": "V16"
+                },
+                {
+                    "number": 22
+                },
+                {
+                    "number": 23,
+                    "name": "PK7",
+                    "ball": "W16"
+                },
+                {
+                    "number": 24
+                },
+                {
+                    "number": 25,
+                    "name": "PQ3",
+                    "ball": "M4"
+                },
+                {
+                    "number": 26
+                },
+                {
+                    "number": 27,
+                    "name": "PQ2",
+                    "ball": "H4"
+                },
+                {
+                    "number": 28
+                },
+                {
+                    "number": 29,
+                    "name": "PQ1",
+                    "ball": "E2"
+                },
+                {
+                    "number": 30
+                },
+                {
+                    "number": 31,
+                    "name": "PQ0",
+                    "ball": "E3"
+                },
+                {
+                    "number": 31
+                },
+                {
+                    "number": 32
+                },
+                {
+                    "number": 33,
+                    "name": "PL3",
+                    "ball": "J18"
+                },
+                {
+                    "number": 34
+                },
+                {
+                    "number": 35,
+                    "name": "PL2",
+                    "ball": "G18"
+                },
+                {
+                    "number": 36
+                },
+                {
+                    "number": 37,
+                    "name": "PL1",
+                    "ball": "H19"
+                },
+                {
+                    "number": 38
+                },
+                {
+                    "number": 39,
+                    "name": "PL0",
+                    "ball": "G16"
+                },
+                {
+                    "number": 40
+                },
+                {
+                    "number": 41,
+                    "name": "PM0",
+                    "ball": "K18"
+                },
+                {
+                    "number": 42
+                },
+                {
+                    "number": 43,
+                    "name": "PM1",
+                    "ball": "K19"
+                },
+                {
+                    "number": 44
+                },
+                {
+                    "number": 45,
+                    "name": "PM2",
+                    "ball": "L18"
+                },
+                {
+                    "number": 46
+                },
+                {
+                    "number": 47,
+                    "name": "PM3",
+                    "ball": "L19"
+                },
+                {
+                    "number": 48
+                },
+                {
+                    "number": 49,
+                    "name": "PG0",
+                    "ball": "N15"
+                },
+                {
+                    "number": 50
+                },
+                {
+                    "number": 51,
+                    "name": "PG1",
+                    "ball": "T14"
+                },
+                {
+                    "number": 52
+                },
+                {
+                    "number": 53,
+                    "name": "PA7",
+                    "ball": "R7"
+                },
+                {
+                    "number": 54
+                },
+                {
+                    "number": 55,
+                    "name": "PA6",
+                    "ball": "V5"
+                },
+                {
+                    "number": 56
+                },
+                {
+                    "number": 57,
+                    "name": "PC4",
+                    "ball": "M2"
+                },
+                {
+                    "number": 58
+                },
+                {
+                    "number": 59,
+                    "name": "PC5",
+                    "ball": "M1"
+                },
+                {
+                    "number": 60
+                },
+                {
+                    "number": 61,
+                    "name": "PC6",
+                    "ball": "L2"
+                },
+                {
+                    "number": 62
+                },
+                {
+                    "number": 63,
+                    "name": "PC7",
+                    "ball": "K3"
+                },
+                {
+                    "number": 64
+                },
+                {
+                    "number": 65,
+                    "name": "PK3",
+                    "ball": "K2"
+                },
+                {
+                    "number": 66
+                },
+                {
+                    "number": 67,
+                    "name": "PH2",
+                    "ball": "R1"
+                },
+                {
+                    "number": 68
+                },
+                {
+                    "number": 69,
+                    "name": "PH1",
+                    "ball": "R2"
+                },
+                {
+                    "number": 70
+                },
+                {
+                    "number": 71,
+                    "name": "PH0",
+                    "ball": "P4"
+                },
+                {
+                    "number": 72
+                }
+            ]
+        },
+        {
+            "type": "MSP432E411Y-BGAEVM J9 Edge Connector",
+            "default": true,
+            "name": "expansion3",
+            "displayName": "LCD Interface Header",
+            "dimensions": {
+                "rows": [
+                    { "left": 40, "right": 39 },
+                    { "left": 38, "right": 37 },
+                    { "left": 36, "right": 35 },
+                    { "left": 34, "right": 33 },
+                    { "left": 32, "right": 31 },
+                    { "left": 30, "right": 29 },
+                    { "left": 28, "right": 27 },
+                    { "left": 26, "right": 25 },
+                    { "left": 24, "right": 23 },
+                    { "left": 22, "right": 21 },
+                    { "left": 20, "right": 19 },
+                    { "left": 18, "right": 17 },
+                    { "left": 16, "right": 15 },
+                    { "left": 14, "right": 13 },
+                    { "left": 12, "right": 11 },
+                    { "left": 10, "right": 9 },
+                    { "left": 8, "right": 7 },
+                    { "left": 6, "right": 5 },
+                    { "left": 4, "right": 3 },
+                    { "left": 2, "right": 1 }
+                ]
+            },
+            "pins": [
+                {
+                    "number": 40,   /* Ground */
+                    "name": "GND"
+                },
+                {
+                    "number": 39,   /* Ground */
+                    "name": "GND"
+                },
+                {
+                    "number": 38,
+                    "name": "PE7",
+                    "ball": "B7"
+                },
+                {
+                    "number": 37,
+                    "name": "PE6",
+                    "ball": "A7"
+                },
+                {
+                    "number": 36,
+                    "name": "PP6",
+                    "ball": "B8"
+                },
+                {
+                    "number": 35,
+                    "name": "PP7",
+                    "ball": "A8"
+                },
+                {
+                    "number": 34,   /* 5 V */
+                    "name": "5V"
+                },
+                {
+                    "number": 33,   /* 3.3 V */
+                    "name": "3V3"
+                },
+                {
+                    "number": 32,
+                    "name": "PS3",
+                    "ball": "A14"
+                },
+                {
+                    "number": 31,
+                    "name": "PB4",
+                    "ball": "C6"
+                },
+                {
+                    "number": 30,
+                    "name": "PS1",
+                    "ball": "D13"
+                },
+                {
+                    "number": 29,
+                    "name": "PS0",
+                    "ball": "D12"
+                },
+                {
+                    "number": 28,
+                    "name": "PT3",
+                    "ball": "F17"
+                },
+                {
+                    "number": 27,
+                    "name": "PT2",
+                    "ball": "E18"
+                },
+                {
+                    "number": 26,
+                    "name": "PJ5",
+                    "ball": "E17"
+                },
+                {
+                    "number": 25,
+                    "name": "PJ4",
+                    "ball": "F18"
+                },
+                {
+                    "number": 24,
+                    "name": "PJ3",
+                    "ball": "F16"
+                },
+                {
+                    "number": 23,
+                    "name": "PJ2",
+                    "ball": "H17"
+                },
+                {
+                    "number": 22,
+                    "name": "PN6",
+                    "ball": "T12"
+                },
+                {
+                    "number": 21,
+                    "name": "PN7",
+                    "ball": "U12"
+                },
+                {
+                    "number": 20,
+                    "name": "PT1",
+                    "ball": "V10"
+                },
+                {
+                    "number": 19,
+                    "name": "PT0",
+                    "ball": "W10"
+                },
+                {
+                    "number": 18,
+                    "name": "PS7",
+                    "ball": "R13"
+                },
+                {
+                    "number": 17,
+                    "name": "PS6",
+                    "ball": "U10"
+                },
+                {
+                    "number": 16,
+                    "name": "PS5",
+                    "ball": "T13"
+                },
+                {
+                    "number": 15,
+                    "name": "PS4",
+                    "ball": "V9"
+                },
+                {
+                    "number": 14,
+                    "name": "PR7",
+                    "ball": "R10"
+                },
+                {
+                    "number": 13,
+                    "name": "PR6",
+                    "ball": "W9"
+                },
+                {
+                    "number": 12,
+                    "name": "PR3",
+                    "ball": "V8"
+                },
+                {
+                    "number": 11,
+                    "name": "PF7",
+                    "ball": "U8"
+                },
+                {
+                    "number": 10,
+                    "name": "PR5",
+                    "ball": "P2"
+                },
+                {
+                    "number": 9,
+                    "name": "PR4",
+                    "ball": "P3"
+                },
+                {
+                    "number": 8,
+                    "name": "PJ6",
+                    "ball": "N1"
+                },
+                {
+                    "number": 7,    /* Ground */
+                    "name": "GND"
+                },
+                {
+                    "number": 6,
+                    "name": "PR2",
+                    "ball": "N2"
+                },
+                {
+                    "number": 5,
+                    "name": "PR0",
+                    "ball": "N5"
+                },
+                {
+                    "number": 4,
+                    "name": "PF6",
+                    "ball": "T8"
+                },
+                {
+                    "number": 3,
+                    "name": "PR1",
+                    "ball": "N4"
+                },
+                {
+                    "number": 2,     /* 5 V */
+                    "name": "5V"
+                },
+                {
+                    "number": 1,     /* 3.3 V */
+                    "name": "3V3"
+                }
+            ]
+        }
+    ],
+
+    "components": {
+        "SW2": {
+            "displayName": "LaunchPad Button SW2",
+            "definition": "/ti/boards/components/button.json",
+            "longDescription": "SW2 LaunchPad button with no external pull.",
+            /* See schematic linked at top of file */
+            "settings": {
+                "DIN": {
+                    "pull": "Pull Up",
+                    "interruptTrigger": "Falling Edge"
+                }
+            },
+            "connections" : {
+                "INPUT": "C8"  /* PJ0 */
+            }
+        },
+        /* symbolic links/aliases for BUTTON portability between LaunchPads */
+        "BUTTON0": {
+            "link": "SW2"
+        },
+
+        "ETHERNET_LEDS": {
+            "displayName": "Ethernet LEDs",
+            "description": "Ethernet LEDs",
+            "longDescription": "Ethernet LEDs indicating transmit and receive activity",
+            "type": "EthernetLED",
+            "signals": {
+                "LED0"  : {"type": "EN0LED0",  "connection" : "U6"},  /* PF0 */
+                "LED1"  : {"type": "EN0LED1",  "connection" : "V7"}   /* PF4 */
+            }
+        }
+    }
+}

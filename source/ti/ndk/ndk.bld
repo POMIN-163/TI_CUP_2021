@@ -1,0 +1,218 @@
+/*
+ * Copyright (c) 2017-2020, Texas Instruments Incorporated
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * *  Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *
+ * *  Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * *  Neither the name of Texas Instruments Incorporated nor the names of
+ *    its contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ * Generally there is no need to edit this file!
+ *
+ * This file controls which libraries are built, as well as compiler options
+ * to use.
+ *
+ * The contents of this file usually don't change, but having it in your
+ * ownership allows you to tweak your compiler options.  If you do change
+ * this file, however, on the next upgrade of the product we recommend
+ * that you take "ndk.bld" file as supplied by the upgrade and then merge
+ * your changes with it.
+ */
+
+/*
+ *  ======== ndk.bld ========
+ *  This script is run prior to all build scripts. It sets host-system-
+ *  independent values for targets and platforms, then it attempts to
+ *  find the host-system-specific ndk.bld script that sets argValues.
+ *
+ *  These settings may be a function of the following global variables:
+ *
+ *  environment a hash table of environment strings
+ *
+ *  arguments   an array of string arguments to the _config.bld script
+ *          initialized as follows:
+ *              arguments[0] - the file name of the _config.bld script
+ *              arguments[1] - the first argument specified in XDCARGS
+ *                  :
+ *              arguments[n] - the n'th argument in XDCARGS
+ *
+ *  Build       an alias for xdc.om.xdc.bld.BuildEnvironment
+ */
+
+var Build = xdc.useModule('xdc.bld.BuildEnvironment');
+var Pkg = xdc.useModule('xdc.bld.PackageContents');
+
+var driversPath = "";
+var nsPath = "";
+var mbedtlsInclude = "";
+var posixIncs = "";
+
+/* Additional copts */
+var enableJumbo = false;
+var enableStrongChecking = false;
+
+var ccOpts = {
+    "ti.targets.arm.elf.M4"           : " -ms -g ",
+    "ti.targets.arm.elf.M4F"          : " -ms -g ",
+
+    "gnu.targets.arm.M4"              : " -g -std=c99 ",
+    "gnu.targets.arm.M4F"             : " -g -std=c99 ",
+
+    "iar.targets.arm.M4"              : "",
+    "iar.targets.arm.M4F"             : "",
+};
+
+/* initialize local vars with those set in xdcpaths.mak (via XDCARGS) */
+for (arg = 0; arg < arguments.length; arg++) {
+    /*
+     * Get the compiler's installation directory.
+     * For "ti.targets.arm.elf.M3=/vendors/arm/5.2.0", we get
+     * "/vendors/arm/5.2.0"
+     */
+    var argName = arguments[arg].split("=")[0];
+    var argValue = arguments[arg].split("=")[1];
+
+    /* only interested in values which have been set */
+    if (argValue == "" || argValue == undefined) {
+        continue;
+    }
+
+    if (argName.match(/targets/)) {
+        var target = xdc.useModule(argName);
+        target.rootDir = argValue;
+        target.ccOpts.suffix += ccOpts[argName];
+        Build.targets.$add(target);
+    }
+
+    if (argName.match(/BUILDMINSTACK/)) {
+        /* Set flag which governs libraries built in ti.ndk.stack package */
+        buildMinStack = argValue;
+        continue;
+    }
+
+    if (argName.match(/NS_INSTALL_DIR/)) {
+        nsPath = argValue;
+        continue;
+    }
+
+    if (argName.match(/^MBEDTLS_INSTALL_DIR/) ) {
+        var mbedtlsPath = argValue;
+        if (mbedtlsPath != "") {
+            mbedtlsInclude = " -I" + mbedtlsPath + "/ti/port -I" + mbedtlsPath +
+                "/include -I" + mbedtlsPath + "/ti/configs";
+        }
+        continue;
+    }
+
+    if (argName.match(/TIPOSIX_REPO/)) {
+        posixIncs = argValue;
+        posixIncs = " -I" + posixIncs + "/ti/posix";
+
+        continue;
+    }
+
+    /* Build libraries in debug mode */
+    if (argName.match(/profile/)) {
+        if (argValue.match(/debug/)) {
+            Pkg.attrs.profile = "debug";
+        }
+        continue;
+    }
+
+    if (argName.match(/ENABLE_JUMBO/)) {
+        if (Number(argValue) == 1) {
+            enableJumbo = true;
+        }
+        continue;
+    }
+
+    if (argName.match(/ENABLE_STRONG_CHECKING/)) {
+        if (Number(argValue) == 1) {
+            enableStrongChecking = true;
+        }
+        continue;
+    }
+}
+
+if (Build.targets.length == 0) {
+    Build.useTargets = null;
+}
+
+/* Include Path (needed to find NDK headers) */
+var ndkPath = "$(PKGROOT)/ti/ndk";
+var ndkPathInclude = " -I" + ndkPath + "/inc" + " -I" + ndkPath + "/inc/tools";
+
+/* NS include path */
+var nsInclude = " -I" + nsPath + "/source";
+
+/*
+ * Note that this is inconsistent with the NDK development tree. It is set here
+ * to point to the root ti/drivers directory, but this is not the same way this
+ * variable is used in the NDK tree.
+ * THIS NEEDS REVIEW AND REWORK.
+ */
+var tiDriversPath = "$(PKGROOT)/ti/drivers";
+
+/* lib/ is a generated directory that 'xdc clean' should remove */
+Pkg.generatedFiles.$add("lib/");
+
+/*
+ * Return the posix include directory, based on the target suffix.
+ * This is typically appended to "ti/posix" to set the target-specific
+ * POSIX include path.
+ */
+function getPosixIncDirectory(suffix) {
+    var incdir = "";
+
+    switch (suffix) {
+        case "em4":
+        case "em4f":
+        case "e66":
+        case "e674":
+        case "e9":
+        case "er5f":
+            incdir = "ccs";
+            break;
+
+        case "rm4f":
+            incdir = "iar";
+            break;
+
+        case "m4fg":
+        case "a8fg":
+        case "a9fg":
+        case "a15fg":
+            incdir = "gcc";
+            break;
+
+        default:
+            throw("Unhandled target suffix: '" + suffix + "'");
+            break;
+    }
+
+    return (incdir);
+}

@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.ndk.tools.console" version="" producerId="undefined">
+    <units>
+    </units>
+    <sources>
+        <srcFile name="package/package_ti.ndk.tools.console.c"/>
+        <srcFile name="conacct.c"/>
+        <srcFile name="conecho.c"/>
+        <srcFile name="conipv6.c"/>
+        <srcFile name="conping.c"/>
+        <srcFile name="conroute.c"/>
+        <srcFile name="console.c"/>
+        <srcFile name="constat.c"/>
+        <srcFile name="contftp.c"/>
+        <srcFile name="condns.c"/>
+        <srcFile name="conipaddr.c"/>
+        <srcFile name="conlli.c"/>
+        <srcFile name="consock.c"/>
+        <srcFile name="contest.c"/>
+        <srcFile name="convlan.c"/>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="lib/console.aem4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/console/package/package_ti.ndk.tools.console.oem4f.dep" src="package/package_ti.ndk.tools.console.c"/>
+        <srcFile name="package/lib/lib/console/conacct.oem4f.dep" src="conacct.c"/>
+        <srcFile name="package/lib/lib/console/conecho.oem4f.dep" src="conecho.c"/>
+        <srcFile name="package/lib/lib/console/conipv6.oem4f.dep" src="conipv6.c"/>
+        <srcFile name="package/lib/lib/console/conping.oem4f.dep" src="conping.c"/>
+        <srcFile name="package/lib/lib/console/conroute.oem4f.dep" src="conroute.c"/>
+        <srcFile name="package/lib/lib/console/console.oem4f.dep" src="console.c"/>
+        <srcFile name="package/lib/lib/console/constat.oem4f.dep" src="constat.c"/>
+        <srcFile name="package/lib/lib/console/contftp.oem4f.dep" src="contftp.c"/>
+        <srcFile name="package/lib/lib/console/condns.oem4f.dep" src="condns.c"/>
+        <srcFile name="package/lib/lib/console/conipaddr.oem4f.dep" src="conipaddr.c"/>
+        <srcFile name="package/lib/lib/console/conlli.oem4f.dep" src="conlli.c"/>
+        <srcFile name="package/lib/lib/console/consock.oem4f.dep" src="consock.c"/>
+        <srcFile name="package/lib/lib/console/contest.oem4f.dep" src="contest.c"/>
+        <srcFile name="package/lib/lib/console/convlan.oem4f.dep" src="convlan.c"/>
+        <srcFile name="lib/console_min.aem4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/console_min/package/package_ti.ndk.tools.console.oem4f.dep" src="package/package_ti.ndk.tools.console.c"/>
+        <srcFile name="package/lib/lib/console_min/conacct.oem4f.dep" src="conacct.c"/>
+        <srcFile name="package/lib/lib/console_min/conecho.oem4f.dep" src="conecho.c"/>
+        <srcFile name="package/lib/lib/console_min/conipv6.oem4f.dep" src="conipv6.c"/>
+        <srcFile name="package/lib/lib/console_min/conping.oem4f.dep" src="conping.c"/>
+        <srcFile name="package/lib/lib/console_min/conroute.oem4f.dep" src="conroute.c"/>
+        <srcFile name="package/lib/lib/console_min/console.oem4f.dep" src="console.c"/>
+        <srcFile name="package/lib/lib/console_min/constat.oem4f.dep" src="constat.c"/>
+        <srcFile name="package/lib/lib/console_min/contftp.oem4f.dep" src="contftp.c"/>
+        <srcFile name="package/lib/lib/console_min/condns.oem4f.dep" src="condns.c"/>
+        <srcFile name="package/lib/lib/console_min/conipaddr.oem4f.dep" src="conipaddr.c"/>
+        <srcFile name="package/lib/lib/console_min/conlli.oem4f.dep" src="conlli.c"/>
+        <srcFile name="package/lib/lib/console_min/consock.oem4f.dep" src="consock.c"/>
+        <srcFile name="package/lib/lib/console_min/contest.oem4f.dep" src="contest.c"/>
+        <srcFile name="package/lib/lib/console_min/convlan.oem4f.dep" src="convlan.c"/>
+        <srcFile name="lib/console_ipv4.aem4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/console_ipv4/package/package_ti.ndk.tools.console.oem4f.dep" src="package/package_ti.ndk.tools.console.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/conacct.oem4f.dep" src="conacct.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/conecho.oem4f.dep" src="conecho.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/conipv6.oem4f.dep" src="conipv6.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/conping.oem4f.dep" src="conping.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/conroute.oem4f.dep" src="conroute.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/console.oem4f.dep" src="console.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/constat.oem4f.dep" src="constat.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/contftp.oem4f.dep" src="contftp.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/condns.oem4f.dep" src="condns.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/conipaddr.oem4f.dep" src="conipaddr.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/conlli.oem4f.dep" src="conlli.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/consock.oem4f.dep" src="consock.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/contest.oem4f.dep" src="contest.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/convlan.oem4f.dep" src="convlan.c"/>
+        <srcFile name="lib/console_min_ipv4.aem4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/package/package_ti.ndk.tools.console.oem4f.dep" src="package/package_ti.ndk.tools.console.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/conacct.oem4f.dep" src="conacct.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/conecho.oem4f.dep" src="conecho.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/conipv6.oem4f.dep" src="conipv6.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/conping.oem4f.dep" src="conping.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/conroute.oem4f.dep" src="conroute.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/console.oem4f.dep" src="console.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/constat.oem4f.dep" src="constat.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/contftp.oem4f.dep" src="contftp.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/condns.oem4f.dep" src="condns.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/conipaddr.oem4f.dep" src="conipaddr.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/conlli.oem4f.dep" src="conlli.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/consock.oem4f.dep" src="consock.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/contest.oem4f.dep" src="contest.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/convlan.oem4f.dep" src="convlan.c"/>
+        <srcFile name="lib/console.am4fg.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/console/package/package_ti.ndk.tools.console.om4fg.dep" src="package/package_ti.ndk.tools.console.c"/>
+        <srcFile name="package/lib/lib/console/conacct.om4fg.dep" src="conacct.c"/>
+        <srcFile name="package/lib/lib/console/conecho.om4fg.dep" src="conecho.c"/>
+        <srcFile name="package/lib/lib/console/conipv6.om4fg.dep" src="conipv6.c"/>
+        <srcFile name="package/lib/lib/console/conping.om4fg.dep" src="conping.c"/>
+        <srcFile name="package/lib/lib/console/conroute.om4fg.dep" src="conroute.c"/>
+        <srcFile name="package/lib/lib/console/console.om4fg.dep" src="console.c"/>
+        <srcFile name="package/lib/lib/console/constat.om4fg.dep" src="constat.c"/>
+        <srcFile name="package/lib/lib/console/contftp.om4fg.dep" src="contftp.c"/>
+        <srcFile name="package/lib/lib/console/condns.om4fg.dep" src="condns.c"/>
+        <srcFile name="package/lib/lib/console/conipaddr.om4fg.dep" src="conipaddr.c"/>
+        <srcFile name="package/lib/lib/console/conlli.om4fg.dep" src="conlli.c"/>
+        <srcFile name="package/lib/lib/console/consock.om4fg.dep" src="consock.c"/>
+        <srcFile name="package/lib/lib/console/contest.om4fg.dep" src="contest.c"/>
+        <srcFile name="package/lib/lib/console/convlan.om4fg.dep" src="convlan.c"/>
+        <srcFile name="lib/console_min.am4fg.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/console_min/package/package_ti.ndk.tools.console.om4fg.dep" src="package/package_ti.ndk.tools.console.c"/>
+        <srcFile name="package/lib/lib/console_min/conacct.om4fg.dep" src="conacct.c"/>
+        <srcFile name="package/lib/lib/console_min/conecho.om4fg.dep" src="conecho.c"/>
+        <srcFile name="package/lib/lib/console_min/conipv6.om4fg.dep" src="conipv6.c"/>
+        <srcFile name="package/lib/lib/console_min/conping.om4fg.dep" src="conping.c"/>
+        <srcFile name="package/lib/lib/console_min/conroute.om4fg.dep" src="conroute.c"/>
+        <srcFile name="package/lib/lib/console_min/console.om4fg.dep" src="console.c"/>
+        <srcFile name="package/lib/lib/console_min/constat.om4fg.dep" src="constat.c"/>
+        <srcFile name="package/lib/lib/console_min/contftp.om4fg.dep" src="contftp.c"/>
+        <srcFile name="package/lib/lib/console_min/condns.om4fg.dep" src="condns.c"/>
+        <srcFile name="package/lib/lib/console_min/conipaddr.om4fg.dep" src="conipaddr.c"/>
+        <srcFile name="package/lib/lib/console_min/conlli.om4fg.dep" src="conlli.c"/>
+        <srcFile name="package/lib/lib/console_min/consock.om4fg.dep" src="consock.c"/>
+        <srcFile name="package/lib/lib/console_min/contest.om4fg.dep" src="contest.c"/>
+        <srcFile name="package/lib/lib/console_min/convlan.om4fg.dep" src="convlan.c"/>
+        <srcFile name="lib/console_ipv4.am4fg.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/console_ipv4/package/package_ti.ndk.tools.console.om4fg.dep" src="package/package_ti.ndk.tools.console.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/conacct.om4fg.dep" src="conacct.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/conecho.om4fg.dep" src="conecho.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/conipv6.om4fg.dep" src="conipv6.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/conping.om4fg.dep" src="conping.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/conroute.om4fg.dep" src="conroute.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/console.om4fg.dep" src="console.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/constat.om4fg.dep" src="constat.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/contftp.om4fg.dep" src="contftp.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/condns.om4fg.dep" src="condns.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/conipaddr.om4fg.dep" src="conipaddr.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/conlli.om4fg.dep" src="conlli.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/consock.om4fg.dep" src="consock.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/contest.om4fg.dep" src="contest.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/convlan.om4fg.dep" src="convlan.c"/>
+        <srcFile name="lib/console_min_ipv4.am4fg.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/package/package_ti.ndk.tools.console.om4fg.dep" src="package/package_ti.ndk.tools.console.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/conacct.om4fg.dep" src="conacct.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/conecho.om4fg.dep" src="conecho.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/conipv6.om4fg.dep" src="conipv6.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/conping.om4fg.dep" src="conping.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/conroute.om4fg.dep" src="conroute.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/console.om4fg.dep" src="console.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/constat.om4fg.dep" src="constat.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/contftp.om4fg.dep" src="contftp.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/condns.om4fg.dep" src="condns.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/conipaddr.om4fg.dep" src="conipaddr.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/conlli.om4fg.dep" src="conlli.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/consock.om4fg.dep" src="consock.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/contest.om4fg.dep" src="contest.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/convlan.om4fg.dep" src="convlan.c"/>
+        <srcFile name="lib/console.arm4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/console/package/package_ti.ndk.tools.console.orm4f.dep" src="package/package_ti.ndk.tools.console.c"/>
+        <srcFile name="package/lib/lib/console/conacct.orm4f.dep" src="conacct.c"/>
+        <srcFile name="package/lib/lib/console/conecho.orm4f.dep" src="conecho.c"/>
+        <srcFile name="package/lib/lib/console/conipv6.orm4f.dep" src="conipv6.c"/>
+        <srcFile name="package/lib/lib/console/conping.orm4f.dep" src="conping.c"/>
+        <srcFile name="package/lib/lib/console/conroute.orm4f.dep" src="conroute.c"/>
+        <srcFile name="package/lib/lib/console/console.orm4f.dep" src="console.c"/>
+        <srcFile name="package/lib/lib/console/constat.orm4f.dep" src="constat.c"/>
+        <srcFile name="package/lib/lib/console/contftp.orm4f.dep" src="contftp.c"/>
+        <srcFile name="package/lib/lib/console/condns.orm4f.dep" src="condns.c"/>
+        <srcFile name="package/lib/lib/console/conipaddr.orm4f.dep" src="conipaddr.c"/>
+        <srcFile name="package/lib/lib/console/conlli.orm4f.dep" src="conlli.c"/>
+        <srcFile name="package/lib/lib/console/consock.orm4f.dep" src="consock.c"/>
+        <srcFile name="package/lib/lib/console/contest.orm4f.dep" src="contest.c"/>
+        <srcFile name="package/lib/lib/console/convlan.orm4f.dep" src="convlan.c"/>
+        <srcFile name="lib/console_min.arm4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/console_min/package/package_ti.ndk.tools.console.orm4f.dep" src="package/package_ti.ndk.tools.console.c"/>
+        <srcFile name="package/lib/lib/console_min/conacct.orm4f.dep" src="conacct.c"/>
+        <srcFile name="package/lib/lib/console_min/conecho.orm4f.dep" src="conecho.c"/>
+        <srcFile name="package/lib/lib/console_min/conipv6.orm4f.dep" src="conipv6.c"/>
+        <srcFile name="package/lib/lib/console_min/conping.orm4f.dep" src="conping.c"/>
+        <srcFile name="package/lib/lib/console_min/conroute.orm4f.dep" src="conroute.c"/>
+        <srcFile name="package/lib/lib/console_min/console.orm4f.dep" src="console.c"/>
+        <srcFile name="package/lib/lib/console_min/constat.orm4f.dep" src="constat.c"/>
+        <srcFile name="package/lib/lib/console_min/contftp.orm4f.dep" src="contftp.c"/>
+        <srcFile name="package/lib/lib/console_min/condns.orm4f.dep" src="condns.c"/>
+        <srcFile name="package/lib/lib/console_min/conipaddr.orm4f.dep" src="conipaddr.c"/>
+        <srcFile name="package/lib/lib/console_min/conlli.orm4f.dep" src="conlli.c"/>
+        <srcFile name="package/lib/lib/console_min/consock.orm4f.dep" src="consock.c"/>
+        <srcFile name="package/lib/lib/console_min/contest.orm4f.dep" src="contest.c"/>
+        <srcFile name="package/lib/lib/console_min/convlan.orm4f.dep" src="convlan.c"/>
+        <srcFile name="lib/console_ipv4.arm4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/console_ipv4/package/package_ti.ndk.tools.console.orm4f.dep" src="package/package_ti.ndk.tools.console.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/conacct.orm4f.dep" src="conacct.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/conecho.orm4f.dep" src="conecho.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/conipv6.orm4f.dep" src="conipv6.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/conping.orm4f.dep" src="conping.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/conroute.orm4f.dep" src="conroute.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/console.orm4f.dep" src="console.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/constat.orm4f.dep" src="constat.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/contftp.orm4f.dep" src="contftp.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/condns.orm4f.dep" src="condns.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/conipaddr.orm4f.dep" src="conipaddr.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/conlli.orm4f.dep" src="conlli.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/consock.orm4f.dep" src="consock.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/contest.orm4f.dep" src="contest.c"/>
+        <srcFile name="package/lib/lib/console_ipv4/convlan.orm4f.dep" src="convlan.c"/>
+        <srcFile name="lib/console_min_ipv4.arm4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/package/package_ti.ndk.tools.console.orm4f.dep" src="package/package_ti.ndk.tools.console.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/conacct.orm4f.dep" src="conacct.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/conecho.orm4f.dep" src="conecho.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/conipv6.orm4f.dep" src="conipv6.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/conping.orm4f.dep" src="conping.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/conroute.orm4f.dep" src="conroute.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/console.orm4f.dep" src="console.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/constat.orm4f.dep" src="constat.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/contftp.orm4f.dep" src="contftp.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/condns.orm4f.dep" src="condns.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/conipaddr.orm4f.dep" src="conipaddr.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/conlli.orm4f.dep" src="conlli.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/consock.orm4f.dep" src="consock.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/contest.orm4f.dep" src="contest.c"/>
+        <srcFile name="package/lib/lib/console_min_ipv4/convlan.orm4f.dep" src="convlan.c"/>
+        <srcFile name="package/rel/ti_ndk_tools_console.tar.dep" src="package/rel/ti_ndk_tools_console.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.arm.elf.M4F"
+            version="ti.targets.arm.elf.M4F{1,0,20.2,1"
+            rawVersion="20.2.1"
+            platform="ti.platforms.tiva:TM4C1294NCPDT:1"
+            isa="v7M4"
+            suffix="em4f"
+            rootDir="/db/vendors/ti/arm/20.2.1.LTS/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="gnu.targets.arm.M4F"
+            version="gnu.targets.arm.M4F{1,0,9.2,1"
+            rawVersion="9.2.1"
+            platform="ti.platforms.tiva:TM4C1294NCPDT"
+            isa="v7M4"
+            suffix="m4fg"
+            rootDir="/db/vendors/arm/gcc-arm-none-eabi-9-2019-q4-major"
+            os="undefined"
+            rts="gnu.targets.arm.rtsv7M">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="iar.targets.arm.M4F"
+            version="iar.targets.arm.M4F{1,0,8.50,1"
+            rawVersion="8.50.1.245"
+            platform="ti.platforms.tiva:TM4C1294NCPDT:1"
+            isa="v7M4"
+            suffix="rm4f"
+            rootDir="/db/vendors/iar/arm/8.50.1/Linux"
+            os="undefined"
+            rts="iar.targets.arm.rts">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    <library name="lib/console"
+        pname="lib/console.aem4f"
+        profile="release"
+        target="ti.targets.arm.elf.M4F"/>
+    <library name="lib/console_min"
+        pname="lib/console_min.aem4f"
+        profile="release"
+        target="ti.targets.arm.elf.M4F"/>
+    <library name="lib/console_ipv4"
+        pname="lib/console_ipv4.aem4f"
+        profile="release"
+        target="ti.targets.arm.elf.M4F"/>
+    <library name="lib/console_min_ipv4"
+        pname="lib/console_min_ipv4.aem4f"
+        profile="release"
+        target="ti.targets.arm.elf.M4F"/>
+    <library name="lib/console"
+        pname="lib/console.am4fg"
+        profile="release"
+        target="gnu.targets.arm.M4F"/>
+    <library name="lib/console_min"
+        pname="lib/console_min.am4fg"
+        profile="release"
+        target="gnu.targets.arm.M4F"/>
+    <library name="lib/console_ipv4"
+        pname="lib/console_ipv4.am4fg"
+        profile="release"
+        target="gnu.targets.arm.M4F"/>
+    <library name="lib/console_min_ipv4"
+        pname="lib/console_min_ipv4.am4fg"
+        profile="release"
+        target="gnu.targets.arm.M4F"/>
+    <library name="lib/console"
+        pname="lib/console.arm4f"
+        profile="release"
+        target="iar.targets.arm.M4F"/>
+    <library name="lib/console_min"
+        pname="lib/console_min.arm4f"
+        profile="release"
+        target="iar.targets.arm.M4F"/>
+    <library name="lib/console_ipv4"
+        pname="lib/console_ipv4.arm4f"
+        profile="release"
+        target="iar.targets.arm.M4F"/>
+    <library name="lib/console_min_ipv4"
+        pname="lib/console_min_ipv4.arm4f"
+        profile="release"
+        target="iar.targets.arm.M4F"/>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_ndk_tools_console"
+        pname="ti_ndk_tools_console.tar"
+        label="default"
+    >
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package.bld"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="lib/console.aem4f"/>
+        <file name="package/package_ti.ndk.tools.console.c"/>
+        <file name="conacct.c"/>
+        <file name="conecho.c"/>
+        <file name="conipv6.c"/>
+        <file name="conping.c"/>
+        <file name="conroute.c"/>
+        <file name="console.c"/>
+        <file name="constat.c"/>
+        <file name="contftp.c"/>
+        <file name="condns.c"/>
+        <file name="conipaddr.c"/>
+        <file name="conlli.c"/>
+        <file name="consock.c"/>
+        <file name="contest.c"/>
+        <file name="convlan.c"/>
+        <file name="lib/console_min.aem4f"/>
+        <file name="lib/console_ipv4.aem4f"/>
+        <file name="lib/console_min_ipv4.aem4f"/>
+        <file name="lib/console.am4fg"/>
+        <file name="lib/console_min.am4fg"/>
+        <file name="lib/console_ipv4.am4fg"/>
+        <file name="lib/console_min_ipv4.am4fg"/>
+        <file name="lib/console.arm4f"/>
+        <file name="lib/console_min.arm4f"/>
+        <file name="lib/console_ipv4.arm4f"/>
+        <file name="lib/console_min_ipv4.arm4f"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>
